@@ -15,16 +15,15 @@
     <div class="card-block">
       <div class="card-text">
         <ng-content></ng-content><br />
-        You will receive bonuses from all previous levels, as well as:
+        You will receive bonuses from all previous rebirths, as well as:
         <ul>
-          <li *ngFor="let summaryItem of nextLevelItem.levelSummary">{{summaryItem}}</li>
+          <li *ngFor="let summaryItem of nextRebirthItem.levelSummary">{{summaryItem}}</li>
         </ul><br />
         <table class="table">
           <thead>
             <tr>
               <th>
-                <clr-icon attr.shape="{{demigodItem.icon}}" size="18" [ngStyle]="{'color': demigodItem.color}"></clr-icon>
-                Level
+                Rebirth
               </th>
               <th>
                 <clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color}"></clr-icon>
@@ -34,14 +33,14 @@
             </tr>
           </thead>
           <tbody>
-            <ng-container *ngIf="nextLevelItem && levelService.levels$ | async">
+            <ng-container *ngIf="nextRebirthItem && rebirthService.rebirths$ | async">
               <tr>
-                <td>{{nextLevelItem.id}} - {{nextLevelItem.name}}</td>
+                <td>{{nextRebirthItem.id}}</td>
                 <td>
-                  {{utilsService.formatNumber(nextLevelAmount)}}
+                  {{utilsService.formatNumber(nextRebirthAmount)}}
                 </td>
-                <td *ngIf="mcpItem.amount >= nextLevelAmount">
-                  <button class="btn btn-sm btn-link" (click)="levelUp()">Level Up!</button>
+                <td *ngIf="mcpItem.amount >= nextRebirthAmount">
+                  <button class="btn btn-sm btn-link" (click)="rebirth()">Rebirth!</button>
                 </td>
               </tr>
             </ng-container>

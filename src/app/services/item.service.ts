@@ -18,10 +18,10 @@ export class ItemService {
   initializeItems(dontResetIds = []) {
     const intializeInventory = [];
     items.forEach((inventoryItem) => {
-      let pushItem = {...inventoryItem};
+      let pushItem =  JSON.parse(JSON.stringify(inventoryItem));
       dontResetIds.forEach((id) => {
         if (inventoryItem.id === id) {
-          pushItem = this.inventory.find(findItem => findItem.id === id);
+          pushItem = JSON.parse(JSON.stringify(this.inventory.find(findItem => findItem.id === id)));
         }
       });
       intializeInventory.push(new Item(pushItem));
@@ -89,7 +89,23 @@ export class ItemService {
   }
 
   autoActivitySet() {
-    return this.inventory.find(invItem => invItem.id === 904).amount;
+    return this.inventory.find(invItem => invItem.id === Globals.itemIds.autoActivitySwitcher).amount;
+  }
+
+  allowRefiningSet() {
+    return this.inventory.find(invItem => invItem.id === Globals.itemIds.allowRefining).amount;
+  }
+
+  exchangeUnlocked() {
+    return this.inventory.find(invItem => invItem.id === Globals.itemIds.exchangeUnlocked) ?
+      this.inventory.find(invItem => invItem.id === Globals.itemIds.exchangeUnlocked).amount :
+      false;
+  }
+
+  rebirthUnlocked() {
+    return this.inventory.find(invItem => invItem.id === Globals.itemIds.rebirthUnlocked) ?
+      this.inventory.find(invItem => invItem.id === Globals.itemIds.rebirthUnlocked).amount :
+      false;
   }
 
   amountAvailable(itemId: number, amt: number) {

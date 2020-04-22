@@ -22,6 +22,8 @@ import { AccordionInventoryComponent } from './components/accordion-inventory/ac
 import { AccordionStatsComponent } from './components/accordion-stats/accordion-stats.component';
 import { PowersComponent } from './components/powers/powers.component';
 import { PowersCardComponent } from './components/powers-card/powers-card.component';
+import { RebirthComponent } from './components/rebirth/rebirth.component';
+import { RebirthCardComponent } from './components/rebirth-card/rebirth-card.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { PowersCardComponent } from './components/powers-card/powers-card.compon
     AccordionInventoryComponent,
     AccordionStatsComponent,
     PowersComponent,
-    PowersCardComponent
+    PowersCardComponent,
+    RebirthComponent,
+    RebirthCardComponent
   ],
   imports: [
     BrowserModule,

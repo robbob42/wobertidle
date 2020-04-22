@@ -14,6 +14,7 @@ import '@clr/icons';
 import '@clr/icons/shapes/all-shapes';
 import { ControlService } from '../../services/control.service';
 import { LevelService } from '../../services/level.service';
+import { RebirthService } from 'src/app/services/rebirth.service';
 
 @Component({
   selector: 'app-layout',
@@ -51,7 +52,8 @@ export class LayoutComponent implements OnInit {
     public itemService: ItemService,
     public utilsService: UtilsService,
     public controlService: ControlService,
-    public levelService: LevelService
+    public levelService: LevelService,
+    public rebirthService: RebirthService
   ) {
     // this.messageService.initializeMessages();
     // messageService.subscribeMessages().subscribe((subscribedMessages) => {
@@ -97,6 +99,7 @@ export class LayoutComponent implements OnInit {
     this.improvementService.initialize();
     this.utilsService.initialize();
     this.levelService.initialize();
+    this.rebirthService.initialize();
 
     this.customIcons();
 

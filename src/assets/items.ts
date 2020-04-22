@@ -45,6 +45,33 @@ export default [
     visible: false
   },
   {
+    id: 905,
+    name: 'Allow Refining',
+    icon: '',
+    color: '',
+    amount: 0,
+    limit: 0,
+    visible: false
+  },
+  {
+    id: 906,
+    name: 'Exchange Unlocked',
+    icon: '',
+    color: '',
+    amount: 0,
+    limit: 0,
+    visible: false
+  },
+  {
+    id: 907,
+    name: 'Rebirth Unlocked',
+    icon: '',
+    color: '',
+    amount: 0,
+    limit: 0,
+    visible: false
+  },
+  {
     id: 1,
     name: 'Rocks',
     icon: 'rock',

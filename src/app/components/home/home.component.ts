@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ItemService } from '../../services/item.service';
 import { ControlService } from '../../services/control.service';
 import { ImprovementService } from '../../services/improvement.service';
+import { LevelService } from 'src/app/services/level.service';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,8 @@ export class HomeComponent implements OnInit {
   constructor(
     public itemService: ItemService,
     public controlService: ControlService,
-    public improvementService: ImprovementService
+    public improvementService: ImprovementService,
+    public levelService: LevelService
   ) {
   }
 
@@ -53,6 +55,10 @@ export class HomeComponent implements OnInit {
     this.itemService.incrementItem(2, 40);
     this.itemService.incrementItem(3, 10);
     this.itemService.incrementItem(7, 10);
+  }
+
+  setmcp(amt: number) {
+    this.itemService.incrementItem(900, amt);
   }
 
   setAmount(itemId: number) {

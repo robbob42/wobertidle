@@ -9,7 +9,11 @@ export class Globals {
     mcp: 900,
     human: 901,
     money: 902,
-    demigod: 903
+    demigod: 903,
+    autoActivitySwitcher: 904,
+    allowRefining: 905,
+    exchangeUnlocked: 906,
+    rebirthUnlocked: 907
   };
   public static visibleAmounts = {
     raw: 0,
@@ -20,6 +24,7 @@ export class Globals {
     production: 12000,
     money: 12000,
     refine: 30000,
+    rebirth: 60000,
     powers: 2584,
   };
   public static blankItem: Item = {

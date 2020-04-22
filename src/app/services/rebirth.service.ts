@@ -2,61 +2,64 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Level } from '../models/level';
 import { Globals } from '../../assets/globals';
-import initialLevels from '../../assets/levels';
+import initialRebirths from '../../assets/rebirths';
 import { ItemService } from './item.service';
 import { ActivityService } from './activity.service';
 import { ImprovementService } from './improvement.service';
 import { ControlService } from './control.service';
+import { LevelService } from './level.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LevelService {
+export class RebirthService {
   private sub = new BehaviorSubject<Level[]>([Globals.blankLevel]);
-  levels$: Observable<Level[]> = this.sub.asObservable();
-  private levels: Level[] = [];
+  rebirths$: Observable<Level[]> = this.sub.asObservable();
+  private rebirths: Level[] = [];
 
   constructor(
     private itemService: ItemService,
     private activityService: ActivityService,
     private improvementService: ImprovementService,
-    private contrlService: ControlService
+    private controlService: ControlService,
+    private levelService: LevelService
   ) { }
 
   initialize(dontResetIds = []) {
     const intializeAry = [];
-    const initialItems = initialLevels;
+    const initialItems = initialRebirths;
 
     initialItems.forEach((initialItem) => {
       let pushItem = JSON.parse(JSON.stringify(initialItem));
       dontResetIds.forEach((id) => {
         if (initialItem.id === id) {
-          pushItem = JSON.parse(JSON.stringify(this.levels.find(findItem => findItem.id === id)));
+          pushItem = JSON.parse(JSON.stringify(this.rebirths.find(findItem => findItem.id === id)));
         }
       });
       intializeAry.push(new Level(pushItem));
     });
-    this.levels = intializeAry;
-    this.sub.next(this.levels);
+    this.rebirths = intializeAry;
+    this.sub.next(this.rebirths);
   }
 
-  levelUp() {
-    const curLevel = this.levels.find((level) => level.current);
-    const nextLevel = this.levels.find((level) => level.id === curLevel.id + 1);
-    curLevel.current = false;
-    nextLevel.current = true;
-    this.sub.next(this.levels);
-    this.resetGame(nextLevel.id);
+  rebirth() {
+    const curRebirth = this.rebirths.find((rebirth) => rebirth.current);
+    const nextRebirth = this.rebirths.find((rebirth) => rebirth.id === curRebirth.id + 1);
+    curRebirth.current = false;
+    nextRebirth.current = true;
+    this.sub.next(this.rebirths);
+    this.resetRebirth(nextRebirth.id);
   }
 
-  resetGame(nextLevelId: number) {
-    this.itemService.initializeItems([901, 904, 905, 906, 907]);
+  resetRebirth(nextRebirthId: number) {
+    this.itemService.initializeItems([901]);
     this.activityService.initializeActivities();
     this.improvementService.initialize();
-    this.contrlService.navigate('home');
+    this.levelService.initialize();
+    this.controlService.navigate('home');
 
-    for (let i = 1; i <= nextLevelId; i++) {
-      const iterLevel = this.levels[i];
+    for (let i = 1; i <= nextRebirthId; i++) {
+      const iterLevel = this.rebirths[i];
       iterLevel.improvements.forEach(improvementId => {
         this.improvementService.buyImprovement(improvementId, true);
       });
