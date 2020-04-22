@@ -509,5 +509,59 @@ export default [
     improveeId: 8,
     improves: 'produceAmount',
     improvesByMultiplyer: 2
+  },
+  {
+    id: 28,
+    name: 'Allow Refining',
+    type: 'mcp',
+    level: 1,
+    itemsCost: [
+      {
+        itemId: 8,
+        itemAmount: 0
+      }
+    ],
+    costMultiplyer: 2,
+    improvee: 'item',
+    improveeId: 905,
+    improves: 'amount',
+    improvesByMultiplyer: 0,
+    improvesByAdder: 1
+  },
+  {
+    id: 29,
+    name: 'Exchange Unlocked',
+    type: 'mcp',
+    level: 1,
+    itemsCost: [
+      {
+        itemId: 8,
+        itemAmount: 0
+      }
+    ],
+    costMultiplyer: 2,
+    improvee: 'item',
+    improveeId: 906,
+    improves: 'amount',
+    improvesByMultiplyer: 0,
+    improvesByAdder: 1
+  },
+  {
+    id: 30,
+    name: 'Rebirth Unlocked',
+    type: 'mcp',
+    level: 1,
+    itemsCost: [
+      {
+        itemId: 8,
+        itemAmount: 0
+      }
+    ],
+    costMultiplyer: 2,
+    improvee: 'item',
+    improveeId: 907,
+    improves: 'amount',
+    improvesByMultiplyer: 0,
+    improvesByAdder: 1
   }
 ];
