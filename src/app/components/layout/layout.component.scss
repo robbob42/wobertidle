@@ -1,0 +1,53 @@
+.my-card {
+  width: 1252px;
+}
+
+.my-sidenav {
+  min-width: 13.8rem;
+}
+
+.messages {
+  padding-left: 10px;
+  line-height: 1.05rem;
+}
+
+.my-alert-action:hover {
+  cursor: pointer;
+}
+.message-0 {
+  opacity: 1;
+  margin-top: 0;
+  font-size: .65rem;
+}
+.message-1 {
+  opacity: .75;
+  margin-top: 0;
+  font-size: .65rem;
+}
+.message-2 {
+  opacity: .5;
+  margin-top: 0;
+  font-size: .65rem;
+}
+.message-3 {
+  opacity: .25;
+  margin-top: 0;
+  font-size: .65rem;
+}
+
+.modal-log {
+  position: absolute;
+  top: -3em;
+  left: 24em;
+}
+
+.highlightArrow {
+  color: #0f6086;
+  transform: rotate(90deg);
+  position: fixed;
+}
+
+.my-subnav {
+  width: 100%;
+  z-index: 10000;
+}

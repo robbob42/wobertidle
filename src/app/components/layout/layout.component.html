@@ -1,0 +1,90 @@
+<div class="card my-card" id="rob-card" *ngIf="itemService.items$ | async as items">
+  <nav class="subnav my-subnav" id="rob-subnav" [ngStyle]="{'position': subNavPos, 'top': subNavTop}">
+    <ul class="nav">
+      <li class="nav-item"><a [ngClass]="{'nav-link': true, 'active': navigation === 'home'}" (click)="setNav('home')">Home</a></li>
+      <!-- <li class="nav-item"><a class="nav-link" (click)="showLog()">Intro</a></li> -->
+
+      <li class="nav-item" *ngIf="mcpItem.amount >= Globals.visibleAmounts.shop">
+        <a [ngClass]="{'nav-link': true, 'active': navigation === 'shop'}" (click)="setNav('shop')">
+          <app-pulsing-text [text]="'Shop'" [initialPulse]="true"></app-pulsing-text>
+        </a>
+      </li>
+      <li class="nav-item disabled" *ngIf="mcpItem.amount < Globals.visibleAmounts.shop">
+        @ {{utilsService.formatNumber(Globals.visibleAmounts.shop)}}<clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color}"></clr-icon>
+      </li>
+
+      <li class="nav-item" *ngIf="mcpItem.amount >= Globals.visibleAmounts.powers">
+        <a [ngClass]="{'nav-link': true, 'active': navigation === 'powers'}" (click)="setNav('powers')">
+          <app-pulsing-text [text]="'Powers'" [initialPulse]="true"></app-pulsing-text>
+        </a>
+      </li>
+      <li class="nav-item disabled" *ngIf="mcpItem.amount < Globals.visibleAmounts.powers">
+        @ {{utilsService.formatNumber(Globals.visibleAmounts.powers)}}<clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color}"></clr-icon>
+      </li>
+
+      <li class="nav-item" *ngIf="mcpItem.amount >= Globals.visibleAmounts.exchange">
+        <a [ngClass]="{'nav-link': true, 'active': navigation === 'exchange'}" (click)="setNav('exchange')">
+          <app-pulsing-text [text]="'Exchange'" [initialPulse]="true"></app-pulsing-text>
+        </a>
+      </li>
+      <li class="nav-item disabled" *ngIf="mcpItem.amount < Globals.visibleAmounts.exchange">
+        @ {{utilsService.formatNumber(Globals.visibleAmounts.exchange)}}<clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color}"></clr-icon>
+      </li>
+
+    </ul>
+  </nav>
+  <nav class="subnav" *ngIf="subNavPos !== 'relative'"></nav>
+  <div class="content-container">
+    <nav class="sidenav my-sidenav" [ngStyle]="{'position': subNavPos, 'top': sidenavTop, 'width': '200px'}">
+      <app-my-sidenav></app-my-sidenav>
+    </nav>
+    <nav class="sidenav my-sidenav" *ngIf="subNavPos !== 'relative'">
+    </nav>
+    <div class="content-area my-content-area" style="padding-bottom: 50px;">
+      <app-home *ngIf="navigation === 'home'"></app-home>
+      <app-shop *ngIf="navigation === 'shop'"></app-shop>
+      <app-exchange *ngIf="navigation === 'exchange'"></app-exchange>
+      <app-powers *ngIf="navigation === 'powers'"></app-powers>
+    </div>
+  </div>
+  <div
+    class="alert alert-info"
+    role="alert"
+    [ngStyle]="{'width': '500px', 'position': 'absolute', 'top': messagesTop, 'left': messagesLeft}"
+    *ngIf="logVisible">
+    <div class="alert-items">
+      <div class="alert-item static">
+        <div class="alert-text">
+          <p *ngFor="let message of messages; let i = index" [className]="'message-'+i">- {{message.text}}</p>
+        </div>
+        <div class="alert-actions">
+          <div *ngIf="advanceStorylineVisible" class="alert-action dropdown bottom-right open">
+            <button class="dropdown-toggle">
+              <span (click)="advanceStoryline()">Next</span>
+            </button>
+            <clr-icon shape="caret down" (click)="advanceDropdownOpen = !advanceDropdownOpen"></clr-icon>
+            <div class="dropdown-menu" *ngIf="advanceDropdownOpen">
+              <a class="dropdown-item" (click)="skipIntro()">Skip Introduction</a>
+            </div>
+          </div>
+        </div>
+        <button *ngIf="!advanceStorylineVisible" class="dropdown-toggle">
+          <span (click)="skipIntro()">Close</span>
+        </button>
+      </div>
+    </div>
+    <button type="button" class="close" aria-label="Close" (click)="hideLog()" style="padding-right: 20px;">
+      <clr-icon aria-hidden="true" shape="close"></clr-icon>
+    </button>
+  </div>
+</div>
+<clr-icon
+  [@pulse]="{value: 'bounced', params: {top: alertTop, left: alertLeft, bounceLeft: alertLeftBounce}}"
+  (@pulse.done)="delayHideAlert()"
+  *ngIf="highlightArrow"
+  shape="arrow"
+  size="24"
+  class="highlightArrow"
+  [ngStyle]="{'left': alertLeft, 'top': alertTop}"
+>
+</clr-icon>

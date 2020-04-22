@@ -1,0 +1,17 @@
+.pulsing {
+  animation-iteration-count: 1;
+  animation: pulse 0.5s;
+  animation-direction: alternate;
+}
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+    color: #179bd3;
+  }
+  100% {
+    opacity: 1;
+  }
+}

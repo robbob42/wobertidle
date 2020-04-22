@@ -1,0 +1,10 @@
+<ng-container *ngIf="activity && activityService.activities$ | async">
+  <button
+    [@slide]="{value: activity.active ? 'right' : 'left', params: {activityColor: activity.color}}"
+    type="button"
+    class="btn my-button"
+    (click)="toggleActivity(activity.id)">
+    <span *ngIf="activity.active">Stop</span>
+    <span *ngIf="!activity.active">{{activity.name}}</span>
+  </button>
+</ng-container>

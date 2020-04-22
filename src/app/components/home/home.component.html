@@ -1,0 +1,30 @@
+<div class="clr-row">
+  <div class="clr-col-9">
+    <app-activity-card [cardHeader]="'Obtain Raw Materials'" [activityType] = "'raw'"></app-activity-card>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-9">
+    <app-activity-card [cardHeader]="'Refine Materials'" [activityType] = "'refine'"></app-activity-card>
+  </div>
+</div>
+
+<button type="button" (click)="cheat5()">5 Minutes into play</button><br>
+<button type="button" (click)="cheat20()">20 Minutes into play</button><br>
+<button type="button" (click)="controlService.navigate('shop')">Cheat Nav</button><br>
+<br>
+<input type="text" [(ngModel)]="amounts[1]">
+<button type="button" (click)="setAmount(1)">Set Rocks</button>
+<br>
+<input type="text" [(ngModel)]="amounts[7]">
+<button type="button" (click)="setAmount(7)">Set Clay</button>
+<br>
+<input type="text" [(ngModel)]="amounts[3]">
+<button type="button" (click)="setAmount(3)">Set Fish</button>
+<br>
+<input type="text" [(ngModel)]="amounts[2]">
+<button type="button" (click)="setAmount(2)">Set Wood</button>
+<br>
+<input type="text" [(ngModel)]="amounts[8]">
+<button type="button" (click)="setAmount(8)">Set Wheat</button>

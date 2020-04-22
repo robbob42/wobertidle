@@ -1,0 +1,55 @@
+<div class="card">
+  <ng-container *ngIf="mcpItem && mcpItem.amount < Globals.visibleAmounts[improvementType] && itemService.items$ | async as items">
+    <div class="card-header">
+      <button class="btn btn-outline" disabled>
+        @<clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color}"></clr-icon>
+        {{utilsService.formatNumber(Globals.visibleAmounts[improvementType])}}
+      </button>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="mcpItem && mcpItem.amount >= Globals.visibleAmounts[improvementType] && itemService.items$ | async as items">
+    <div class="card-header">
+      {{utilsService.capitalizeFirstLetter(improvementType)}} Improvements
+    </div>
+    <div class="card-block">
+
+      <div class="card-text">
+        <ng-content></ng-content>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Improvement</th>
+              <th>Level</th>
+              <th>Cost</th>
+              <th>Improves {{utilsService.capitalizeFirstLetter(improvementType)}} By</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let improvement of improvementService.improvements$ | async">
+              <tr *ngIf="improvement.type == improvementType">
+                <td>{{improvement.name}}</td>
+                <td>{{!improvement.levelMax ? improvement.level : improvement.level < improvement.levelMax ? improvement.level : 'Max'}}</td>
+                <td>
+                  <span *ngFor="let costItem of improvement.itemsCost">
+                    <span *ngFor="let item of initialItems">
+                      <ng-container *ngIf="item.id == costItem.itemId">
+                        <clr-icon attr.shape="{{item.icon}}" size="16" [ngStyle]="{'color': item.color}"></clr-icon>
+                      </ng-container>
+                    </span>
+                    x <app-pulsing-text [text]="utilsService.formatNumber(costItem.itemAmount)"></app-pulsing-text><br />
+                  </span>
+                </td>
+                <td>(x {{improvement.improvesByMultiplyer || improvement.improvesByAdder}})</td>
+                <td>
+                  <button *ngIf="!improvement.levelMax || improvement.level < improvement.levelMax" class="btn btn-sm btn-link" (click)="buyImprovement(improvement.id)">Buy</button>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </ng-container>
+</div>
