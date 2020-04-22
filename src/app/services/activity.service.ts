@@ -4,6 +4,7 @@ import { Activity } from '../models/activity';
 import { Improvement } from '../models/improvement';
 import activitySetup from '../../assets/activities';
 import { Globals } from '../../assets/globals';
+import { SimpleCrypto } from 'simple-crypto-js';
 
 @Injectable({
   providedIn: 'root'
@@ -98,6 +99,18 @@ export class ActivityService {
     if (improvement.improvesByAdder) {
       this.activities.find(act => act.id === improvement.improveeId)[improvement.improves] += improvement.improvesByAdder;
     }
+    this.sub.next(this.activities);
+  }
+
+  saveEncrypt() {
+    const simpleCrypto = new SimpleCrypto(Globals.superSecretKey);
+    return simpleCrypto.encrypt(JSON.stringify(this.activities));
+  }
+
+  loadDecrpyt(objKey: string) {
+    const simpleCrypto = new SimpleCrypto(Globals.superSecretKey);
+    const decrypted = simpleCrypto.decrypt(localStorage.getItem(objKey));
+    this.activities = JSON.parse(JSON.parse(JSON.stringify(decrypted)));
     this.sub.next(this.activities);
   }
 }

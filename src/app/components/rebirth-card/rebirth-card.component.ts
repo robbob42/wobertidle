@@ -6,6 +6,7 @@ import { Item } from 'src/app/models/item';
 import { UtilsService } from 'src/app/services/utils.service';
 import { Level } from 'src/app/models/level';
 import { RebirthService } from 'src/app/services/rebirth.service';
+import { ControlService } from 'src/app/services/control.service';
 
 @Component({
   selector: 'app-rebirth-card',
@@ -27,7 +28,8 @@ export class RebirthCardComponent implements OnInit, OnDestroy {
   constructor(
     public itemService: ItemService,
     public utilsService: UtilsService,
-    public rebirthService: RebirthService
+    public rebirthService: RebirthService,
+    private controlService: ControlService
     ) { }
 
   ngOnInit(): void {
@@ -45,6 +47,7 @@ export class RebirthCardComponent implements OnInit, OnDestroy {
 
   rebirth() {
     this.rebirthService.rebirth();
+    this.controlService.navigate('home');
   }
 
   ngOnDestroy() {

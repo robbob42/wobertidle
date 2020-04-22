@@ -96,27 +96,50 @@ export class LayoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.improvementService.initialize();
-    this.utilsService.initialize();
-    this.levelService.initialize();
-    this.rebirthService.initialize();
-
+    const saveSlot = localStorage.getItem('wobertIdleSave');
     this.customIcons();
+    if (saveSlot) {
+      this.controlService.load();
 
-    setTimeout(() => {
-      this.activityService.initializeActivities();
-      this.activityService.activities$.subscribe((activities) => {
-        this.activities = activities;
+      this.customIcons();
+
+      setTimeout(() => {
+        this.itemService.items$.subscribe((items) => {
+          this.inventory = items;
+          this.mcpItem = items.find(invenItem => invenItem.id === 900);
+        });
+        this.activityService.activities$.subscribe((activities) => {
+          this.activities = activities;
+        });
+        this.controlService.controls$.subscribe((controls) => {
+          this.navigation = controls.navigation;
+        });
       });
-      this.itemService.initializeItems();
-      this.itemService.items$.subscribe((items) => {
-        this.inventory = items;
-        this.mcpItem = items.find(invenItem => invenItem.id === 900);
+    }
+
+    else {
+      this.improvementService.initialize();
+      this.utilsService.initialize();
+      this.levelService.initialize();
+      this.rebirthService.initialize();
+
+      this.customIcons();
+
+      setTimeout(() => {
+        this.activityService.initializeActivities();
+        this.activityService.activities$.subscribe((activities) => {
+          this.activities = activities;
+        });
+        this.itemService.initializeItems();
+        this.itemService.items$.subscribe((items) => {
+          this.inventory = items;
+          this.mcpItem = items.find(invenItem => invenItem.id === 900);
+        });
+        this.controlService.controls$.subscribe((controls) => {
+          this.navigation = controls.navigation;
+        });
       });
-      this.controlService.controls$.subscribe((controls) => {
-        this.navigation = controls.navigation;
-      });
-    });
+    }
 
     setTimeout(() => {
       this.skipIntro();
@@ -127,6 +150,10 @@ export class LayoutComponent implements OnInit {
       this.subNavTop = `${coords.top}px`;
       this.sidenavTop = coords.top === 0 ? '0px' : `${coords.top + 35}px`;
     });
+
+    window.setInterval(() => {
+      this.controlService.save();
+    }, 10000);
   }
 
   setNav(nav: string) {

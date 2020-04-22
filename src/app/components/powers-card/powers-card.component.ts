@@ -7,6 +7,7 @@ import { ItemService } from '../../services/item.service';
 import { Globals } from '../../../assets/globals';
 import { LevelService } from '../../services/level.service';
 import { Level } from '../../models/level';
+import { ControlService } from 'src/app/services/control.service';
 
 @Component({
   selector: 'app-powers-card',
@@ -30,7 +31,8 @@ export class PowersCardComponent implements OnInit, OnDestroy {
   constructor(
     public levelService: LevelService,
     public itemService: ItemService,
-    public utilsService: UtilsService
+    public utilsService: UtilsService,
+    private controlService: ControlService
   ) { }
 
   ngOnInit(): void {
@@ -48,6 +50,7 @@ export class PowersCardComponent implements OnInit, OnDestroy {
 
   levelUp() {
     this.levelService.levelUp();
+    this.controlService.navigate('home');
   }
 
   ngOnDestroy() {

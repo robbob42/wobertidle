@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Level } from '../models/level';
 import { Globals } from '../../assets/globals';
@@ -6,7 +6,7 @@ import initialLevels from '../../assets/levels';
 import { ItemService } from './item.service';
 import { ActivityService } from './activity.service';
 import { ImprovementService } from './improvement.service';
-import { ControlService } from './control.service';
+import SimpleCrypto from 'simple-crypto-js';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +17,10 @@ export class LevelService {
   private levels: Level[] = [];
 
   constructor(
+    private injector: Injector,
     private itemService: ItemService,
     private activityService: ActivityService,
-    private improvementService: ImprovementService,
-    private contrlService: ControlService
+    private improvementService: ImprovementService
   ) { }
 
   initialize(dontResetIds = []) {
@@ -53,7 +53,6 @@ export class LevelService {
     this.itemService.initializeItems([901, 904, 905, 906, 907]);
     this.activityService.initializeActivities();
     this.improvementService.initialize();
-    this.contrlService.navigate('home');
 
     for (let i = 1; i <= nextLevelId; i++) {
       const iterLevel = this.levels[i];
@@ -61,5 +60,17 @@ export class LevelService {
         this.improvementService.buyImprovement(improvementId, true);
       });
     }
+  }
+
+  saveEncrypt() {
+    const simpleCrypto = new SimpleCrypto(Globals.superSecretKey);
+    return simpleCrypto.encrypt(JSON.stringify(this.levels));
+  }
+
+  loadDecrpyt(objKey: string) {
+    const simpleCrypto = new SimpleCrypto(Globals.superSecretKey);
+    const decrypted = simpleCrypto.decrypt(localStorage.getItem(objKey));
+    this.levels = JSON.parse(JSON.parse(JSON.stringify(decrypted)));
+    this.sub.next(this.levels);
   }
 }

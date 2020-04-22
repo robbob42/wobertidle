@@ -6,8 +6,8 @@ import initialRebirths from '../../assets/rebirths';
 import { ItemService } from './item.service';
 import { ActivityService } from './activity.service';
 import { ImprovementService } from './improvement.service';
-import { ControlService } from './control.service';
 import { LevelService } from './level.service';
+import SimpleCrypto from 'simple-crypto-js';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,6 @@ export class RebirthService {
     private itemService: ItemService,
     private activityService: ActivityService,
     private improvementService: ImprovementService,
-    private controlService: ControlService,
     private levelService: LevelService
   ) { }
 
@@ -56,7 +55,6 @@ export class RebirthService {
     this.activityService.initializeActivities();
     this.improvementService.initialize();
     this.levelService.initialize();
-    this.controlService.navigate('home');
 
     for (let i = 1; i <= nextRebirthId; i++) {
       const iterLevel = this.rebirths[i];
@@ -64,5 +62,17 @@ export class RebirthService {
         this.improvementService.buyImprovement(improvementId, true);
       });
     }
+  }
+
+  saveEncrypt() {
+    const simpleCrypto = new SimpleCrypto(Globals.superSecretKey);
+    return simpleCrypto.encrypt(JSON.stringify(this.rebirths));
+  }
+
+  loadDecrpyt(objKey: string) {
+    const simpleCrypto = new SimpleCrypto(Globals.superSecretKey);
+    const decrypted = simpleCrypto.decrypt(localStorage.getItem(objKey));
+    this.rebirths = JSON.parse(JSON.parse(JSON.stringify(decrypted)));
+    this.sub.next(this.rebirths);
   }
 }

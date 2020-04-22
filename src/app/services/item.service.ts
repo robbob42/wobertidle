@@ -4,6 +4,7 @@ import { Item } from '../models/item';
 import items from '../../assets/items';
 import { Improvement } from '../models/improvement';
 import { Globals } from '../../assets/globals';
+import SimpleCrypto from 'simple-crypto-js';
 
 @Injectable({
   providedIn: 'root'
@@ -124,6 +125,18 @@ export class ItemService {
       this.inventory.find(invItem => invItem.id === improvement.improveeId)[improvement.improves] += improvement.improvesByAdder;
     }
 
+    this.sub.next(this.inventory);
+  }
+
+  saveEncrypt() {
+    const simpleCrypto = new SimpleCrypto(Globals.superSecretKey);
+    return simpleCrypto.encrypt(JSON.stringify(this.inventory));
+  }
+
+  loadDecrpyt(objKey: string) {
+    const simpleCrypto = new SimpleCrypto(Globals.superSecretKey);
+    const decrypted = simpleCrypto.decrypt(localStorage.getItem(objKey));
+    this.inventory = JSON.parse(JSON.parse(JSON.stringify(decrypted)));
     this.sub.next(this.inventory);
   }
 }

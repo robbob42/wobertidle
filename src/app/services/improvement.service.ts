@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { ItemService } from './item.service';
 import { ActivityService } from './activity.service';
 import { Globals } from '../../assets/globals';
+import SimpleCrypto from 'simple-crypto-js';
 
 @Injectable({
   providedIn: 'root'
@@ -80,4 +81,15 @@ export class ImprovementService {
     }
   }
 
+  saveEncrypt() {
+    const simpleCrypto = new SimpleCrypto(Globals.superSecretKey);
+    return simpleCrypto.encrypt(JSON.stringify(this.improvements));
+  }
+
+  loadDecrpyt(objKey: string) {
+    const simpleCrypto = new SimpleCrypto(Globals.superSecretKey);
+    const decrypted = simpleCrypto.decrypt(localStorage.getItem(objKey));
+    this.improvements = JSON.parse(JSON.parse(JSON.stringify(decrypted)));
+    this.sub.next(this.improvements);
+  }
 }
