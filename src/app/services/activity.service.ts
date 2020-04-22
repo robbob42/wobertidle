@@ -88,6 +88,31 @@ export class ActivityService {
     }
   }
 
+  getNextActivity(activityId: number) {
+    let activitySetLoc: number;
+    let activityLoc: number;
+    for (let i = 0; i < Globals.activitySets.length - 1; i++) {
+      for (let j = 0; j < Globals.activitySets[i].length; j++) {
+        if (Globals.activitySets[i][j] === activityId) {
+          activitySetLoc = i;
+          activityLoc = j;
+        }
+      }
+    }
+
+    if (!isNaN(activitySetLoc) && !isNaN(activityLoc)) {
+      if (this.autoCountdown >= 0) {
+        let nextActivityLoc = activityLoc + 1;
+        if (activityLoc === Globals.activitySets[activitySetLoc].length - 1) {
+          activityLoc = 0;
+          nextActivityLoc = 1;
+        }
+        this.autoCountdown--;
+        return this.activities.find(act => act.id === Globals.activitySets[activitySetLoc][nextActivityLoc]);
+      }
+    }
+  }
+
   resetAutoCountdown() {
     this.autoCountdown = 5;
   }
@@ -100,6 +125,10 @@ export class ActivityService {
       this.activities.find(act => act.id === improvement.improveeId)[improvement.improves] += improvement.improvesByAdder;
     }
     this.sub.next(this.activities);
+  }
+
+  useBackgroundTime() {
+
   }
 
   saveEncrypt() {

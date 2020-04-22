@@ -54,6 +54,11 @@ export class ItemService {
     this.sub.next(this.inventory);
   }
 
+  willCauseLimitReached(itemId: number, amount: number) {
+    const incItem = this.inventory.find(item => item.id === itemId);
+    return incItem.amount + amount >= incItem.limit;
+  }
+
   forceSetAmount(itemId: number, amount: number, limit?: number) {
     this.inventory.find(item => item.id === itemId).amount = amount;
     if (limit) {

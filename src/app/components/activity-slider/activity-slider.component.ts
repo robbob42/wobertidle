@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { ActivityService } from '../../services/activity.service';
 import { Item } from '../../models/item';
 import { Globals } from '../../../assets/globals';
+import { ControlService } from 'src/app/services/control.service';
 
 @Component({
   selector: 'app-activity-slider',
@@ -15,6 +16,7 @@ export class ActivitySliderComponent implements OnInit, OnDestroy {
   @Input() activityId: number;
 
   public activitySubscription: Subscription;
+  private controlsSub: Subscription;
 
   public activity: Activity;
 
@@ -26,11 +28,79 @@ export class ActivitySliderComponent implements OnInit, OnDestroy {
   private itemSub: Subscription;
   private humanItem: Item;
 
+  private leftTime = 0;
+  private returnTime = 0;
+
   constructor(
     public itemService: ItemService,
     public activityService: ActivityService,
-    private ref: ChangeDetectorRef
-  ) { }
+    private ref: ChangeDetectorRef,
+    private controlService: ControlService
+  ) {
+    this.controlsSub = this.controlService.controls$.subscribe((controls) => {
+      if (this.activity && this.activity.active){
+        if (!controls.foreground) {
+          this.leftTime = new Date().getTime() / 1000;
+        }
+        if (controls.foreground && this.leftTime) {
+          this.returnTime = new Date().getTime() / 1000;
+          const secondsGone = Math.floor(this.returnTime - this.leftTime);
+          let incrementingActivity = this.activity;
+          let incrementer = incrementingActivity.actionTime / 1000;
+          // const itemsReceived = Math.floor((this.returnTime - this.leftTime) / this.activity.actionTime * 1000);
+          // console.log(
+          //   'left: ', this.leftTime, ' returned: ', this.returnTime, ' time gone: ',
+          //   this.returnTime - this.leftTime, ' adding: ', itemsReceived
+          // );
+
+          for (let i = 0; i < secondsGone; i += incrementer) {
+            if (
+              incrementingActivity &&
+              incrementingActivity.active &&
+              !this.itemService.limitReached(incrementingActivity.producesId) &&
+              this.itemService.amountAvailable(incrementingActivity.decrementId, incrementingActivity.decrementAmount)
+            ) {
+              this.itemService.incrementItem(
+                incrementingActivity.producesId,
+                incrementingActivity.produceAmount,
+                incrementingActivity.decrementId,
+                incrementingActivity.decrementAmount,
+                incrementingActivity.mcProficiency
+              );
+            }
+// console.log(
+//   incrementingActivity,
+//   incrementingActivity.active,
+//   this.itemService.willCauseLimitReached(incrementingActivity.producesId, incrementingActivity.produceAmount),
+//   this.itemService.autoActivitySet()
+// );
+            if (
+              incrementingActivity &&
+              incrementingActivity.active &&
+              this.itemService.willCauseLimitReached(incrementingActivity.producesId, incrementingActivity.produceAmount) &&
+              this.itemService.autoActivitySet()
+            ) {
+              this.itemService.incrementItem(
+                incrementingActivity.producesId,
+                incrementingActivity.produceAmount,
+                incrementingActivity.decrementId,
+                incrementingActivity.decrementAmount,
+                incrementingActivity.mcProficiency
+              );
+              i += incrementer;
+              incrementingActivity.active = false;
+              incrementingActivity = this.activityService.getNextActivity(incrementingActivity.id);
+              incrementingActivity.active = true;
+              incrementer = incrementingActivity.actionTime / 1000;
+            }
+          }
+
+          this.leftTime = 0;
+          this.returnTime = 0;
+        }
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.activitySubscription = this.activityService.activities$.subscribe((activities) => {
@@ -105,5 +175,6 @@ export class ActivitySliderComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.activitySubscription.unsubscribe();
     this.itemSub.unsubscribe();
+    this.controlsSub.unsubscribe();
   }
 }

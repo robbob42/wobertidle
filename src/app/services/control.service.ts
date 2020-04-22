@@ -10,10 +10,12 @@ import { Globals } from 'src/assets/globals';
 class Control {
   navigation: string;
   reset: number;
+  foreground: boolean;
 }
 const defaultControl = {
   navigation: 'home',
-  reset: 1
+  reset: 1,
+  foreground: true
 };
 
 @Injectable({
@@ -35,6 +37,11 @@ export class ControlService {
 
   navigate(nav: string) {
     this.controls.navigation = nav;
+    this.sub.next(this.controls);
+  }
+
+  setForeground(active: boolean) {
+    this.controls.foreground = active;
     this.sub.next(this.controls);
   }
 

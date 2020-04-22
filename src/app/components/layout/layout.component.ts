@@ -154,6 +154,36 @@ export class LayoutComponent implements OnInit {
     window.setInterval(() => {
       this.controlService.save();
     }, 10000);
+
+    // Listener for app going into the background
+    let hidden: string | null;
+    let visibilityChange: string | null;
+    if (typeof document.hidden !== 'undefined') {
+      hidden = 'hidden';
+      visibilityChange = 'visibilitychange';
+    }
+
+    function handleVisibilityChange() {
+      if (document[hidden]) {
+        this.controlService.setForeground(false);
+      } else {
+        this.controlService.setForeground(true);
+      }
+    }
+
+    // Warn if the browser doesn't support addEventListener or the Page Visibility API
+    if (typeof document.addEventListener === 'undefined' || hidden === undefined) {
+      console.log('This demo requires a browser, such as Google Chrome or Firefox, that supports the Page Visibility API.');
+    } else {
+      // Handle page visibility change
+      document.addEventListener(visibilityChange, () => {
+        if (document[hidden]) {
+          this.controlService.setForeground(false);
+        } else {
+          this.controlService.setForeground(true);
+        }
+      }, false);
+    }
   }
 
   setNav(nav: string) {
