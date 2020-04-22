@@ -1,4 +1,4 @@
-<div class="card my-card" id="rob-card" *ngIf="itemService.items$ | async as items">
+<div class="main-container my-card" id="rob-card" *ngIf="itemService.items$ | async as items">
   <nav class="subnav my-subnav" id="rob-subnav" [ngStyle]="{'position': subNavPos, 'top': subNavTop}">
     <ul class="nav">
       <li class="nav-item"><a [ngClass]="{'nav-link': true, 'active': navigation === 'home'}" (click)="setNav('home')">Home</a></li>
