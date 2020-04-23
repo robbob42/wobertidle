@@ -68,10 +68,16 @@ export default [
     id: 5,
     name: 'Demi in Charge of Radishes',
     improvements: [
+      31,
+      32,
+      33,
+      34,
+      35,
       28
     ],
     levelSummary: [
-      'You will gain the power to have your humans refine material!'
+      'You will gain the power to have your humans refine material!',
+      'Maximum levels on speed improvements will increase!'
     ],
     current: false
   },

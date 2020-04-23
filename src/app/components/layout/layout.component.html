@@ -1,5 +1,5 @@
 <div class="main-container my-card" id="rob-card" *ngIf="itemService.items$ | async as items">
-  <nav class="subnav my-subnav" id="rob-subnav" [ngStyle]="{'position': subNavPos, 'top': subNavTop}">
+  <nav class="subnav my-subnav">
     <ul class="nav">
       <li class="nav-item"><a [ngClass]="{'nav-link': true, 'active': navigation === 'home'}" (click)="setNav('home')">Home</a></li>
       <!-- <li class="nav-item"><a class="nav-link" (click)="showLog()">Intro</a></li> -->
@@ -42,14 +42,11 @@
 
     </ul>
   </nav>
-  <nav class="subnav" *ngIf="subNavPos !== 'relative'"></nav>
   <div class="content-container">
-    <nav class="sidenav my-sidenav" [ngStyle]="{'position': subNavPos, 'top': sidenavTop, 'width': '200px'}">
+    <nav class="sidenav my-sidenav">
       <app-my-sidenav></app-my-sidenav>
     </nav>
-    <nav class="sidenav my-sidenav" *ngIf="subNavPos !== 'relative'">
-    </nav>
-    <div class="content-area my-content-area" style="padding-bottom: 50px;">
+    <div class="content-area" style="padding-bottom: 50px;">
       <app-home *ngIf="navigation === 'home'"></app-home>
       <app-shop *ngIf="navigation === 'shop'"></app-shop>
       <app-exchange *ngIf="navigation === 'exchange'"></app-exchange>
@@ -57,7 +54,7 @@
       <app-rebirth *ngIf="navigation === 'rebirth'"></app-rebirth>
     </div>
   </div>
-  <div
+  <!-- <div
     class="alert alert-info"
     role="alert"
     [ngStyle]="{'width': '500px', 'position': 'absolute', 'top': messagesTop, 'left': messagesLeft}"
@@ -97,4 +94,4 @@
   class="highlightArrow"
   [ngStyle]="{'left': alertLeft, 'top': alertTop}"
 >
-</clr-icon>
+</clr-icon> -->

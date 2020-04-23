@@ -72,13 +72,27 @@ export class ImprovementService {
         case 'activity':
           this.activityService.buyActivityImprovement(improvement);
           break;
-        case 'item':
-          this.itemService.buyItemImprovement(improvement);
-          break;
+          case 'item':
+            this.itemService.buyItemImprovement(improvement);
+            break;
+          case 'improvement':
+            this.buyImprovementImprovement(improvement);
+            break;
         default:
           break;
       }
     }
+  }
+
+  buyImprovementImprovement(improvement: Improvement) {
+    if (improvement.improvesByMultiplyer) {
+      this.improvements.find(impItem => impItem.id === improvement.improveeId)[improvement.improves] *= improvement.improvesByMultiplyer;
+    }
+    if (improvement.improvesByAdder) {
+      this.improvements.find(impItem => impItem.id === improvement.improveeId)[improvement.improves] += improvement.improvesByAdder;
+    }
+
+    this.sub.next(this.improvements);
   }
 
   saveEncrypt() {

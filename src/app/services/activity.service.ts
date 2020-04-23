@@ -77,11 +77,12 @@ export class ActivityService {
 
     if (!isNaN(activitySetLoc) && !isNaN(activityLoc)) {
       if (this.autoCountdown >= 0) {
+        let nextActivityLoc = activityLoc + 1;
         if (activityLoc === Globals.activitySets[activitySetLoc].length - 1) {
-          activityLoc = 0;
+          nextActivityLoc = 0;
         }
         this.autoCountdown--;
-        this.activities.find(act => act.id === Globals.activitySets[activitySetLoc][activityLoc + 1]).active = true;
+        this.activities.find(act => act.id === Globals.activitySets[activitySetLoc][nextActivityLoc]).active = true;
       }
       this.activities.find(act => act.id === Globals.activitySets[activitySetLoc][activityLoc]).active = false;
       this.sub.next(this.activities);
@@ -104,8 +105,7 @@ export class ActivityService {
       if (this.autoCountdown >= 0) {
         let nextActivityLoc = activityLoc + 1;
         if (activityLoc === Globals.activitySets[activitySetLoc].length - 1) {
-          activityLoc = 0;
-          nextActivityLoc = 1;
+          nextActivityLoc = 0;
         }
         this.autoCountdown--;
         return this.activities.find(act => act.id === Globals.activitySets[activitySetLoc][nextActivityLoc]);

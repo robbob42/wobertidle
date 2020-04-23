@@ -40,9 +40,6 @@ export class LayoutComponent implements OnInit {
   public activities = [Globals.blankActivity];
   public inventory: Item[];
   public mcpItem = new Item(Globals.blankItem);
-  public subNavPos = 'relative';
-  public subNavTop = '';
-  public sidenavTop = '';
   public Globals = Globals;
 
   constructor(
@@ -144,12 +141,6 @@ export class LayoutComponent implements OnInit {
     setTimeout(() => {
       this.skipIntro();
     }, 50);
-
-    this.utilsService.navPosStylesSubnavSub().subscribe((coords) => {
-      this.subNavPos = coords.position;
-      this.subNavTop = `${coords.top}px`;
-      this.sidenavTop = coords.top === 0 ? '0px' : `${coords.top + 35}px`;
-    });
 
     window.setInterval(() => {
       this.controlService.save();
