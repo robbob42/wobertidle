@@ -15,7 +15,8 @@ export class Globals {
     autoActivitySwitcher: 904,
     allowRefining: 905,
     exchangeUnlocked: 906,
-    rebirthUnlocked: 907
+    rebirthUnlocked: 907,
+    carnivalUnlocked: 908
   };
   public static visibleAmounts = {
     raw: 0,

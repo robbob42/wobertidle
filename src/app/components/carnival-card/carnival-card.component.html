@@ -1,0 +1,77 @@
+<div class="card">
+  <div class="card-header">
+      Slot Machine
+  </div>
+  <div class="card-block">
+      <div class="card-title" ngPreserveWhitespaces style="white-space: pre; font-family: 'Courier New', Courier, monospace;">
+   ___________
+  /  ||       \ OO
+  | _________ | ||
+  | |       | | ||
+  | ||{{slotMachine.getSlots()[0][0].getCurValue()}}|{{slotMachine.getSlots()[0][1].getCurValue()}}|{{slotMachine.getSlots()[0][2].getCurValue()}}|| |=OO
+  | ||{{slotMachine.getSlots()[1][0].getCurValue()}}|{{slotMachine.getSlots()[1][1].getCurValue()}}|{{slotMachine.getSlots()[1][2].getCurValue()}}|| |
+  | ||{{slotMachine.getSlots()[2][0].getCurValue()}}|{{slotMachine.getSlots()[2][1].getCurValue()}}|{{slotMachine.getSlots()[2][2].getCurValue()}}|| |
+  | |       | |
+  |  -------  |
+  |           |
+  -------------
+      </div>
+      <div class="card-text">
+          A simple slot machine with a slot in the top left.  It looks just the right size for those refined materials you've been gathering...
+          <div>
+            A poster on the wall describes what you will win if you get three in a row:
+            <ul>
+              <li *ngFor="let map of winningMapping; let i = index">
+                <ng-container *ngFor="let improvement of improvementService.improvements$ | async">
+                  <ng-container *ngIf="improvement.id === map">
+                    {{i}} - {{improvement.name}}
+                  </ng-container>
+                </ng-container>
+              </li>
+            </ul>
+          </div>
+          <div *ngIf="slotMachine.getNeedsReset() && slotMachine.getWinningMatches().length && itemService.items$ | async as items">
+            <br />YOU WON!
+            <ul>
+              <li *ngFor="let match of slotMachine.getWinningMatches()">
+                <ng-container *ngFor="let improvement of improvementService.improvements$ | async">
+                  <ng-container *ngIf="improvement.id === winningMapping[match]">
+                    {{match}} - {{improvement.name}}
+                  </ng-container>
+                </ng-container>
+              </li>
+            </ul>
+          </div>
+      </div>
+  </div>
+  <div class="card-footer" *ngIf="gemItem && brickItem && cookedFish && boardItem && breadItem && itemService.items$ | async as items">
+    <ng-container *ngIf="slotMachine.getNeedsReset()">
+      <button class="btn btn-sm btn-link" (click)="slotMachine.reset()">Reset</button>
+    </ng-container>
+    <ng-container *ngIf="!slotMachine.getNeedsReset()">
+      <button class="btn btn-sm btn-link" (click)="insertItems(0, [gemItem.id, brickItem.id])">
+        Insert 1 <clr-icon attr.shape="{{gemItem.icon}}" size="18" [ngStyle]="{'color': gemItem.color}"></clr-icon>
+        and 1 <clr-icon attr.shape="{{brickItem.icon}}" size="18" [ngStyle]="{'color': brickItem.color}"></clr-icon>
+      </button>
+      <br />
+      <button class="btn btn-sm btn-link" (click)="insertItems(1, [cookedFish.id, boardItem.id])">
+        Insert 1 <clr-icon attr.shape="{{cookedFish.icon}}" size="18" [ngStyle]="{'color': cookedFish.color}"></clr-icon>
+        and 1 <clr-icon attr.shape="{{boardItem.icon}}" size="18" [ngStyle]="{'color': boardItem.color}"></clr-icon>
+      </button>
+      <br />
+      <button class="btn btn-sm btn-link" (click)="insertItems(2, [breadItem.id])">
+        Insert 1 <clr-icon attr.shape="{{breadItem.icon}}" size="18" [ngStyle]="{'color': breadItem.color}"></clr-icon>
+      </button>
+      <br />
+      -OR-
+      <br />
+      <button class="btn btn-sm btn-link" (click)="insertMax()">
+        Insert Max
+      </button>
+      <hr>
+      <button class="btn btn-sm btn-link" (click)="pullHandle()">
+        Pull Handle
+      </button>
+    </ng-container>
+  </div>
+</div>

@@ -73,10 +73,12 @@ export default [
       33,
       34,
       35,
-      28
+      28,
+      41
     ],
     levelSummary: [
       'You will gain the power to have your humans refine material!',
+      'And you will also find a way to spend those refined materials!',
       'Maximum levels on speed improvements will increase!'
     ],
     current: false

@@ -72,6 +72,15 @@ export default [
     visible: false
   },
   {
+    id: 908,
+    name: 'Carnival Unlocked',
+    icon: '',
+    color: '',
+    amount: 0,
+    limit: 0,
+    visible: false
+  },
+  {
     id: 1,
     name: 'Rocks',
     icon: 'rock',

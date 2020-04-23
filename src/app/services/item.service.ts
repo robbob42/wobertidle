@@ -114,6 +114,12 @@ export class ItemService {
       false;
   }
 
+  carnivalUnlocked() {
+    return this.inventory.find(invItem => invItem.id === Globals.itemIds.carnivalUnlocked) ?
+      this.inventory.find(invItem => invItem.id === Globals.itemIds.carnivalUnlocked).amount :
+      false;
+  }
+
   amountAvailable(itemId: number, amt: number) {
     if (!itemId) {
       return true;

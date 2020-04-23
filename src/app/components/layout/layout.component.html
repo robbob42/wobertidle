@@ -42,6 +42,15 @@
         @ {{utilsService.formatNumber(Globals.visibleAmounts.rebirth)}}<clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color}"></clr-icon>
       </li>
 
+      <li class="nav-item" *ngIf="itemService.carnivalUnlocked() && mcpItem.amount >= Globals.visibleAmounts.refine">
+        <a [ngClass]="{'nav-link': true, 'active': navigation === 'carnival'}" (click)="setNav('carnival')">
+          <app-pulsing-text [text]="'Demigod Carnival'" [initialPulse]="true"></app-pulsing-text>
+        </a>
+      </li>
+      <li class="nav-item disabled" *ngIf="itemService.carnivalUnlocked() && mcpItem.amount < Globals.visibleAmounts.refine">
+        @ {{utilsService.formatNumber(Globals.visibleAmounts.refine)}}<clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color}"></clr-icon>
+      </li>
+
     </ul>
   </nav>
   <div class="content-container">
@@ -54,6 +63,7 @@
       <app-exchange *ngIf="navigation === 'exchange'"></app-exchange>
       <app-powers *ngIf="navigation === 'powers'"></app-powers>
       <app-rebirth *ngIf="navigation === 'rebirth'"></app-rebirth>
+      <app-carnival *ngIf="navigation === 'carnival'"></app-carnival>
     </div>
   </div>
   <!-- <div

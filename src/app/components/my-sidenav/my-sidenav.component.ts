@@ -80,7 +80,7 @@ export class MySidenavComponent implements OnInit, OnDestroy {
             }
             if (this.mcpItem.amount >= activity.mcpDiscoverAmount && !activity.discovered) {
               this.activityService.discoverActivity(activity.id);
-              this.inventory.find(item => item.name === activity.produces).visible = true;
+              this.inventory.find(item => item.id === activity.producesId).visible = true;
             }
           });
         }
