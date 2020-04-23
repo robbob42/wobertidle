@@ -4,7 +4,7 @@ import { Improvement } from '../app/models/improvement';
 import { Level } from '../app/models/level';
 
 export class Globals {
-  public static version = '0.0.1';
+  public static version = '0.0.2';
   public static superSecretKey = 'wobert';
   public static winAmt = 20000;
   public static itemIds = {
@@ -15,7 +15,8 @@ export class Globals {
     autoActivitySwitcher: 904,
     allowRefining: 905,
     exchangeUnlocked: 906,
-    rebirthUnlocked: 907
+    rebirthUnlocked: 907,
+    carnivalUnlocked: 908
   };
   public static visibleAmounts = {
     raw: 0,
@@ -26,7 +27,7 @@ export class Globals {
     production: 12000,
     money: 12000,
     refine: 30000,
-    rebirth: 60000,
+    rebirth: 46368,
     powers: 2584,
   };
   public static blankItem: Item = {

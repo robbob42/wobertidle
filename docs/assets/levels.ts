@@ -32,7 +32,7 @@ export default [
       27
     ],
     levelSummary: [
-      'Obtaining Raw Materials will produce twice as much!'
+      'Obtaining Raw Materials will produce twice as much material!'
     ],
     current: false
   },
@@ -68,16 +68,24 @@ export default [
     id: 5,
     name: 'Demi in Charge of Radishes',
     improvements: [
-      28
+      31,
+      32,
+      33,
+      34,
+      35,
+      28,
+      41
     ],
     levelSummary: [
-      'You will gain the power to have your humans refine material!'
+      'You will gain the power to have your humans refine material!',
+      'And you will also find a way to spend those refined materials!',
+      'Maximum levels on speed improvements will increase!'
     ],
     current: false
   },
   {
     id: 6,
-    name: 'Demigod',
+    name: 'Demi Dedi Deci',
     improvements: [
       17,
       18,
@@ -88,6 +96,126 @@ export default [
     ],
     levelSummary: [
       'You will discover an entirely new way to use those hard earned Mind Control Powers!',
+      'Double the Mind Control Power again.'
+    ],
+    current: false
+  },
+  {
+    id: 7,
+    name: 'Deminator',
+    improvements: [
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    levelSummary: [
+      'Double the Mind Control Power again.'
+    ],
+    current: false
+  },
+  {
+    id: 8,
+    name: 'Deminted',
+    improvements: [
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    levelSummary: [
+      'Double the Mind Control Power again.'
+    ],
+    current: false
+  },
+  {
+    id: 9,
+    name: 'Demi Demo',
+    improvements: [
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    levelSummary: [
+      'Double the Mind Control Power again.'
+    ],
+    current: false
+  },
+  {
+    id: 10,
+    name: 'Demi Bob',
+    improvements: [
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    levelSummary: [
+      'Double the Mind Control Power again.'
+    ],
+    current: false
+  },
+  {
+    id: 11,
+    name: 'Demi Min',
+    improvements: [
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    levelSummary: [
+      'Double the Mind Control Power again.'
+    ],
+    current: false
+  },
+  {
+    id: 12,
+    name: 'Demi Jay',
+    improvements: [
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    levelSummary: [
+      'Double the Mind Control Power again.'
+    ],
+    current: false
+  },
+  {
+    id: 13,
+    name: 'Demi Kay',
+    improvements: [
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    levelSummary: [
+      'Double the Mind Control Power again.'
+    ],
+    current: false
+  },
+  {
+    id: 14,
+    name: 'Demi Linc',
+    improvements: [
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    levelSummary: [
       'Double the Mind Control Power again.'
     ],
     current: false

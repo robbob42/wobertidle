@@ -563,5 +563,198 @@ export default [
     improves: 'amount',
     improvesByMultiplyer: 0,
     improvesByAdder: 1
+  },
+  {
+    id: 31,
+    name: 'Finding Max Speed Increase by 5',
+    type: 'mcp',
+    level: 1,
+    itemsCost: [
+      {
+        itemId: 8,
+        itemAmount: 0
+      }
+    ],
+    costMultiplyer: 2,
+    improvee: 'improvement',
+    improveeId: 1,
+    improves: 'levelMax',
+    improvesByMultiplyer: 0,
+    improvesByAdder: 5
+  },
+  {
+    id: 32,
+    name: 'Collecting Max Speed Increase by 5',
+    type: 'mcp',
+    level: 1,
+    itemsCost: [
+      {
+        itemId: 8,
+        itemAmount: 0
+      }
+    ],
+    costMultiplyer: 2,
+    improvee: 'improvement',
+    improveeId: 12,
+    improves: 'levelMax',
+    improvesByMultiplyer: 0,
+    improvesByAdder: 5
+  },
+  {
+    id: 33,
+    name: 'Fishing Max Speed Increase by 5',
+    type: 'mcp',
+    level: 1,
+    itemsCost: [
+      {
+        itemId: 8,
+        itemAmount: 0
+      }
+    ],
+    costMultiplyer: 2,
+    improvee: 'improvement',
+    improveeId: 3,
+    improves: 'levelMax',
+    improvesByMultiplyer: 0,
+    improvesByAdder: 5
+  },
+  {
+    id: 34,
+    name: 'Chopping Max Speed Increase by 5',
+    type: 'mcp',
+    level: 1,
+    itemsCost: [
+      {
+        itemId: 8,
+        itemAmount: 0
+      }
+    ],
+    costMultiplyer: 2,
+    improvee: 'improvement',
+    improveeId: 2,
+    improves: 'levelMax',
+    improvesByMultiplyer: 0,
+    improvesByAdder: 5
+  },
+  {
+    id: 35,
+    name: 'Harvesting Max Speed Increase by 5',
+    type: 'mcp',
+    level: 1,
+    itemsCost: [
+      {
+        itemId: 8,
+        itemAmount: 0
+      }
+    ],
+    costMultiplyer: 2,
+    improvee: 'improvement',
+    improveeId: 13,
+    improves: 'levelMax',
+    improvesByMultiplyer: 0,
+    improvesByAdder: 5
+  },
+  {
+    id: 36,
+    name: 'Gem Limit x 2',
+    type: 'mcp',
+    level: 1,
+    itemsCost: [
+      {
+        itemId: 8,
+        itemAmount: 0
+      }
+    ],
+    costMultiplyer: 2,
+    improvee: 'item',
+    improveeId: 4,
+    improves: 'limit',
+    improvesByMultiplyer: 2
+  },
+  {
+    id: 37,
+    name: 'Brick Limit x 2',
+    type: 'mcp',
+    level: 1,
+    itemsCost: [
+      {
+        itemId: 8,
+        itemAmount: 0
+      }
+    ],
+    costMultiplyer: 2,
+    improvee: 'item',
+    improveeId: 9,
+    improves: 'limit',
+    improvesByMultiplyer: 2
+  },
+  {
+    id: 38,
+    name: 'Cooked Fish Limit x 2',
+    type: 'mcp',
+    level: 1,
+    itemsCost: [
+      {
+        itemId: 8,
+        itemAmount: 0
+      }
+    ],
+    costMultiplyer: 2,
+    improvee: 'item',
+    improveeId: 6,
+    improves: 'limit',
+    improvesByMultiplyer: 2
+  },
+  {
+    id: 39,
+    name: 'Board Limit x 2',
+    type: 'mcp',
+    level: 1,
+    itemsCost: [
+      {
+        itemId: 8,
+        itemAmount: 0
+      }
+    ],
+    costMultiplyer: 2,
+    improvee: 'item',
+    improveeId: 5,
+    improves: 'limit',
+    improvesByMultiplyer: 2
+  },
+  {
+    id: 40,
+    name: 'Bread Limit x 2',
+    type: 'mcp',
+    level: 1,
+    itemsCost: [
+      {
+        itemId: 8,
+        itemAmount: 0
+      }
+    ],
+    costMultiplyer: 2,
+    improvee: 'item',
+    improveeId: 10,
+    improves: 'limit',
+    improvesByMultiplyer: 2
+  },
+  {
+    id: 41,
+    name: 'Unlock the Demigod Carnival!',
+    type: 'mcp',
+    level: 1,
+    itemsCost: [
+      {
+        itemId: 8,
+        itemAmount: 0
+      }
+    ],
+    costMultiplyer: 2,
+    improvee: 'item',
+    improveeId: 908,
+    improves: 'amount',
+    improvesByMultiplyer: 0,
+    improvesByAdder: 1
   }
 ];
