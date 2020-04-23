@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ClarityIcons } from '@clr/icons';
+import { RebirthService } from 'src/app/services/rebirth.service';
+import { Subscription } from 'rxjs';
 import { Message } from '../../models/message';
 import { pulse } from './animations';
 import { ActivityService } from '../../services/activity.service';
@@ -9,12 +11,12 @@ import { ImprovementService } from '../../services/improvement.service';
 import { Item } from '../../models/item';
 import { Globals } from '../../../assets/globals';
 import { Svg } from '../../../assets/svg';
+import { ControlService } from '../../services/control.service';
+import { LevelService } from '../../services/level.service';
 
 import '@clr/icons';
 import '@clr/icons/shapes/all-shapes';
-import { ControlService } from '../../services/control.service';
-import { LevelService } from '../../services/level.service';
-import { RebirthService } from 'src/app/services/rebirth.service';
+import { Level } from 'src/app/models/level';
 
 @Component({
   selector: 'app-layout',
@@ -24,7 +26,7 @@ import { RebirthService } from 'src/app/services/rebirth.service';
     pulse
   ]
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent implements OnInit, OnDestroy {
   public navigation: string;
   public messages: Message[] = [];
   public messagesTop = '-3em';
@@ -41,6 +43,9 @@ export class LayoutComponent implements OnInit {
   public inventory: Item[];
   public mcpItem = new Item(Globals.blankItem);
   public Globals = Globals;
+  public curLevel: Level;
+
+  public subscriptions: Subscription[] = [];
 
   constructor(
     // private messageService: MessageService,
@@ -95,22 +100,25 @@ export class LayoutComponent implements OnInit {
   ngOnInit(): void {
     const saveSlot = localStorage.getItem('wobertIdleSave');
     this.customIcons();
-    if (saveSlot) {
+    if (saveSlot && saveSlot === this.Globals.version) {
       this.controlService.load();
 
       this.customIcons();
 
       setTimeout(() => {
-        this.itemService.items$.subscribe((items) => {
+        this.subscriptions.push(this.itemService.items$.subscribe((items) => {
           this.inventory = items;
           this.mcpItem = items.find(invenItem => invenItem.id === 900);
-        });
-        this.activityService.activities$.subscribe((activities) => {
+        }));
+        this.subscriptions.push(this.activityService.activities$.subscribe((activities) => {
           this.activities = activities;
-        });
-        this.controlService.controls$.subscribe((controls) => {
+        }));
+        this.subscriptions.push(this.controlService.controls$.subscribe((controls) => {
           this.navigation = controls.navigation;
-        });
+        }));
+        this.subscriptions.push(this.levelService.levels$.subscribe((levels) => {
+          this.curLevel = levels.find(level => level.current);
+        }));
       });
     }
 
@@ -124,17 +132,20 @@ export class LayoutComponent implements OnInit {
 
       setTimeout(() => {
         this.activityService.initializeActivities();
-        this.activityService.activities$.subscribe((activities) => {
+        this.subscriptions.push(this.activityService.activities$.subscribe((activities) => {
           this.activities = activities;
-        });
+        }));
         this.itemService.initializeItems();
-        this.itemService.items$.subscribe((items) => {
+        this.subscriptions.push(this.itemService.items$.subscribe((items) => {
           this.inventory = items;
           this.mcpItem = items.find(invenItem => invenItem.id === 900);
-        });
-        this.controlService.controls$.subscribe((controls) => {
+        }));
+        this.subscriptions.push(this.controlService.controls$.subscribe((controls) => {
           this.navigation = controls.navigation;
-        });
+        }));
+        this.subscriptions.push(this.levelService.levels$.subscribe((levels) => {
+          this.curLevel = levels.find(level => level.current);
+        }));
       });
     }
 
@@ -217,6 +228,12 @@ export class LayoutComponent implements OnInit {
       bread: Svg.bread,
       gem: Svg.gem,
       demigod: Svg.demigod
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(subscription => {
+      subscription.unsubscribe();
     });
   }
 }

@@ -56,6 +56,6 @@ export class UtilsService {
   }
 
   rebirthFib(level: number) {
-    return this.fib(level + 21) + this.fib(level  + 21);
+    return this.fib(level + 21) + this.fib(level  + 20);
   }
 }

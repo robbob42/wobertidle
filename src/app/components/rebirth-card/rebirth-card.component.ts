@@ -41,7 +41,7 @@ export class RebirthCardComponent implements OnInit, OnDestroy {
     this.rebirthsSub = this.rebirthService.rebirths$.subscribe((rebirths) => {
       const rebirthItem = rebirths.find(rebirth => rebirth.current);
       this.nextRebirthItem = rebirths.find(rebirth => rebirth.id === rebirthItem.id + 1);
-      this.nextRebirthAmount = this.utilsService.rebirthFib(rebirthItem.id + 1);
+      this.nextRebirthAmount = this.utilsService.rebirthFib((rebirthItem.id * 2) + 1);
     });
   }
 

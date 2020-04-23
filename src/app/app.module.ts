@@ -24,6 +24,7 @@ import { PowersComponent } from './components/powers/powers.component';
 import { PowersCardComponent } from './components/powers-card/powers-card.component';
 import { RebirthComponent } from './components/rebirth/rebirth.component';
 import { RebirthCardComponent } from './components/rebirth-card/rebirth-card.component';
+import { PowersSummaryCardComponent } from './components/powers-summary-card/powers-summary-card.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { RebirthCardComponent } from './components/rebirth-card/rebirth-card.com
     PowersComponent,
     PowersCardComponent,
     RebirthComponent,
-    RebirthCardComponent
+    RebirthCardComponent,
+    PowersSummaryCardComponent
   ],
   imports: [
     BrowserModule,

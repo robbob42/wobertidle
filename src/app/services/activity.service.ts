@@ -82,7 +82,12 @@ export class ActivityService {
           nextActivityLoc = 0;
         }
         this.autoCountdown--;
-        this.activities.find(act => act.id === Globals.activitySets[activitySetLoc][nextActivityLoc]).active = true;
+        const nextActivity = this.activities.find(act => act.id === Globals.activitySets[activitySetLoc][nextActivityLoc]);
+        if (nextActivity.active) {
+          this.autoNextActivity(nextActivity.id);
+        } else {
+          this.activities.find(act => act.id === Globals.activitySets[activitySetLoc][nextActivityLoc]).active = true;
+        }
       }
       this.activities.find(act => act.id === Globals.activitySets[activitySetLoc][activityLoc]).active = false;
       this.sub.next(this.activities);
@@ -108,7 +113,12 @@ export class ActivityService {
           nextActivityLoc = 0;
         }
         this.autoCountdown--;
-        return this.activities.find(act => act.id === Globals.activitySets[activitySetLoc][nextActivityLoc]);
+        const nextActivity = this.activities.find(act => act.id === Globals.activitySets[activitySetLoc][nextActivityLoc]);
+        if (nextActivity.active) {
+          this.getNextActivity(nextActivity.id);
+        } else {
+          return this.activities.find(act => act.id === Globals.activitySets[activitySetLoc][nextActivityLoc]);
+        }
       }
     }
   }

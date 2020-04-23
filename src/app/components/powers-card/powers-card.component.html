@@ -1,14 +1,12 @@
-<div class="card">
-  <ng-container *ngIf="mcpItem && mcpItem.amount < Globals.visibleAmounts[improvementType] && itemService.items$ | async as items">
-    <div class="card-header">
-      <button class="btn btn-outline" disabled>
-        @<clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color}"></clr-icon>
-        {{utilsService.formatNumber(Globals.visibleAmounts[improvementType])}}
-      </button>
-    </div>
-  </ng-container>
-
-  <ng-container *ngIf="mcpItem && mcpItem.amount >= Globals.visibleAmounts[improvementType] && itemService.items$ | async as items">
+<div class="card" *ngIf="mcpItem.amount < nextLevelAmount">
+  <div class="card-header">
+    <button class="btn btn-outline" disabled>
+      {{header}} @ {{utilsService.formatNumber(nextLevelAmount)}}<clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color}"></clr-icon>
+    </button>
+  </div>
+</div>
+<div class="card" *ngIf="mcpItem.amount >= nextLevelAmount">
+  <ng-container *ngIf="itemService.items$ | async as items">
     <div class="card-header">
       {{header}}
     </div>

@@ -1,0 +1,26 @@
+<div class="card">
+  <ng-container *ngIf="levelService.levels$ | async as levels">
+    <div class="card-header">
+      Current Powers
+    </div>
+    <div class="card-block">
+      <div class="card-text">
+        <ng-container *ngIf="curLevelId === 0; else haveLevel">
+          No powers yet, you're barely even a demigod!
+        </ng-container>
+        <ng-template class="card-text" #haveLevel>
+          <ng-container *ngFor="let level of levels">
+            <ng-container *ngIf="curLevelId >= level.id  && level.id !== 0">
+              Level {{level.id}}:
+              <ul>
+                <li *ngFor="let bonus of level.levelSummary">
+                  {{bonus}}
+                </li>
+              </ul>
+            </ng-container>
+          </ng-container>
+        </ng-template>
+      </div>
+    </div>
+  </ng-container>
+</div>
