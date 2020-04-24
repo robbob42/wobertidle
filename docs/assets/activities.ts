@@ -1,7 +1,7 @@
 export default [
   {
     id: 1,
-    name: 'Finding',
+    name: 'Find Rocks',
     type: 'raw',
     active: false,
     color: '#555555',
@@ -18,7 +18,7 @@ export default [
   },
   {
     id: 7,
-    name: 'Collecting',
+    name: 'Collect Clay',
     type: 'raw',
     active: false,
     color: '#ac6100',
@@ -35,7 +35,7 @@ export default [
   },
   {
     id: 3,
-    name: 'Fishing',
+    name: 'Fish',
     type: 'raw',
     active: false,
     color: '#84b0f1',
@@ -52,7 +52,7 @@ export default [
   },
   {
     id: 2,
-    name: 'Chopping',
+    name: 'Chop Wood',
     type: 'raw',
     active: false,
     color: '#425f0b',
@@ -69,7 +69,7 @@ export default [
   },
   {
     id: 8,
-    name: 'Harvesting',
+    name: 'Plant Grain',
     type: 'raw',
     active: false,
     color: 'tan',
@@ -86,7 +86,7 @@ export default [
   },
   {
     id: 4,
-    name: 'Polish',
+    name: 'Polish Gems',
     type: 'refine',
     active: false,
     color: '#176662',
@@ -105,7 +105,7 @@ export default [
   },
   {
     id: 9,
-    name: 'Firing',
+    name: 'Fire Bricks',
     type: 'refine',
     active: false,
     color: '#AA5555',
@@ -124,7 +124,7 @@ export default [
   },
   {
     id: 6,
-    name: 'Cooking',
+    name: 'Cook Fish',
     type: 'refine',
     active: false,
     color: '#be6868',
@@ -143,7 +143,7 @@ export default [
   },
   {
     id: 5,
-    name: 'Milling',
+    name: 'Mill Boards',
     type: 'refine',
     active: false,
     color: '#563812',
@@ -162,7 +162,7 @@ export default [
   },
   {
     id: 10,
-    name: 'Baking',
+    name: 'Bake Bread',
     type: 'refine',
     active: false,
     color: '#91752b',
