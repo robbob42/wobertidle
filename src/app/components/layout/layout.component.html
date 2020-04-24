@@ -1,5 +1,5 @@
-<div class="main-container my-card" id="rob-card" *ngIf="itemService.items$ | async as items">
-  <header class="header header-2" *ngIf="curLevel && levelService.levels$ | async as levels">
+<clr-main-container *ngIf="itemService.items$ | async as items">
+  <clr-header *ngIf="curLevel && levelService.levels$ | async as levels">
     <div class="branding">
       <div class="my-branding">
         <clr-icon shape="demigod" size="36"></clr-icon>
@@ -8,12 +8,12 @@
           "{{curLevel.name}}"
         </div>
       </div>
-        <div class="header-nav">
+        <div class="header-nav" [clr-nav-level]="1">
           <a [ngClass]="{'nav-link': true, 'active': gameNavigation === 'welcome'}" (click)="setGameNav('welcome')">Welcome</a>
           <a [ngClass]="{'nav-link': true, 'active': gameNavigation === 'play'}" (click)="setGameNav('play')">Play</a>
         </div>
     </div>
-  </header>
+  </clr-header>
   <ng-container *ngIf="gameNavigation === 'welcome'">
     <div class="content-container">
       <div class="content-area" style="padding-bottom: 50px;">
@@ -25,7 +25,6 @@
     <nav class="subnav my-subnav">
       <ul class="nav">
         <li class="nav-item"><a [ngClass]="{'nav-link': true, 'active': navigation === 'home'}" (click)="setNav('home')">Home</a></li>
-        <!-- <li class="nav-item"><a class="nav-link" (click)="showLog()">Intro</a></li> -->
 
         <li class="nav-item" *ngIf="mcpItem.amount >= Globals.visibleAmounts.shop">
           <a [ngClass]="{'nav-link': true, 'active': navigation === 'shop'}" (click)="setNav('shop')">
@@ -77,19 +76,26 @@
       </ul>
     </nav>
     <div class="content-container">
-      <nav class="sidenav my-sidenav">
+      <!-- <nav class="sidenav my-sidenav" [clr-nav-level]="2">
         <app-my-sidenav></app-my-sidenav>
-      </nav>
+      </nav> -->
       <div class="content-area" style="padding-bottom: 50px;">
-        <app-home *ngIf="navigation === 'home'"></app-home>
-        <app-shop *ngIf="navigation === 'shop'"></app-shop>
-        <app-exchange *ngIf="navigation === 'exchange'"></app-exchange>
-        <app-powers *ngIf="navigation === 'powers'"></app-powers>
-        <app-rebirth *ngIf="navigation === 'rebirth'"></app-rebirth>
-        <app-carnival *ngIf="navigation === 'carnival'"></app-carnival>
+      <div class="clr-row">
+        <div class="clr-col-12">
+          <app-accordion-stats></app-accordion-stats></div>
+        <div class="clr-col-12">
+          <app-home *ngIf="navigation === 'home'"></app-home>
+          <app-shop *ngIf="navigation === 'shop'"></app-shop>
+          <app-exchange *ngIf="navigation === 'exchange'"></app-exchange>
+          <app-powers *ngIf="navigation === 'powers'"></app-powers>
+          <app-rebirth *ngIf="navigation === 'rebirth'"></app-rebirth>
+          <app-carnival *ngIf="navigation === 'carnival'"></app-carnival>
+        </div>
+      </div>
       </div>
     </div>
   </ng-container>
+</clr-main-container>
   <!-- <div
     class="alert alert-info"
     role="alert"

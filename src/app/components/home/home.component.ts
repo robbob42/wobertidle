@@ -5,6 +5,9 @@ import { ImprovementService } from '../../services/improvement.service';
 import { LevelService } from 'src/app/services/level.service';
 import { ActivityService } from 'src/app/services/activity.service';
 
+import initialItems from '../../../assets/items';
+import initialActivities from '../../../assets/activities';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -19,6 +22,10 @@ export class HomeComponent implements OnInit {
     2: 0,
     8: 0,
   };
+  public itemActivityMap: {
+    itemId: number,
+    activityId: number
+  }[] = [];
 
   constructor(
     public itemService: ItemService,
@@ -29,7 +36,18 @@ export class HomeComponent implements OnInit {
   ) {
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    initialItems.forEach(item => {
+      initialActivities.forEach(activity => {
+        if (activity.producesId === item.id) {
+          this.itemActivityMap.push({
+            itemId: item.id,
+            activityId: activity.id
+          });
+        }
+      });
+    });
+  }
 
   cheat5() {
     this.itemService.incrementItem(900, 300);

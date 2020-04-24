@@ -1,9 +1,0 @@
-<ng-container *ngIf="activityService.activities$ | async as activities else loading">
-  <app-activity-slider *ngFor="let activity of activities"
-    [activityId]="activity.id">
-  </app-activity-slider>
-</ng-container>
-
-<ng-template #loading>
-  <div>Loading ...</div>
-</ng-template>

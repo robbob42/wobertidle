@@ -1,9 +1,9 @@
-<button type="button" (click)="cheat5()">5 Minutes into play</button><br>
+<!-- <button type="button" (click)="cheat5()">5 Minutes into play</button><br>
 <button type="button" (click)="cheat20()">20 Minutes into play</button><br>
 <button type="button" (click)="setmcp(100000)">100,000 mcp</button><br>
 <button type="button" (click)="levelService.levelUp()">Level Up</button><br>
 <button type="button" (click)="controlService.navigate('shop')">Cheat Nav</button><br>
-<br>
+<br> -->
 
 <!-- <input type="text" [(ngModel)]="amounts[1]">
 <button type="button" (click)="setAmount(1)">Set Rocks</button>
@@ -20,16 +20,16 @@
 <input type="text" [(ngModel)]="amounts[8]">
 <button type="button" (click)="setAmount(8)">Set Wheat</button> -->
 
+<div class="clr-row">
+  <div class="clr-col-lg-auto" *ngFor="let itemActivity of itemActivityMap">
+    <app-item-card [activityId]="itemActivity.activityId" [itemId]="itemActivity.itemId"></app-item-card>
+  </div>
+</div>
+
+<br /><br />
 <button type="button" (click)="controlService.save()">Save</button>
 <!-- <button type="button" (click)="controlService.load()">Load</button> -->
 <button type="button" (click)="controlService.clear()">Clear</button>
-
-
-<div class="clr-row" *ngIf="itemService.items$ | async">
-  <div class="clr-col-lg-auto" *ngFor="let activity of activityService.activities$ | async">
-    <app-activity-card [activityId]="activity.id"></app-activity-card>
-  </div>
-</div>
 
 
 <!-- <div class="clr-row" *ngIf="itemService.allowRefiningSet()">

@@ -1,10 +1,8 @@
 <ng-container *ngIf="activity && activityService.activities$ | async">
-  <button
-    [@slide]="{value: activity.active ? 'right' : 'left', params: {activityColor: activity.color}}"
-    type="button"
-    class="btn my-button"
-    (click)="toggleActivity(activity.id)">
-    <span *ngIf="activity.active">Stop doing it!</span>
-    <span *ngIf="!activity.active">Do it!</span>
-  </button>
+  <clr-toggle-container style="margin-top: 0;">
+    <clr-toggle-wrapper class="custom-styles">
+      <input type="checkbox" clrToggle name="options" (click)="toggleActivity(activity.id)" [(ngModel)]="activity.active" />
+      <label> </label>
+    </clr-toggle-wrapper>
+  </clr-toggle-container>
 </ng-container>

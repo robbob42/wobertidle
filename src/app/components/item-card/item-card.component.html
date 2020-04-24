@@ -1,0 +1,75 @@
+<div class="card" *ngIf="activity && activity.discovered">
+  <div class="card-header" *ngIf="itemService.items$ | async as items">
+    <div class="clr-row">
+      <div class="clr-col-9">
+        <clr-icon attr.shape="{{item.icon}}" shape="" size="24" [ngStyle]="{'color': item.color}"></clr-icon>
+        : <app-pulsing-text [text]="item.amount"></app-pulsing-text>
+        / <app-pulsing-text [text]="item.limit"></app-pulsing-text>
+      </div>
+      <div class="clr-col-3">
+        <app-activity-button [activityId]="activity.id"></app-activity-button>
+      </div>
+    </div>
+  </div>
+  <div class="card-block">
+    <div class="progress top">
+      <app-activity-slider [activityId]="activity.id"></app-activity-slider>
+    </div>
+    <div class="card-text">
+      <!-- <app-activity-slider [activityId]="activity.id"></app-activity-slider> -->
+    </div>
+  </div>
+  <div class="card-footer" *ngIf="activityService.activities$ | async as activities">
+    <table class="table my-table">
+      <thead>
+        <tr>
+          <th *ngIf="activity.decrementId">Consumes</th>
+          <th>Seconds</th>
+          <th colspan="2">Produces</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><app-pulsing-text [text]="actionTime"></app-pulsing-text></td>
+          <td *ngIf="activity.decrementId">
+            {{activity.decrementAmount}} x
+            <ng-container *ngFor="let item of initialItems">
+              <clr-icon *ngIf="activity.decrementId == item.id" attr.shape="{{item.icon}}" size="18" [ngStyle]="{'color': item.color}"></clr-icon>
+            </ng-container>
+          </td>
+          <td>
+            {{activity.produceAmount}} x
+            <ng-container *ngFor="let item of initialItems">
+              <clr-icon *ngIf="activity.producesId == item.id" attr.shape="{{item.icon}}" size="18" [ngStyle]="{'color': item.color}"></clr-icon>
+            </ng-container>
+          </td>
+          <td>
+            {{activity.mcProficiency}} x <clr-icon shape="crown" size="18" [ngStyle]="{'color': '#621f8f'}"></clr-icon>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<ng-container *ngIf="itemService.items$ | async as items">
+  <ng-container *ngIf="mcpItem.amount >= activity.mcpTriggerAmount && mcpItem.amount < activity.mcpDiscoverAmount">
+    <div class="card">
+      <div class="card-header">
+        <span class="opaque">Upcoming Activity</span>
+      </div>
+      <div class="card-block">
+        <div class="card-text">
+          <span class="opaque">
+            Available
+            @ {{utilsService.formatNumber(activity.mcpDiscoverAmount)}}<clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color}"></clr-icon>
+          </span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-outline" disabled>
+          @ {{utilsService.formatNumber(activity.mcpDiscoverAmount)}}<clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color}"></clr-icon>
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>

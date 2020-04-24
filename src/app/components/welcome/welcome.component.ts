@@ -19,7 +19,7 @@ export class WelcomeComponent implements OnInit {
     'But every time you force a human to do your will you will gain Mind Control Powers!',
     'Gain enough powers, and you\'ll be able to increase your rank!',
     'Now get out there and impose your will on your mindless human slave!',
-    'Press the \'Play\' button up at the top.'
+    'Select \'Play\' from the top menu.'
   ];
   public nextMessage = this.messages.shift();
   public oldMessages = [];

@@ -1,26 +1,24 @@
-<ng-container *ngIf="itemService.items$ | async as items else loading">
-  <ng-container *ngIf="curLevel && levelService.levels$ | async as levels">
-    <div id="levelDiv">
-      <span *ngIf="demigodItem">
-        <clr-icon attr.shape="{{demigodItem.icon}}" size="18" [ngStyle]="{'color': demigodItem.color, 'margin-bottom': '6px'}"></clr-icon>
-        {{curLevel.id}} - {{curLevel.name}}
-      </span>
-    </div>
-  </ng-container>
-  <div id="mcpDiv">
-    <span *ngIf="mcpItem">
-      <clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color, 'margin-bottom': '6px'}"></clr-icon>
-      {{mcpItem.name}} : <app-pulsing-text [text]="mcpItem.amount"></app-pulsing-text>
-    </span>
-  </div>
-  <div id="humanDiv" *ngIf="humanItem">
-    <span>
-      <clr-icon attr.shape="{{humanItem.icon}}" size="18" [ngStyle]="{'color': humanItem.color, 'margin-bottom': '6px'}"></clr-icon>
-      {{humanItem.name}} : <app-pulsing-text [text]="humanItem.amount"></app-pulsing-text>
-    </span>
-  </div>
-</ng-container>
+<clr-accordion>
+  <clr-accordion-panel [clrAccordionPanelOpen]="true">
+    <clr-accordion-title>Demigod Stats</clr-accordion-title>
 
-<ng-template #loading>
-  <div>Loading ...</div>
-</ng-template>
+    <ng-container *ngIf="itemService.items$ | async as items else loading">
+      <div id="mcpDiv">
+        <span *ngIf="mcpItem">
+          <clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color, 'margin-bottom': '6px'}"></clr-icon>
+          {{mcpItem.name}} : <app-pulsing-text [text]="mcpItem.amount"></app-pulsing-text>
+        </span>
+      </div>
+      <div id="humanDiv" *ngIf="humanItem">
+        <span>
+          <clr-icon attr.shape="{{humanItem.icon}}" size="18" [ngStyle]="{'color': humanItem.color, 'margin-bottom': '6px'}"></clr-icon>
+          {{humanItem.name}} : <app-pulsing-text [text]="humanItem.amount"></app-pulsing-text>
+        </span>
+      </div>
+    </ng-container>
+
+    <ng-template #loading>
+      <div>Loading ...</div>
+    </ng-template>
+  </clr-accordion-panel>
+</clr-accordion>

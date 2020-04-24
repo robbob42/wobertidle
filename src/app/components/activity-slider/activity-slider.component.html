@@ -1,11 +1,12 @@
 <div *ngIf="activity && activity.discovered && itemService.items$ | async as activities">
-  <clr-icon *ngIf="!activity.active" shape="play" style="cursor: pointer;" (click)="toggleActivity(activity.id)"></clr-icon>
-  <clr-icon *ngIf="activity.active" shape="stop" style="cursor: pointer;" (click)="toggleActivity(activity.id)"></clr-icon>
-  <span (click)="toggleActivity(activity.id)">
-    {{activity.name}} {{activity.produces}}
+  <!-- <clr-icon *ngIf="!activity.active" shape="play" style="cursor: pointer;" (click)="toggleActivity(activity.id)"></clr-icon>
+  <clr-icon *ngIf="activity.active" shape="stop" style="cursor: pointer;" (click)="toggleActivity(activity.id)"></clr-icon> -->
+  <!-- <span (click)="toggleActivity(activity.id)">
+    {{activity.name}}
     (<app-pulsing-text [text]="actionTime"></app-pulsing-text>s)
-  </span>
+  </span> -->
 </div>
-<div *ngIf="activity && activity.active" style="width: 150px; height: 20px; border: 1px solid gray; margin-left: 20px;">
+<div *ngIf="activity && activity.active" class="slider outlined">
   <div [ngStyle]="{'background-color': activity.color, 'height': '100%', 'width': activityWidth}"></div>
 </div>
+<div *ngIf="!activity || !activity.active" class="slider outlined"></div>
