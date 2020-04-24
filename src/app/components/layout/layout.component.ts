@@ -28,6 +28,7 @@ import { Level } from 'src/app/models/level';
 })
 export class LayoutComponent implements OnInit, OnDestroy {
   public navigation: string;
+  public gameNavigation: string;
   public messages: Message[] = [];
   public messagesTop = '-3em';
   public messagesLeft = '24em';
@@ -42,6 +43,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   public activities = [Globals.blankActivity];
   public inventory: Item[];
   public mcpItem = new Item(Globals.blankItem);
+  public demigodItem = new Item(Globals.blankItem);
   public Globals = Globals;
   public curLevel: Level;
 
@@ -102,52 +104,34 @@ export class LayoutComponent implements OnInit, OnDestroy {
     this.customIcons();
     if (saveSlot && saveSlot === this.Globals.version) {
       this.controlService.load();
-
       this.customIcons();
-
-      setTimeout(() => {
-        this.subscriptions.push(this.itemService.items$.subscribe((items) => {
-          this.inventory = items;
-          this.mcpItem = items.find(invenItem => invenItem.id === 900);
-        }));
-        this.subscriptions.push(this.activityService.activities$.subscribe((activities) => {
-          this.activities = activities;
-        }));
-        this.subscriptions.push(this.controlService.controls$.subscribe((controls) => {
-          this.navigation = controls.navigation;
-        }));
-        this.subscriptions.push(this.levelService.levels$.subscribe((levels) => {
-          this.curLevel = levels.find(level => level.current);
-        }));
-      });
-    }
-
-    else {
+    } else {
       this.improvementService.initialize();
       this.utilsService.initialize();
       this.levelService.initialize();
       this.rebirthService.initialize();
+      this.activityService.initializeActivities();
+      this.itemService.initializeItems();
 
       this.customIcons();
-
-      setTimeout(() => {
-        this.activityService.initializeActivities();
-        this.subscriptions.push(this.activityService.activities$.subscribe((activities) => {
-          this.activities = activities;
-        }));
-        this.itemService.initializeItems();
-        this.subscriptions.push(this.itemService.items$.subscribe((items) => {
-          this.inventory = items;
-          this.mcpItem = items.find(invenItem => invenItem.id === 900);
-        }));
-        this.subscriptions.push(this.controlService.controls$.subscribe((controls) => {
-          this.navigation = controls.navigation;
-        }));
-        this.subscriptions.push(this.levelService.levels$.subscribe((levels) => {
-          this.curLevel = levels.find(level => level.current);
-        }));
-      });
     }
+
+
+    this.subscriptions.push(this.itemService.items$.subscribe((items) => {
+      this.inventory = items;
+      this.mcpItem = items.find(invenItem => invenItem.id === 900);
+      this.demigodItem = items.find(invenItem => invenItem.id === this.Globals.itemIds.demigod);
+    }));
+    this.subscriptions.push(this.activityService.activities$.subscribe((activities) => {
+      this.activities = activities;
+    }));
+    this.subscriptions.push(this.controlService.controls$.subscribe((controls) => {
+      this.navigation = controls.navigation;
+      this.gameNavigation = controls.gameNavigation;
+    }));
+    this.subscriptions.push(this.levelService.levels$.subscribe((levels) => {
+      this.curLevel = levels.find(level => level.current);
+    }));
 
     setTimeout(() => {
       this.skipIntro();
@@ -178,18 +162,22 @@ export class LayoutComponent implements OnInit, OnDestroy {
       console.log('This demo requires a browser, such as Google Chrome or Firefox, that supports the Page Visibility API.');
     } else {
       // Handle page visibility change
-      document.addEventListener(visibilityChange, () => {
-        if (document[hidden]) {
-          this.controlService.setForeground(false);
-        } else {
-          this.controlService.setForeground(true);
-        }
-      }, false);
+      // document.addEventListener(visibilityChange, () => {
+      //   if (document[hidden]) {
+      //     this.controlService.setForeground(false);
+      //   } else {
+      //     this.controlService.setForeground(true);
+      //   }
+      // }, false);
     }
   }
 
   setNav(nav: string) {
     this.controlService.navigate(nav);
+  }
+
+  setGameNav(nav: string) {
+    this.controlService.gameNavigate(nav);
   }
 
   advanceStoryline() {

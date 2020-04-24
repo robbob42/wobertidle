@@ -8,11 +8,13 @@ import { RebirthService } from './rebirth.service';
 import { Globals } from 'src/assets/globals';
 
 class Control {
+  gameNavigation: string;
   navigation: string;
   reset: number;
   foreground: boolean;
 }
 const defaultControl = {
+  gameNavigation: 'play',
   navigation: 'home',
   reset: 1,
   foreground: true
@@ -37,6 +39,11 @@ export class ControlService {
 
   navigate(nav: string) {
     this.controls.navigation = nav;
+    this.sub.next(this.controls);
+  }
+
+  gameNavigate(nav: string) {
+    this.controls.gameNavigation = nav;
     this.sub.next(this.controls);
   }
 

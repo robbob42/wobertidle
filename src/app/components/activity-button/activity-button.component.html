@@ -4,7 +4,7 @@
     type="button"
     class="btn my-button"
     (click)="toggleActivity(activity.id)">
-    <span *ngIf="activity.active">Stop</span>
-    <span *ngIf="!activity.active">{{activity.name}}</span>
+    <span *ngIf="activity.active">Stop doing it!</span>
+    <span *ngIf="!activity.active">Do it!</span>
   </button>
 </ng-container>

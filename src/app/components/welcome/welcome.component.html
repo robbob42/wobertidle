@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-header">
+    Welcome, your most lugubriousness<br />
+    <button *ngIf="messages.length" class="btn btn-sm btn-link" (click)="displayNext()">Tell Me More</button>
+  </div>
+  <div class="card-block">
+      <div class="card-text">
+        <ng-container *ngFor="let message of oldMessages">
+          {{message}}<br />
+        </ng-container>
+        <app-pulsing-text [text]="nextMessage" [initialPulse]="true"></app-pulsing-text>
+      </div>
+  </div>
+  <div class="card-footer">
+  </div>
+</div>

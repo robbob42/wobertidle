@@ -1,5 +1,17 @@
 .my-sidenav {
   overflow-y: auto !important;
+  min-width: 14rem;
+}
+
+.my-branding {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-link:hover {
+  cursor: pointer;
 }
 
 .messages {

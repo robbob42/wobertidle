@@ -6,6 +6,7 @@ import { Globals } from '../../../assets/globals';
 import { Item } from '../../models/item';
 import { UtilsService } from '../../services/utils.service';
 import initialItems from '../../../assets/items';
+import { Activity } from 'src/app/models/activity';
 
 @Component({
   selector: 'app-activity-card',
@@ -14,10 +15,11 @@ import initialItems from '../../../assets/items';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ActivityCardComponent implements OnInit, OnDestroy {
-  @Input() cardHeader: string;
-  @Input() activityType: string;
+  @Input() activityId: number;
 
   public initialItems = initialItems;
+  private activitySub: Subscription;
+  public activity: Activity;
   public itemsSub: Subscription;
   public mcpItem: Item;
   public Globals = Globals;
@@ -26,15 +28,20 @@ export class ActivityCardComponent implements OnInit, OnDestroy {
     public activityService: ActivityService,
     public itemService: ItemService,
     public utilsService: UtilsService
-  ) { }
+  ) {
+  }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.activitySub = this.activityService.activities$.subscribe((activities) => {
+      this.activity = activities.find(act => act.id === this.activityId);
+    });
     this.itemsSub = this.itemService.items$.subscribe((items) => {
       this.mcpItem = items.find(item => item.id === Globals.itemIds.mcp);
     });
   }
 
   ngOnDestroy() {
+    this.activitySub.unsubscribe();
     this.itemsSub.unsubscribe();
   }
 }

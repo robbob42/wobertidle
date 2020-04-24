@@ -3,6 +3,7 @@ import { ItemService } from '../../services/item.service';
 import { ControlService } from '../../services/control.service';
 import { ImprovementService } from '../../services/improvement.service';
 import { LevelService } from 'src/app/services/level.service';
+import { ActivityService } from 'src/app/services/activity.service';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +24,8 @@ export class HomeComponent implements OnInit {
     public itemService: ItemService,
     public controlService: ControlService,
     public improvementService: ImprovementService,
-    public levelService: LevelService
+    public levelService: LevelService,
+    public activityService: ActivityService
   ) {
   }
 

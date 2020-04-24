@@ -27,6 +27,7 @@ import { RebirthCardComponent } from './components/rebirth-card/rebirth-card.com
 import { PowersSummaryCardComponent } from './components/powers-summary-card/powers-summary-card.component';
 import { CarnivalComponent } from './components/carnival/carnival.component';
 import { CarnivalCardComponent } from './components/carnival-card/carnival-card.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { CarnivalCardComponent } from './components/carnival-card/carnival-card.
     RebirthCardComponent,
     PowersSummaryCardComponent,
     CarnivalComponent,
-    CarnivalCardComponent
+    CarnivalCardComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
