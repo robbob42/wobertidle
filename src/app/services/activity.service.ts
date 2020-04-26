@@ -18,19 +18,24 @@ export class ActivityService {
 
   constructor() { }
 
-  toggleActivity(activityId: number, numOfHumans: number): boolean {
+  toggleActivity(activityId: number, numOfHumans: number): {toggled: boolean, actives: Activity[]} {
     const activeHumans = this.activities.filter(act => act.active).length;
     let active: boolean;
     let toggled = true;
+    const actives = [];
     this.activities.forEach(activity => {
       if (activity.id === activityId && !activity.active && numOfHumans > activeHumans) {
         active = !activity.active;
+        actives.push(activity);
       }
       if (activity.id === activityId && activity.active) {
         active = !activity.active;
       }
       if (activity.id === activityId && !activity.active && numOfHumans <= activeHumans) {
         toggled = false;
+      }
+      if (activity.active) {
+        actives.push(activity);
       }
     });
 
@@ -39,7 +44,10 @@ export class ActivityService {
       this.sub.next(this.activities);
     }, 1);
 
-    return toggled;
+    return {
+      toggled,
+      actives
+    };
   }
 
   initializeActivities() {

@@ -15,6 +15,7 @@ class Control {
   pulser: {
     pulseId: string,
     pulsing: boolean,
+    redPulse: boolean,
     initialPulse: boolean
   }[];
 }
@@ -26,6 +27,7 @@ const defaultControl = {
   pulser: [{
     pulseId: '',
     pulsing: false,
+    redPulse: false,
     initialPulse: false
   }]
 };
@@ -65,6 +67,7 @@ export class ControlService {
   addPulser(pulseConfig: {
     pulseId: string,
     pulsing: boolean,
+    redPulse: boolean,
     initialPulse: boolean
   }) {
     this.controls.pulser.push(pulseConfig);
@@ -73,12 +76,20 @@ export class ControlService {
 
   endPulse(pulseId: string) {
     this.controls.pulser.find(pls => pls.pulseId === pulseId).pulsing = false;
+    this.controls.pulser.find(pls => pls.pulseId === pulseId).redPulse = false;
     this.sub.next(this.controls);
   }
 
   startPulse(pulseId: string) {
     if (this.controls.pulser.find(pls => pls.pulseId === pulseId)) {
       this.controls.pulser.find(pls => pls.pulseId === pulseId).pulsing = true;
+      this.sub.next(this.controls);
+    }
+  }
+
+  startRedPulse(pulseId: string) {
+    if (this.controls.pulser.find(pls => pls.pulseId === pulseId)) {
+      this.controls.pulser.find(pls => pls.pulseId === pulseId).redPulse = true;
       this.sub.next(this.controls);
     }
   }

@@ -5,7 +5,7 @@
         <app-activity-button [activityId]="activity.id"></app-activity-button>
       </div>
       <div class="clr-col-9">
-        {{activity.name}}
+        <app-pulsing-text [text]="activity.name" [pulseId]="activity.pulseId+'name'"></app-pulsing-text>
       </div>
     </div>
   </div>

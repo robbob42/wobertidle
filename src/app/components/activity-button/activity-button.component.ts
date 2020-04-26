@@ -8,6 +8,7 @@ import { ItemService } from '../../services/item.service';
 import { Item } from '../../models/item';
 import { Globals } from '../../../assets/globals';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ControlService } from 'src/app/services/control.service';
 
 @Component({
   selector: 'app-activity-button',
@@ -37,7 +38,8 @@ export class ActivityButtonComponent implements OnInit, OnDestroy {
   constructor(
     public activityService: ActivityService,
     private itemService: ItemService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private controlService: ControlService
   ) {
   }
 
@@ -52,10 +54,12 @@ export class ActivityButtonComponent implements OnInit, OnDestroy {
     });
   }
 
-  toggleActivity(activityId) {
-    const worked = this.activityService.toggleActivity(activityId, this.humanItem.amount);
-    if (!worked) {
-      console.log('too many people!');
+  toggleActivity(activityId: number) {
+    const toggleResults = this.activityService.toggleActivity(activityId, this.humanItem.amount);
+    if (!toggleResults.toggled) {
+      toggleResults.actives.forEach(activity => {
+        this.controlService.startRedPulse(activity.pulseId + 'name');
+      });
     }
   }
 

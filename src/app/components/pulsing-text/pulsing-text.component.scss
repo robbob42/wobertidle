@@ -3,6 +3,13 @@
   animation: pulse 0.5s;
   animation-direction: alternate;
 }
+
+.redPulse {
+  animation-iteration-count: 1;
+  animation: redPulse 0.5s;
+  animation-direction: alternate;
+}
+
 @keyframes pulse {
   0% {
     opacity: 1;
@@ -10,6 +17,27 @@
   50% {
     opacity: 0.3;
     color: #179bd3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes redPulse {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.3;
+    color: hsl(9, 100%, 30%);
+  }
+  50% {
+    opacity: 1;
+    color: hsl(9, 100%, 30%);
+  }
+  75% {
+    opacity: 0.3;
+    color: hsl(9, 100%, 30%);
   }
   100% {
     opacity: 1;

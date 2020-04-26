@@ -11,11 +11,13 @@ export class PulsingTextComponent implements OnInit, OnChanges, OnDestroy {
   @Input() text: string;
   @Input() pulseId: string;
   @Input() initialPulse = false;
+  @Input() redPulse = false;
 
   private controlSub: Subscription;
   public pulser: {
     pulseId: string,
     pulsing: boolean,
+    redPulse: boolean,
     initialPulse: boolean
   };
 
@@ -30,6 +32,7 @@ export class PulsingTextComponent implements OnInit, OnChanges, OnDestroy {
     this.controlService.addPulser({
       pulseId: this.pulseId,
       pulsing: this.initialPulse,
+      redPulse: this.redPulse,
       initialPulse: this.initialPulse
     });
   }
