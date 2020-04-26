@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { ActivityService } from '../../services/activity.service';
 import { Item } from '../../models/item';
 import { Globals } from '../../../assets/globals';
-import { ControlService } from 'src/app/services/control.service';
+import { BackgroundService } from 'src/app/services/background.service';
 
 @Component({
   selector: 'app-activity-slider',
@@ -36,14 +36,14 @@ export class ActivitySliderComponent implements OnInit, OnDestroy {
     public itemService: ItemService,
     public activityService: ActivityService,
     private ref: ChangeDetectorRef,
-    private controlService: ControlService
+    private backgroundService: BackgroundService
   ) {
-    this.controlsSub = this.controlService.controls$.subscribe((controls) => {
+    this.controlsSub = this.backgroundService.background$.subscribe((background) => {
       if (this.activity && this.activity.active){
-        if (!controls.foreground) {
+        if (background) {
           this.leftTime = new Date().getTime() / 1000;
         }
-        if (controls.foreground && this.leftTime) {
+        if (!background && this.leftTime) {
           this.returnTime = new Date().getTime() / 1000;
           const secondsGone = Math.floor(this.returnTime - this.leftTime);
           let incrementingActivity = this.activity;

@@ -9,7 +9,6 @@ import { Globals } from 'src/assets/globals';
 
 class Control {
   reset: number;
-  foreground: boolean;
   pulser: {
     pulseId: string,
     pulsing: boolean,
@@ -19,7 +18,6 @@ class Control {
 }
 const defaultControl = {
   reset: 1,
-  foreground: true,
   pulser: [{
     pulseId: '',
     pulsing: false,
@@ -44,11 +42,6 @@ export class ControlService {
     private levelService: LevelService,
     private rebirthService: RebirthService,
     ) { }
-
-  setForeground(active: boolean) {
-    this.controls.foreground = active;
-    this.sub.next(this.controls);
-  }
 
   addPulser(pulseConfig: {
     pulseId: string,
