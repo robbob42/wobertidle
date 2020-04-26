@@ -1,0 +1,15 @@
+<clr-header>
+  <div class="branding" *ngIf="curLevel && levelService.levels$ | async as levels">
+    <div class="my-branding">
+      <clr-icon shape="demigod" size="36"></clr-icon>
+      <div>
+        Demigod Rank {{curLevel.id}} <br />
+        "{{curLevel.name}}"
+      </div>
+    </div>
+      <div class="header-nav" [clr-nav-level]="1">
+        <a [ngClass]="{'nav-link': true, 'active': topNav === 'welcome'}" (click)="setTopNav('welcome')">Welcome</a>
+        <a [ngClass]="{'nav-link': true, 'active': topNav === 'play'}" (click)="setTopNav('play')">Play</a>
+      </div>
+  </div>
+</clr-header>

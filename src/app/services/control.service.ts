@@ -8,8 +8,6 @@ import { RebirthService } from './rebirth.service';
 import { Globals } from 'src/assets/globals';
 
 class Control {
-  gameNavigation: string;
-  navigation: string;
   reset: number;
   foreground: boolean;
   pulser: {
@@ -20,8 +18,6 @@ class Control {
   }[];
 }
 const defaultControl = {
-  gameNavigation: 'play',
-  navigation: 'home',
   reset: 1,
   foreground: true,
   pulser: [{
@@ -48,16 +44,6 @@ export class ControlService {
     private levelService: LevelService,
     private rebirthService: RebirthService,
     ) { }
-
-  navigate(nav: string) {
-    this.controls.navigation = nav;
-    this.sub.next(this.controls);
-  }
-
-  gameNavigate(nav: string) {
-    this.controls.gameNavigation = nav;
-    this.sub.next(this.controls);
-  }
 
   setForeground(active: boolean) {
     this.controls.foreground = active;

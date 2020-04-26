@@ -1,0 +1,51 @@
+<ul class="nav" *ngIf="mcpItem && itemService.items$ | async as items">
+  <li class="nav-item"><a [ngClass]="{'nav-link': true, 'active': contentNav === 'home'}" (click)="setNav('home')">Home</a></li>
+
+  <li class="nav-item" *ngIf="mcpItem.amount >= Globals.visibleAmounts.shop">
+    <a [ngClass]="{'nav-link': true, 'active': contentNav === 'shop'}" (click)="setNav('shop')">
+      <app-pulsing-text [text]="'Shop'" [redPulse]="true" [pulseId]="'shop'"></app-pulsing-text>
+    </a>
+  </li>
+  <li class="nav-item disabled" *ngIf="mcpItem.amount < Globals.visibleAmounts.shop">
+    @ {{utilsService.formatNumber(Globals.visibleAmounts.shop)}}<clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color}"></clr-icon>
+  </li>
+
+  <ng-container *ngIf="curLevel && levelService.levels$ | async as levels">
+    <li class="nav-item" *ngIf="mcpItem.amount >= Globals.visibleAmounts.powers || curLevel.id > 0">
+      <a [ngClass]="{'nav-link': true, 'active': contentNav === 'powers'}" (click)="setNav('powers')">
+        <app-pulsing-text [text]="'Powers'" [redPulse]="true" [pulseId]="'powers'"></app-pulsing-text>
+      </a>
+    </li>
+    <li class="nav-item disabled" *ngIf="mcpItem.amount < Globals.visibleAmounts.powers && curLevel.id  < 1">
+      @ {{utilsService.formatNumber(Globals.visibleAmounts.powers)}}<clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color}"></clr-icon>
+    </li>
+  </ng-container>
+
+  <li class="nav-item" *ngIf="itemService.exchangeUnlocked() && mcpItem.amount >= Globals.visibleAmounts.exchange">
+    <a [ngClass]="{'nav-link': true, 'active': contentNav === 'exchange'}" (click)="setNav('exchange')">
+      <app-pulsing-text [text]="'Exchange'" [redPulse]="true" [pulseId]="'exchange'"></app-pulsing-text>
+    </a>
+  </li>
+  <li class="nav-item disabled" *ngIf="itemService.exchangeUnlocked() && mcpItem.amount < Globals.visibleAmounts.exchange">
+    @ {{utilsService.formatNumber(Globals.visibleAmounts.exchange)}}<clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color}"></clr-icon>
+  </li>
+
+  <li class="nav-item" *ngIf="itemService.rebirthUnlocked() && mcpItem.amount >= Globals.visibleAmounts.rebirth">
+    <a [ngClass]="{'nav-link': true, 'active': contentNav === 'rebirth'}" (click)="setNav('rebirth')">
+      <app-pulsing-text [text]="'Rebirth'" [redPulse]="true" [pulseId]="'rebirth'"></app-pulsing-text>
+    </a>
+  </li>
+  <li class="nav-item disabled" *ngIf="itemService.rebirthUnlocked() && mcpItem.amount < Globals.visibleAmounts.rebirth">
+    @ {{utilsService.formatNumber(Globals.visibleAmounts.rebirth)}}<clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color}"></clr-icon>
+  </li>
+
+  <li class="nav-item" *ngIf="itemService.carnivalUnlocked() && mcpItem.amount >= Globals.visibleAmounts.refine">
+    <a [ngClass]="{'nav-link': true, 'active': contentNav === 'carnival'}" (click)="setNav('carnival')">
+      <app-pulsing-text [text]="'Demigod Carnival'" [redPulse]="true" [pulseId]="'carnival'"></app-pulsing-text>
+    </a>
+  </li>
+  <li class="nav-item disabled" *ngIf="itemService.carnivalUnlocked() && mcpItem.amount < Globals.visibleAmounts.refine">
+    @ {{utilsService.formatNumber(Globals.visibleAmounts.refine)}}<clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color}"></clr-icon>
+  </li>
+
+</ul>

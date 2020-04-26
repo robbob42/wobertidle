@@ -15,7 +15,7 @@ export class ItemCardTextComponent implements OnInit, OnDestroy {
   private itemSub: Subscription;
   public item: Item;
 
-  constructor(private itemService: ItemService) { }
+  constructor(public itemService: ItemService) { }
 
   ngOnInit(): void {
     this.itemSub = this.itemService.items$.subscribe((items) => {

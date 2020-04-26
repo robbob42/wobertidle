@@ -30,6 +30,8 @@ import { ItemCardHeaderComponent } from './components/item-card/item-card-header
 import { ItemCardTextComponent } from './components/item-card/item-card-text/item-card-text.component';
 import { ItemCardFooterComponent } from './components/item-card/item-card-footer/item-card-footer.component';
 import { ItemCardUpcomingComponent } from './components/item-card/item-card-upcoming/item-card-upcoming.component';
+import { LayoutHeaderComponent } from './components/layout/layout-header/layout-header.component';
+import { LayoutSubnavComponent } from './components/layout/layout-subnav/layout-subnav.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { ItemCardUpcomingComponent } from './components/item-card/item-card-upco
     ItemCardHeaderComponent,
     ItemCardTextComponent,
     ItemCardFooterComponent,
-    ItemCardUpcomingComponent
+    ItemCardUpcomingComponent,
+    LayoutHeaderComponent,
+    LayoutSubnavComponent
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,10 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ActivityService } from '../../services/activity.service';
-import { ItemService } from '../../services/item.service';
-import { Globals } from '../../../assets/globals';
-import { Item } from '../../models/item';
-import { UtilsService } from '../../services/utils.service';
-import initialItems from '../../../assets/items';
 import { Activity } from 'src/app/models/activity';
+import { ActivityService } from 'src/app/services/activity.service';
+import { ItemService } from 'src/app/services/item.service';
+import { Item } from 'src/app/models/item';
+import { Globals } from 'src/assets/globals';
 
 @Component({
   selector: 'app-item-card',
@@ -18,30 +16,22 @@ export class ItemCardComponent implements OnInit, OnDestroy {
   @Input() activityId: number;
   @Input() itemId: number;
 
-  public initialItems = initialItems;
   private activitySub: Subscription;
   public activity: Activity;
-  public item: Item;
-  public itemsSub: Subscription;
+  private itemSub: Subscription;
   public mcpItem: Item;
-  public Globals = Globals;
-  public actionTime: string;
 
   constructor(
     public activityService: ActivityService,
-    public itemService: ItemService,
-    public utilsService: UtilsService
-  ) {
-  }
+    private itemService: ItemService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.activitySub = this.activityService.activities$.subscribe((activities) => {
       this.activity = activities.find(act => act.id === this.activityId);
-      this.actionTime = (this.activity.actionTime / 1000).toFixed(3);
     });
-    this.itemsSub = this.itemService.items$.subscribe((items) => {
-      this.item = items.find(item => item.id === this.itemId);
-      this.mcpItem = items.find(item => item.id === Globals.itemIds.mcp);
+
+    this.itemSub = this.itemService.items$.subscribe((items) => {
+      this.mcpItem = items.find(itm => itm.id === Globals.itemIds.mcp);
 
       if (this.activity && this.mcpItem) {
         if (this.mcpItem.amount === this.activity.mcpTriggerAmount && this.activity.trigger && !this.activity.triggered) {
@@ -49,7 +39,6 @@ export class ItemCardComponent implements OnInit, OnDestroy {
         }
         if (this.mcpItem.amount >= this.activity.mcpDiscoverAmount && !this.activity.discovered) {
           this.activityService.discoverActivity(this.activity.id);
-          this.item.visible = true;
         }
       }
     });
@@ -57,6 +46,6 @@ export class ItemCardComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.activitySub.unsubscribe();
-    this.itemsSub.unsubscribe();
+    this.itemSub.unsubscribe();
   }
 }

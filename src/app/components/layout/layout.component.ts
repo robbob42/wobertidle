@@ -17,6 +17,7 @@ import { LevelService } from '../../services/level.service';
 import '@clr/icons';
 import '@clr/icons/shapes/all-shapes';
 import { Level } from 'src/app/models/level';
+import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
   selector: 'app-layout',
@@ -27,8 +28,6 @@ import { Level } from 'src/app/models/level';
   ]
 })
 export class LayoutComponent implements OnInit, OnDestroy {
-  public navigation: string;
-  public gameNavigation: string;
   public messages: Message[] = [];
   public messagesTop = '-3em';
   public messagesLeft = '24em';
@@ -48,6 +47,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
   public curLevel: Level;
 
   public subscriptions: Subscription[] = [];
+  public topNav: string;
+  public contentNav: string;
 
   constructor(
     // private messageService: MessageService,
@@ -57,7 +58,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
     public utilsService: UtilsService,
     public controlService: ControlService,
     public levelService: LevelService,
-    public rebirthService: RebirthService
+    public rebirthService: RebirthService,
+    public navigationService: NavigationService
   ) {
     // this.messageService.initializeMessages();
     // messageService.subscribeMessages().subscribe((subscribedMessages) => {
@@ -117,25 +119,10 @@ export class LayoutComponent implements OnInit, OnDestroy {
     }
 
 
-    this.subscriptions.push(this.itemService.items$.subscribe((items) => {
-      this.inventory = items;
-      this.mcpItem = items.find(invenItem => invenItem.id === 900);
-      this.demigodItem = items.find(invenItem => invenItem.id === this.Globals.itemIds.demigod);
+    this.subscriptions.push(this.navigationService.navigations$.subscribe((navigations) => {
+      this.topNav = navigations.topNav;
+      this.contentNav = navigations.contentNav;
     }));
-    this.subscriptions.push(this.activityService.activities$.subscribe((activities) => {
-      this.activities = activities;
-    }));
-    this.subscriptions.push(this.controlService.controls$.subscribe((controls) => {
-      this.navigation = controls.navigation;
-      this.gameNavigation = controls.gameNavigation;
-    }));
-    this.subscriptions.push(this.levelService.levels$.subscribe((levels) => {
-      this.curLevel = levels.find(level => level.current);
-    }));
-
-    setTimeout(() => {
-      this.skipIntro();
-    }, 50);
 
     window.setInterval(() => {
       this.controlService.save();
@@ -169,40 +156,6 @@ export class LayoutComponent implements OnInit, OnDestroy {
       //     this.controlService.setForeground(true);
       //   }
       // }, false);
-    }
-  }
-
-  setNav(nav: string) {
-    this.controlService.navigate(nav);
-  }
-
-  setGameNav(nav: string) {
-    this.controlService.gameNavigate(nav);
-  }
-
-  advanceStoryline() {
-    // this.messageService.advanceStoryline();
-  }
-
-  showLog() {
-    this.logVisible = true;
-  }
-  hideLog() {
-    this.logVisible = false;
-  }
-
-  delayHideAlert() {
-    setTimeout(() => {
-      this.highlightArrow = false;
-    }, 2000);
-  }
-
-  skipIntro() {
-    this.advanceDropdownOpen = false;
-    this.logVisible = false;
-    if (this.canSkip) {
-      this.canSkip = false;
-      // this.messageService.processTrigger(1);
     }
   }
 

@@ -29,9 +29,9 @@ export default [
     produceAmount: 1,
     actionTime: 1500,
     mcProficiency: 2,
-    mcpTriggerAmount: 10,
+    mcpTriggerAmount: 4,
     triggered: false,
-    mcpDiscoverAmount: 20,
+    mcpDiscoverAmount: 6,
     discovered: false,
     visible: false
   },
