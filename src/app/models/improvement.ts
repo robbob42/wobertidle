@@ -1,5 +1,6 @@
 export class Improvement {
   id: number;
+  pulseId: string;
   name: string;
   type: string;
   level: number;
@@ -7,6 +8,7 @@ export class Improvement {
   improveeId: number;
   itemsCost: {
     itemId: number,
+    pulseId: string,
     itemAmount: number,
   }[];
   costMultiplyer: number;
@@ -17,6 +19,7 @@ export class Improvement {
 
   constructor(options: {
     id: number,
+    pulseId: string,
     name: string,
     type: string,
     level: number,
@@ -24,6 +27,7 @@ export class Improvement {
     improveeId: number,
     itemsCost: {
       itemId: number,
+      pulseId: string,
       itemAmount: number,
     }[],
     costMultiplyer: number,
@@ -33,6 +37,7 @@ export class Improvement {
     improvesByAdder?: number
   }) {
     this.id = options.id;
+    this.pulseId = options.pulseId;
     this.name = options.name;
     this.type = options.type;
     this.level = options.level;

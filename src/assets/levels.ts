@@ -1,6 +1,7 @@
 export default [
   {
     id: 0,
+    pulseId: 'level-0',
     name: 'Barely Demi',
     improvements: [],
     levelSummary: [''],
@@ -8,6 +9,7 @@ export default [
   },
   {
     id: 1,
+    pulseId: 'level-1',
     name: 'Semi Demi',
     improvements: [
       17,
@@ -23,6 +25,7 @@ export default [
   },
   {
     id: 2,
+    pulseId: 'level-2',
     name: 'Junior Demi',
     improvements: [
       23,
@@ -38,6 +41,7 @@ export default [
   },
   {
     id: 3,
+    pulseId: 'level-3',
     name: 'Assistant Demi',
     improvements: [
       17,
@@ -55,6 +59,7 @@ export default [
   },
   {
     id: 4,
+    pulseId: 'level-4',
     name: 'Assistant to the Demi',
     improvements: [
       29
@@ -66,6 +71,7 @@ export default [
   },
   {
     id: 5,
+    pulseId: 'level-5',
     name: 'Demi in Charge of Radishes',
     improvements: [
       31,
@@ -85,6 +91,7 @@ export default [
   },
   {
     id: 6,
+    pulseId: 'level-6',
     name: 'Demi Dedi Deci',
     improvements: [
       17,
@@ -102,6 +109,7 @@ export default [
   },
   {
     id: 7,
+    pulseId: 'level-7',
     name: 'Deminator',
     improvements: [
       17,
@@ -117,6 +125,7 @@ export default [
   },
   {
     id: 8,
+    pulseId: 'level-8',
     name: 'Deminted',
     improvements: [
       17,
@@ -132,6 +141,7 @@ export default [
   },
   {
     id: 9,
+    pulseId: 'level-9',
     name: 'Demi Demo',
     improvements: [
       17,
@@ -147,6 +157,7 @@ export default [
   },
   {
     id: 10,
+    pulseId: 'level-10',
     name: 'Demi Bob',
     improvements: [
       17,
@@ -162,6 +173,7 @@ export default [
   },
   {
     id: 11,
+    pulseId: 'level-11',
     name: 'Demi Min',
     improvements: [
       17,
@@ -177,6 +189,7 @@ export default [
   },
   {
     id: 12,
+    pulseId: 'level-12',
     name: 'Demi Jay',
     improvements: [
       17,
@@ -192,6 +205,7 @@ export default [
   },
   {
     id: 13,
+    pulseId: 'level-13',
     name: 'Demi Kay',
     improvements: [
       17,
@@ -207,6 +221,7 @@ export default [
   },
   {
     id: 14,
+    pulseId: 'level-14',
     name: 'Demi Linc',
     improvements: [
       17,

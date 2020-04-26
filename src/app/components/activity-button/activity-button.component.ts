@@ -53,7 +53,10 @@ export class ActivityButtonComponent implements OnInit, OnDestroy {
   }
 
   toggleActivity(activityId) {
-    this.activityService.toggleActivity(activityId, this.humanItem.amount);
+    const worked = this.activityService.toggleActivity(activityId, this.humanItem.amount);
+    if (!worked) {
+      console.log('too many people!');
+    }
   }
 
   ngOnDestroy() {

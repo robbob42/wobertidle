@@ -1,5 +1,6 @@
 export class Item {
   id: number;
+  pulseId: string;
   name: string;
   icon: string;
   color: string;
@@ -10,6 +11,7 @@ export class Item {
 
   constructor(options: {
     id: number,
+    pulseId: string,
     name: string,
     icon: string,
     color: string,
@@ -19,6 +21,7 @@ export class Item {
     visible?: boolean,
     }) {
     this.id = options.id;
+    this.pulseId = options.pulseId;
     this.name = options.name;
     this.icon = options.icon;
     this.color = options.color;

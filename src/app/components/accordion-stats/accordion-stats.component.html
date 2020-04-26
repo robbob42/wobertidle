@@ -6,13 +6,13 @@
       <div id="mcpDiv">
         <span *ngIf="mcpItem">
           <clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color, 'margin-bottom': '6px'}"></clr-icon>
-          {{mcpItem.name}} : <app-pulsing-text [text]="mcpItem.amount"></app-pulsing-text>
+          {{mcpItem.name}} : <app-pulsing-text [text]="mcpItem.amount" [pulseId]="mcpItem.pulseId+'amount'"></app-pulsing-text>
         </span>
       </div>
       <div id="humanDiv" *ngIf="humanItem">
         <span>
           <clr-icon attr.shape="{{humanItem.icon}}" size="18" [ngStyle]="{'color': humanItem.color, 'margin-bottom': '6px'}"></clr-icon>
-          {{humanItem.name}} : <app-pulsing-text [text]="humanItem.amount"></app-pulsing-text>
+          {{humanItem.name}} : <app-pulsing-text [text]="humanItem.amount" [pulseId]="humanItem.pulseId+'amount'"></app-pulsing-text>
         </span>
       </div>
     </ng-container>

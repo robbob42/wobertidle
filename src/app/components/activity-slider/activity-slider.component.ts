@@ -10,7 +10,8 @@ import { ControlService } from 'src/app/services/control.service';
 @Component({
   selector: 'app-activity-slider',
   templateUrl: './activity-slider.component.html',
-  styleUrls: ['./activity-slider.component.scss']
+  styleUrls: ['./activity-slider.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ActivitySliderComponent implements OnInit, OnDestroy {
   @Input() activityId: number;
@@ -151,7 +152,7 @@ export class ActivitySliderComponent implements OnInit, OnDestroy {
   setActivityInterval() {
     clearInterval(this.activityInterval);
     this.activityInterval = window.setInterval(() => {
-      this.activityWidthNum += 1000 / this.activity.actionTime;
+      this.activityWidthNum += 2000 / this.activity.actionTime;
       if (this.activityWidthNum >= 100) {
         this.activityWidthNum = 0;
         this.itemService.incrementItem(
@@ -165,7 +166,7 @@ export class ActivitySliderComponent implements OnInit, OnDestroy {
       }
       this.activityWidth = this.activityWidthNum.toString() + '%';
       this.ref.detectChanges();
-    }, 10);
+    }, 20);
   }
 
   toggleActivity(activityId: number) {

@@ -38,7 +38,7 @@
                         <clr-icon attr.shape="{{item.icon}}" size="16" [ngStyle]="{'color': item.color}"></clr-icon>
                       </ng-container>
                     </span>
-                    x <app-pulsing-text [text]="utilsService.formatNumber(costItem.itemAmount)"></app-pulsing-text><br />
+                    x <app-pulsing-text [text]="utilsService.formatNumber(costItem.itemAmount)" [pulseId]="costItem.pulseId"></app-pulsing-text><br />
                   </span>
                 </td>
                 <td>(x {{improvement.improvesByMultiplyer || improvement.improvesByAdder}})</td>

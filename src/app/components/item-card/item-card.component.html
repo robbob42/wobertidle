@@ -1,13 +1,11 @@
 <div class="card" *ngIf="activity && activity.discovered">
   <div class="card-header" *ngIf="itemService.items$ | async as items">
     <div class="clr-row">
-      <div class="clr-col-9">
-        <clr-icon attr.shape="{{item.icon}}" shape="" size="24" [ngStyle]="{'color': item.color}"></clr-icon>
-        : <app-pulsing-text [text]="item.amount"></app-pulsing-text>
-        / <app-pulsing-text [text]="item.limit"></app-pulsing-text>
-      </div>
       <div class="clr-col-3">
         <app-activity-button [activityId]="activity.id"></app-activity-button>
+      </div>
+      <div class="clr-col-9">
+        {{activity.name}}
       </div>
     </div>
   </div>
@@ -16,7 +14,9 @@
       <app-activity-slider [activityId]="activity.id"></app-activity-slider>
     </div>
     <div class="card-text">
-      <!-- <app-activity-slider [activityId]="activity.id"></app-activity-slider> -->
+      <clr-icon attr.shape="{{item.icon}}" shape="" size="24" [ngStyle]="{'color': item.color}"></clr-icon>
+      : <app-pulsing-text [text]="item.amount" [pulseId]="item.pulseId+'amount'"></app-pulsing-text>
+      / <app-pulsing-text [text]="item.limit" [pulseId]="item.pulseId+'limit'"></app-pulsing-text>
     </div>
   </div>
   <div class="card-footer" *ngIf="activityService.activities$ | async as activities">
@@ -30,7 +30,7 @@
       </thead>
       <tbody>
         <tr>
-          <td><app-pulsing-text [text]="actionTime"></app-pulsing-text></td>
+          <td><app-pulsing-text [text]="actionTime" [pulseId]="activity.pulseId+'actionTime'"></app-pulsing-text></td>
           <td *ngIf="activity.decrementId">
             {{activity.decrementAmount}} x
             <ng-container *ngFor="let item of initialItems">

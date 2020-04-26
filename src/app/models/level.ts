@@ -1,8 +1,10 @@
 export class Level {
   id: number;
+  pulseId: string;
   name: string;
   itemsCost?: {
     itemId: number,
+    pulseId: string,
     itemAmount: number,
   }[];
   improvements: number[];
@@ -11,9 +13,11 @@ export class Level {
 
   constructor(options: {
     id: number,
+    pulseId: string,
     name: string,
     itemsCost?: {
       itemId: number,
+      pulseId: string,
       itemAmount: number,
     }[],
     improvements: number[],
@@ -21,6 +25,7 @@ export class Level {
     current: boolean,
     }) {
     this.id = options.id;
+    this.pulseId = options.pulseId;
     this.name = options.name;
     this.itemsCost = options.itemsCost;
     this.improvements = options.improvements;

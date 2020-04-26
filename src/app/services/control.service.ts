@@ -12,12 +12,22 @@ class Control {
   navigation: string;
   reset: number;
   foreground: boolean;
+  pulser: {
+    pulseId: string,
+    pulsing: boolean,
+    initialPulse: boolean
+  }[];
 }
 const defaultControl = {
   gameNavigation: 'play',
   navigation: 'home',
   reset: 1,
-  foreground: true
+  foreground: true,
+  pulser: [{
+    pulseId: '',
+    pulsing: false,
+    initialPulse: false
+  }]
 };
 
 @Injectable({
@@ -50,6 +60,27 @@ export class ControlService {
   setForeground(active: boolean) {
     this.controls.foreground = active;
     this.sub.next(this.controls);
+  }
+
+  addPulser(pulseConfig: {
+    pulseId: string,
+    pulsing: boolean,
+    initialPulse: boolean
+  }) {
+    this.controls.pulser.push(pulseConfig);
+    this.sub.next(this.controls);
+  }
+
+  endPulse(pulseId: string) {
+    this.controls.pulser.find(pls => pls.pulseId === pulseId).pulsing = false;
+    this.sub.next(this.controls);
+  }
+
+  startPulse(pulseId: string) {
+    if (this.controls.pulser.find(pls => pls.pulseId === pulseId)) {
+      this.controls.pulser.find(pls => pls.pulseId === pulseId).pulsing = true;
+      this.sub.next(this.controls);
+    }
   }
 
   save() {

@@ -8,7 +8,7 @@
         <ng-container *ngFor="let message of oldMessages">
           {{message}}<br />
         </ng-container>
-        <app-pulsing-text [text]="nextMessage" [initialPulse]="true"></app-pulsing-text>
+        <app-pulsing-text [text]="nextMessage" [initialPulse]="true" [pulseId]="'nextMessage'"></app-pulsing-text>
       </div>
   </div>
   <div class="card-footer">

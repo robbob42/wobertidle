@@ -1,5 +1,6 @@
 export class Activity {
   id: number;
+  pulseId: string;
   name: string;
   type: string;
   active: boolean;
@@ -20,6 +21,7 @@ export class Activity {
 
   constructor(options: {
     id: number,
+    pulseId: string,
     name: string,
     type?: string,
     active?: boolean,
@@ -39,6 +41,7 @@ export class Activity {
     visible?: boolean
   }) {
     this.id = options.id;
+    this.pulseId = options.pulseId;
     this.name = options.name;
     this.type = options.type || '';
     this.active = options.active || false;

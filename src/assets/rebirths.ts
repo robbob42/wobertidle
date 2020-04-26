@@ -1,6 +1,7 @@
 export default [
   {
     id: 0,
+    pulseId: 'rebirth-0',
     name: '',
     improvements: [],
     levelSummary: [''],
@@ -8,6 +9,7 @@ export default [
   },
   {
     id: 1,
+    pulseId: 'rebirth-1',
     name: '',
     improvements: [
       16
@@ -19,6 +21,7 @@ export default [
   },
   {
     id: 2,
+    pulseId: 'rebirth-2',
     name: '',
     improvements: [
       16
@@ -30,6 +33,7 @@ export default [
   },
   {
     id: 3,
+    pulseId: 'rebirth-3',
     name: '',
     improvements: [
       16
@@ -41,6 +45,7 @@ export default [
   },
   {
     id: 4,
+    pulseId: 'rebirth-4',
     name: '',
     improvements: [
       16
