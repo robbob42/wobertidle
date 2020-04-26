@@ -7,7 +7,6 @@ import { Item } from '../../models/item';
 import { UtilsService } from '../../services/utils.service';
 import initialItems from '../../../assets/items';
 import { Activity } from 'src/app/models/activity';
-import { TestBed } from '@angular/core/testing';
 
 @Component({
   selector: 'app-item-card',

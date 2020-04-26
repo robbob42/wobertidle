@@ -1,0 +1,22 @@
+<ng-container *ngIf="itemService.items$ | async as items">
+  <ng-container *ngIf="mcpItem.amount >= activity.mcpTriggerAmount && mcpItem.amount < activity.mcpDiscoverAmount">
+    <div class="card">
+      <div class="card-header">
+        <span class="opaque">Upcoming Activity</span>
+      </div>
+      <div class="card-block">
+        <div class="card-text">
+          <span class="opaque">
+            Available
+            @ {{utilsService.formatNumber(activity.mcpDiscoverAmount)}}<clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color}"></clr-icon>
+          </span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-outline" disabled>
+          @ {{utilsService.formatNumber(activity.mcpDiscoverAmount)}}<clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color}"></clr-icon>
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>

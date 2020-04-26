@@ -26,6 +26,10 @@ import { CarnivalComponent } from './components/carnival/carnival.component';
 import { CarnivalCardComponent } from './components/carnival-card/carnival-card.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ItemCardComponent } from './components/item-card/item-card.component';
+import { ItemCardHeaderComponent } from './components/item-card/item-card-header/item-card-header.component';
+import { ItemCardTextComponent } from './components/item-card/item-card-text/item-card-text.component';
+import { ItemCardFooterComponent } from './components/item-card/item-card-footer/item-card-footer.component';
+import { ItemCardUpcomingComponent } from './components/item-card/item-card-upcoming/item-card-upcoming.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +53,11 @@ import { ItemCardComponent } from './components/item-card/item-card.component';
     CarnivalComponent,
     CarnivalCardComponent,
     WelcomeComponent,
-    ItemCardComponent
+    ItemCardComponent,
+    ItemCardHeaderComponent,
+    ItemCardTextComponent,
+    ItemCardFooterComponent,
+    ItemCardUpcomingComponent
   ],
   imports: [
     BrowserModule,

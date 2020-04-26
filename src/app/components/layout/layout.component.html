@@ -28,7 +28,7 @@
 
         <li class="nav-item" *ngIf="mcpItem.amount >= Globals.visibleAmounts.shop">
           <a [ngClass]="{'nav-link': true, 'active': navigation === 'shop'}" (click)="setNav('shop')">
-            <app-pulsing-text [text]="'Shop'" [initialPulse]="true" [pulseId]="'shop'"></app-pulsing-text>
+            <app-pulsing-text [text]="'Shop'" [redPulse]="true" [pulseId]="'shop'"></app-pulsing-text>
           </a>
         </li>
         <li class="nav-item disabled" *ngIf="mcpItem.amount < Globals.visibleAmounts.shop">
@@ -38,7 +38,7 @@
         <ng-container *ngIf="curLevel && levelService.levels$ | async as levels">
           <li class="nav-item" *ngIf="mcpItem.amount >= Globals.visibleAmounts.powers || curLevel.id > 0">
             <a [ngClass]="{'nav-link': true, 'active': navigation === 'powers'}" (click)="setNav('powers')">
-              <app-pulsing-text [text]="'Powers'" [initialPulse]="true" [pulseId]="'powers'"></app-pulsing-text>
+              <app-pulsing-text [text]="'Powers'" [redPulse]="true" [pulseId]="'powers'"></app-pulsing-text>
             </a>
           </li>
           <li class="nav-item disabled" *ngIf="mcpItem.amount < Globals.visibleAmounts.powers && curLevel.id  < 1">
@@ -48,7 +48,7 @@
 
         <li class="nav-item" *ngIf="itemService.exchangeUnlocked() && mcpItem.amount >= Globals.visibleAmounts.exchange">
           <a [ngClass]="{'nav-link': true, 'active': navigation === 'exchange'}" (click)="setNav('exchange')">
-            <app-pulsing-text [text]="'Exchange'" [initialPulse]="true" [pulseId]="'exchange'"></app-pulsing-text>
+            <app-pulsing-text [text]="'Exchange'" [redPulse]="true" [pulseId]="'exchange'"></app-pulsing-text>
           </a>
         </li>
         <li class="nav-item disabled" *ngIf="itemService.exchangeUnlocked() && mcpItem.amount < Globals.visibleAmounts.exchange">
@@ -57,7 +57,7 @@
 
         <li class="nav-item" *ngIf="itemService.rebirthUnlocked() && mcpItem.amount >= Globals.visibleAmounts.rebirth">
           <a [ngClass]="{'nav-link': true, 'active': navigation === 'rebirth'}" (click)="setNav('rebirth')">
-            <app-pulsing-text [text]="'Rebirth'" [initialPulse]="true" [pulseId]="'rebirth'"></app-pulsing-text>
+            <app-pulsing-text [text]="'Rebirth'" [redPulse]="true" [pulseId]="'rebirth'"></app-pulsing-text>
           </a>
         </li>
         <li class="nav-item disabled" *ngIf="itemService.rebirthUnlocked() && mcpItem.amount < Globals.visibleAmounts.rebirth">
@@ -66,7 +66,7 @@
 
         <li class="nav-item" *ngIf="itemService.carnivalUnlocked() && mcpItem.amount >= Globals.visibleAmounts.refine">
           <a [ngClass]="{'nav-link': true, 'active': navigation === 'carnival'}" (click)="setNav('carnival')">
-            <app-pulsing-text [text]="'Demigod Carnival'" [initialPulse]="true" [pulseId]="'carnival'"></app-pulsing-text>
+            <app-pulsing-text [text]="'Demigod Carnival'" [redPulse]="true" [pulseId]="'carnival'"></app-pulsing-text>
           </a>
         </li>
         <li class="nav-item disabled" *ngIf="itemService.carnivalUnlocked() && mcpItem.amount < Globals.visibleAmounts.refine">
