@@ -1,6 +1,7 @@
 export default [
   {
     id: 900,
+    pulseId: 'item-900',
     name: 'Mind Control Power',
     icon: 'crown',
     color: '#621f8f',
@@ -10,15 +11,17 @@ export default [
   },
   {
     id: 901,
+    pulseId: 'item-901',
     name: 'Humans',
     icon: 'user',
     color: '#b4a802',
-    amount: 1,
+    amount: 2,
     limit: 0,
     visible: false
   },
   {
     id: 902,
+    pulseId: 'item-902',
     name: 'Coins',
     icon: 'coin-bag',
     color: '#aaaa00',
@@ -28,6 +31,7 @@ export default [
   },
   {
     id: 903,
+    pulseId: 'item-903',
     name: 'Demigod',
     icon: 'demigod',
     color: '#000000',
@@ -37,6 +41,7 @@ export default [
   },
   {
     id: 904,
+    pulseId: 'item-904',
     name: 'Auto Activity Switcher',
     icon: '',
     color: '',
@@ -46,6 +51,7 @@ export default [
   },
   {
     id: 905,
+    pulseId: 'item-905',
     name: 'Allow Refining',
     icon: '',
     color: '',
@@ -55,6 +61,7 @@ export default [
   },
   {
     id: 906,
+    pulseId: 'item-906',
     name: 'Exchange Unlocked',
     icon: '',
     color: '',
@@ -64,6 +71,7 @@ export default [
   },
   {
     id: 907,
+    pulseId: 'item-907',
     name: 'Rebirth Unlocked',
     icon: '',
     color: '',
@@ -73,6 +81,7 @@ export default [
   },
   {
     id: 908,
+    pulseId: 'item-908',
     name: 'Carnival Unlocked',
     icon: '',
     color: '',
@@ -82,6 +91,7 @@ export default [
   },
   {
     id: 1,
+    pulseId: 'item-1',
     name: 'Rocks',
     icon: 'rock',
     color: '#555555',
@@ -92,6 +102,7 @@ export default [
   },
   {
     id: 7,
+    pulseId: 'item-7',
     name: 'Clay',
     icon: 'clay',
     color: '#ac6100',
@@ -102,6 +113,7 @@ export default [
   },
   {
     id: 3,
+    pulseId: 'item-3',
     name: 'Fish',
     icon: 'fish',
     color: '#84b0f1',
@@ -112,6 +124,7 @@ export default [
   },
   {
     id: 2,
+    pulseId: 'item-2',
     name: 'Trees',
     icon: 'tree',
     color: '#425f0b',
@@ -122,6 +135,7 @@ export default [
   },
   {
     id: 8,
+    pulseId: 'item-8',
     name: 'Grain',
     icon: 'grain',
     color: 'tan',
@@ -132,6 +146,7 @@ export default [
   },
   {
     id: 4,
+    pulseId: 'item-4',
     name: 'Gems',
     icon: 'gem',
     color: '#176662',
@@ -142,6 +157,7 @@ export default [
   },
   {
     id: 9,
+    pulseId: 'item-9',
     name: 'Bricks',
     icon: 'firewall',
     color: '#aa5555',
@@ -152,6 +168,7 @@ export default [
   },
   {
     id: 6,
+    pulseId: 'item-6',
     name: 'Cooked Fish',
     icon: 'fish',
     color: '#be6868',
@@ -162,6 +179,7 @@ export default [
   },
   {
     id: 5,
+    pulseId: 'item-5',
     name: 'Boards',
     icon: 'container',
     color: '#563812',
@@ -172,6 +190,7 @@ export default [
   },
   {
     id: 10,
+    pulseId: 'item-10',
     name: 'Bread',
     icon: 'bread',
     color: '#91752b',

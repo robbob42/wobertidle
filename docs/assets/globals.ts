@@ -32,6 +32,7 @@ export class Globals {
   };
   public static blankItem: Item = {
     id: 0,
+    pulseId: '',
     amount: 0,
     color: '',
     icon: '',
@@ -42,9 +43,11 @@ export class Globals {
   };
   public static blankLevel: Level = {
     id: 0,
+    pulseId: '',
     name: '',
     itemsCost: [{
       itemId: 0,
+      pulseId: '',
       itemAmount: 0
     }],
     improvements: [0],
@@ -57,6 +60,7 @@ export class Globals {
   ];
   public static blankActivity: Activity = {
     id: 0,
+    pulseId: '',
     type: '',
     name: '',
     active: false,
@@ -77,6 +81,7 @@ export class Globals {
   };
   public static blankImprovement: Improvement = {
     id: 0,
+    pulseId: '',
     costMultiplyer: 0,
     improvee: '',
     improveeId: 0,
@@ -84,6 +89,7 @@ export class Globals {
     improvesByMultiplyer: 0,
     itemsCost: [{
       itemId: 0,
+      pulseId: '',
       itemAmount: 0
     }],
     level: 0,

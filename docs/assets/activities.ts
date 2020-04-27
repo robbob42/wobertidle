@@ -1,6 +1,7 @@
 export default [
   {
     id: 1,
+    pulseId: 'activity-1',
     name: 'Find Rocks',
     type: 'raw',
     active: false,
@@ -18,6 +19,7 @@ export default [
   },
   {
     id: 7,
+    pulseId: 'activity-7',
     name: 'Collect Clay',
     type: 'raw',
     active: false,
@@ -27,14 +29,15 @@ export default [
     produceAmount: 1,
     actionTime: 1500,
     mcProficiency: 2,
-    mcpTriggerAmount: 10,
+    mcpTriggerAmount: 4,
     triggered: false,
-    mcpDiscoverAmount: 20,
+    mcpDiscoverAmount: 6,
     discovered: false,
     visible: false
   },
   {
     id: 3,
+    pulseId: 'activity-3',
     name: 'Fish',
     type: 'raw',
     active: false,
@@ -52,6 +55,7 @@ export default [
   },
   {
     id: 2,
+    pulseId: 'activity-2',
     name: 'Chop Wood',
     type: 'raw',
     active: false,
@@ -69,6 +73,7 @@ export default [
   },
   {
     id: 8,
+    pulseId: 'activity-8',
     name: 'Plant Grain',
     type: 'raw',
     active: false,
@@ -86,6 +91,7 @@ export default [
   },
   {
     id: 4,
+    pulseId: 'activity-4',
     name: 'Polish Gems',
     type: 'refine',
     active: false,
@@ -105,6 +111,7 @@ export default [
   },
   {
     id: 9,
+    pulseId: 'activity-9',
     name: 'Fire Bricks',
     type: 'refine',
     active: false,
@@ -124,6 +131,7 @@ export default [
   },
   {
     id: 6,
+    pulseId: 'activity-6',
     name: 'Cook Fish',
     type: 'refine',
     active: false,
@@ -143,6 +151,7 @@ export default [
   },
   {
     id: 5,
+    pulseId: 'activity-5',
     name: 'Mill Boards',
     type: 'refine',
     active: false,
@@ -162,6 +171,7 @@ export default [
   },
   {
     id: 10,
+    pulseId: 'activity-10',
     name: 'Bake Bread',
     type: 'refine',
     active: false,

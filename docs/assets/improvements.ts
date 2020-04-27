@@ -3,6 +3,7 @@ import { Globals } from './globals';
 export default [
   {
     id: 1,
+    pulseId: 'improvement-1',
     name: 'Finding++',
     type: 'speed',
     level: 1,
@@ -19,6 +20,7 @@ export default [
   },
   {
     id: 12,
+    pulseId: 'improvement-12',
     name: 'Collecting++',
     type: 'speed',
     level: 1,
@@ -26,10 +28,12 @@ export default [
     itemsCost: [
       {
         itemId: 1,
+        pulseId: 'improvement-item-12-1',
         itemAmount: 3,
       },
       {
         itemId: 7,
+        pulseId: 'improvement-item-12-7',
         itemAmount: 2,
       }
     ],
@@ -41,6 +45,7 @@ export default [
   },
   {
     id: 3,
+    pulseId: 'improvement-3',
     name: 'Fishing++',
     type: 'speed',
     level: 1,
@@ -48,14 +53,17 @@ export default [
     itemsCost: [
       {
         itemId: 1,
+        pulseId: 'improvement-item-3-1',
         itemAmount: 4,
       },
       {
         itemId: 7,
+        pulseId: 'improvement-item-3-7',
         itemAmount: 3,
       },
       {
         itemId: 3,
+        pulseId: 'improvement-item-3-3',
         itemAmount: 2,
       }
     ],
@@ -67,6 +75,7 @@ export default [
   },
   {
     id: 2,
+    pulseId: 'improvement-2',
     name: 'Chopping++',
     type: 'speed',
     level: 1,
@@ -74,18 +83,22 @@ export default [
     itemsCost: [
       {
         itemId: 1,
+        pulseId: 'improvement-item-2-1',
         itemAmount: 5,
       },
       {
         itemId: 7,
+        pulseId: 'improvement-item-2-7',
         itemAmount: 4,
       },
       {
         itemId: 3,
+        pulseId: 'improvement-item-2-3',
         itemAmount: 3,
       },
       {
         itemId: 2,
+        pulseId: 'improvement-item-2-2',
         itemAmount: 2,
       }
     ],
@@ -97,6 +110,7 @@ export default [
   },
   {
     id: 13,
+    pulseId: 'improvement-13',
     name: 'Harvesting++',
     type: 'speed',
     level: 1,
@@ -104,22 +118,27 @@ export default [
     itemsCost: [
       {
         itemId: 1,
+        pulseId: 'improvement-item-13-1',
         itemAmount: 6,
       },
       {
         itemId: 7,
+        pulseId: 'improvement-item-13-7',
         itemAmount: 5,
       },
       {
         itemId: 3,
+        pulseId: 'improvement-item-13-3',
         itemAmount: 4,
       },
       {
         itemId: 2,
+        pulseId: 'improvement-item-13-2',
         itemAmount: 3,
       },
       {
         itemId: 8,
+        pulseId: 'improvement-item-13-8',
         itemAmount: 2,
       }
     ],
@@ -131,12 +150,14 @@ export default [
   },
   {
     id: 4,
+    pulseId: 'improvement-4',
     name: 'Mining x 2',
     type: 'production',
     level: 1,
     itemsCost: [
       {
         itemId: 902,
+        pulseId: 'improvement-item-4-902',
         itemAmount: 5
       }
     ],
@@ -148,12 +169,14 @@ export default [
   },
   {
     id: 14,
+    pulseId: 'improvement-14',
     name: 'Collecting x 2',
     type: 'production',
     level: 1,
     itemsCost: [
       {
         itemId: 902,
+        pulseId: 'improvement-item-14-902',
         itemAmount: 10
       }
     ],
@@ -165,12 +188,14 @@ export default [
   },
   {
     id: 6,
+    pulseId: 'improvement-6',
     name: 'Fishing x 2',
     type: 'production',
     level: 1,
     itemsCost: [
       {
         itemId: 902,
+        pulseId: 'improvement-item-6-902',
         itemAmount: 15
       }
     ],
@@ -182,12 +207,14 @@ export default [
   },
   {
     id: 5,
+    pulseId: 'improvement-5',
     name: 'Chopping x 2',
     type: 'production',
     level: 1,
     itemsCost: [
       {
         itemId: 902,
+        pulseId: 'improvement-item-5-902',
         itemAmount: 20
       }
     ],
@@ -199,12 +226,14 @@ export default [
   },
   {
     id: 15,
+    pulseId: 'improvement-15',
     name: 'Harvesting x 2',
     type: 'production',
     level: 1,
     itemsCost: [
       {
         itemId: 902,
+        pulseId: 'improvement-item-15-902',
         itemAmount: 25
       }
     ],
@@ -216,12 +245,14 @@ export default [
   },
   {
     id: 7,
+    pulseId: 'improvement-7',
     name: 'Rock Limit x 2',
     type: 'limit',
     level: 1,
     itemsCost: [
       {
         itemId: 1,
+        pulseId: 'improvement-item-7-1',
         itemAmount: 20
       }
     ],
@@ -233,12 +264,14 @@ export default [
   },
   {
     id: 10,
+    pulseId: 'improvement-10',
     name: 'Clay Limit x 2',
     type: 'limit',
     level: 1,
     itemsCost: [
       {
         itemId: 7,
+        pulseId: 'improvement-item-10-7',
         itemAmount: 20
       }
     ],
@@ -250,12 +283,14 @@ export default [
   },
   {
     id: 9,
+    pulseId: 'improvement-9',
     name: 'Fish Limit x 2',
     type: 'limit',
     level: 1,
     itemsCost: [
       {
         itemId: 3,
+        pulseId: 'improvement-item-9-3',
         itemAmount: 20
       }
     ],
@@ -267,12 +302,14 @@ export default [
   },
   {
     id: 8,
+    pulseId: 'improvement-8',
     name: 'Tree Limit x 2',
     type: 'limit',
     level: 1,
     itemsCost: [
       {
         itemId: 2,
+        pulseId: 'improvement-item-8-2',
         itemAmount: 20
       }
     ],
@@ -284,12 +321,14 @@ export default [
   },
   {
     id: 11,
+    pulseId: 'improvement-11',
     name: 'Grain Limit x 2',
     type: 'limit',
     level: 1,
     itemsCost: [
       {
         itemId: 8,
+        pulseId: 'improvement-item-11-8',
         itemAmount: 20
       }
     ],
@@ -301,12 +340,14 @@ export default [
   },
   {
     id: 16,
+    pulseId: 'improvement-16',
     name: 'Human + 1',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: Globals.itemIds.mcp,
+        pulseId: 'improvement-item-16-' + Globals.itemIds.mcp,
         itemAmount: 20000
       }
     ],
@@ -319,12 +360,14 @@ export default [
   },
   {
     id: 17,
+    pulseId: 'improvement-17',
     name: 'Finding MCP X 2',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 1,
+        pulseId: 'improvement-item-17-1',
         itemAmount: 0
       }
     ],
@@ -337,12 +380,14 @@ export default [
   },
   {
     id: 18,
+    pulseId: 'improvement-18',
     name: 'Collecting MCP X 2',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 7,
+        pulseId: 'improvement-item-18-7',
         itemAmount: 0
       }
     ],
@@ -355,12 +400,14 @@ export default [
   },
   {
     id: 19,
+    pulseId: 'improvement-19',
     name: 'Fishing MCP X 2',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 3,
+        pulseId: 'improvement-item-19-3',
         itemAmount: 0
       }
     ],
@@ -373,12 +420,14 @@ export default [
   },
   {
     id: 20,
+    pulseId: 'improvement-20',
     name: 'Chopping MCP X 2',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 2,
+        pulseId: 'improvement-item-20-2',
         itemAmount: 0
       }
     ],
@@ -391,12 +440,14 @@ export default [
   },
   {
     id: 21,
+    pulseId: 'improvement-21',
     name: 'Harvesting MCP X 2',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 8,
+        pulseId: 'improvement-item-21-8',
         itemAmount: 0
       }
     ],
@@ -409,12 +460,14 @@ export default [
   },
   {
     id: 22,
+    pulseId: 'improvement-22',
     name: 'Auto Activity Switcher',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 8,
+        pulseId: 'improvement-item-22-8',
         itemAmount: 0
       }
     ],
@@ -427,12 +480,14 @@ export default [
   },
   {
     id: 23,
+    pulseId: 'improvement-23',
     name: 'Mining x 2',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 902,
+        pulseId: 'improvement-item-23-902',
         itemAmount: 5
       }
     ],
@@ -444,12 +499,14 @@ export default [
   },
   {
     id: 24,
+    pulseId: 'improvement-24',
     name: 'Collecting x 2',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 902,
+        pulseId: 'improvement-item-24-902',
         itemAmount: 10
       }
     ],
@@ -461,12 +518,14 @@ export default [
   },
   {
     id: 25,
+    pulseId: 'improvement-25',
     name: 'Fishing x 2',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 902,
+        pulseId: 'improvement-item-25-902',
         itemAmount: 15
       }
     ],
@@ -478,12 +537,14 @@ export default [
   },
   {
     id: 26,
+    pulseId: 'improvement-26',
     name: 'Chopping x 2',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 902,
+        pulseId: 'improvement-item-26-902',
         itemAmount: 20
       }
     ],
@@ -495,12 +556,14 @@ export default [
   },
   {
     id: 27,
+    pulseId: 'improvement-27',
     name: 'Harvesting x 2',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 902,
+        pulseId: 'improvement-item-27-902',
         itemAmount: 25
       }
     ],
@@ -512,12 +575,14 @@ export default [
   },
   {
     id: 28,
+    pulseId: 'improvement-28',
     name: 'Allow Refining',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 8,
+        pulseId: 'improvement-item-28-8',
         itemAmount: 0
       }
     ],
@@ -530,12 +595,14 @@ export default [
   },
   {
     id: 29,
+    pulseId: 'improvement-29',
     name: 'Exchange Unlocked',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 8,
+        pulseId: 'improvement-item-29-8',
         itemAmount: 0
       }
     ],
@@ -548,12 +615,14 @@ export default [
   },
   {
     id: 30,
+    pulseId: 'improvement-30',
     name: 'Rebirth Unlocked',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 8,
+        pulseId: 'improvement-item-30-8',
         itemAmount: 0
       }
     ],
@@ -566,12 +635,14 @@ export default [
   },
   {
     id: 31,
+    pulseId: 'improvement-31',
     name: 'Finding Max Speed Increase by 5',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 8,
+        pulseId: 'improvement-item-31-8',
         itemAmount: 0
       }
     ],
@@ -584,12 +655,14 @@ export default [
   },
   {
     id: 32,
+    pulseId: 'improvement-32',
     name: 'Collecting Max Speed Increase by 5',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 8,
+        pulseId: 'improvement-item-32-8',
         itemAmount: 0
       }
     ],
@@ -602,12 +675,14 @@ export default [
   },
   {
     id: 33,
+    pulseId: 'improvement-33',
     name: 'Fishing Max Speed Increase by 5',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 8,
+        pulseId: 'improvement-item-33-8',
         itemAmount: 0
       }
     ],
@@ -620,12 +695,14 @@ export default [
   },
   {
     id: 34,
+    pulseId: 'improvement-34',
     name: 'Chopping Max Speed Increase by 5',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 8,
+        pulseId: 'improvement-item-34-8',
         itemAmount: 0
       }
     ],
@@ -638,12 +715,14 @@ export default [
   },
   {
     id: 35,
+    pulseId: 'improvement-35',
     name: 'Harvesting Max Speed Increase by 5',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 8,
+        pulseId: 'improvement-item-35-8',
         itemAmount: 0
       }
     ],
@@ -656,12 +735,14 @@ export default [
   },
   {
     id: 36,
+    pulseId: 'improvement-36',
     name: 'Gem Limit x 2',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 8,
+        pulseId: 'improvement-item-36-8',
         itemAmount: 0
       }
     ],
@@ -673,12 +754,14 @@ export default [
   },
   {
     id: 37,
+    pulseId: 'improvement-37',
     name: 'Brick Limit x 2',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 8,
+        pulseId: 'improvement-item-37-8',
         itemAmount: 0
       }
     ],
@@ -690,12 +773,14 @@ export default [
   },
   {
     id: 38,
+    pulseId: 'improvement-38',
     name: 'Cooked Fish Limit x 2',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 8,
+        pulseId: 'improvement-item-38-8',
         itemAmount: 0
       }
     ],
@@ -707,12 +792,14 @@ export default [
   },
   {
     id: 39,
+    pulseId: 'improvement-39',
     name: 'Board Limit x 2',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 8,
+        pulseId: 'improvement-item-39-8',
         itemAmount: 0
       }
     ],
@@ -724,12 +811,14 @@ export default [
   },
   {
     id: 40,
+    pulseId: 'improvement-40',
     name: 'Bread Limit x 2',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 8,
+        pulseId: 'improvement-item-40-8',
         itemAmount: 0
       }
     ],
@@ -741,12 +830,14 @@ export default [
   },
   {
     id: 41,
+    pulseId: 'improvement-41',
     name: 'Unlock the Demigod Carnival!',
     type: 'mcp',
     level: 1,
     itemsCost: [
       {
         itemId: 8,
+        pulseId: 'improvement-item-41-8',
         itemAmount: 0
       }
     ],
