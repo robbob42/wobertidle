@@ -32,6 +32,11 @@ export class ActivitySliderComponent implements OnInit, OnDestroy {
   private leftTime = 0;
   private returnTime = 0;
 
+  private expected: number;
+  private start = Date.now();
+  private delta = 0;
+  private calculateDeltaFlag = true;
+
   constructor(
     public itemService: ItemService,
     public activityService: ActivityService,
@@ -108,6 +113,9 @@ export class ActivitySliderComponent implements OnInit, OnDestroy {
       this.activity = activities.find(act => act.id === this.activityId);
       this.actionTime = (this.activity.actionTime / 1000).toFixed(3);
 
+      this.expected = this.start + this.activity.actionTime;
+      this.calculateDeltaFlag = false;
+
       if (
         this.activity &&
         this.activity.active &&
@@ -165,8 +173,8 @@ export class ActivitySliderComponent implements OnInit, OnDestroy {
 
   setActivityInterval() {
     const interval = this.activity.actionTime;
-    let expected = Date.now() + this.activity.actionTime;
-    let start = Date.now();
+    this.start = Date.now();
+    this.expected = this.start + this.activity.actionTime;
 
     const increaseActivityWidth = () => {
       let curWidth = 0;
@@ -179,26 +187,30 @@ export class ActivitySliderComponent implements OnInit, OnDestroy {
     };
 
 
-    this.activityInterval = setTimeout(() => step(this.activity, this.itemService), this.activity.actionTime);
+    this.activityInterval = setTimeout(() => step(), this.activity.actionTime);
     clearInterval(this.widthInterval);
     increaseActivityWidth();
 
-    const step = (activity, itemService) => {
-      if (activity && activity.active && !this.itemService.limitReached(this.activity.producesId)) {
+    const step = () => {
+      if (this.activity && this.activity.active && !this.itemService.limitReached(this.activity.producesId)) {
         clearInterval(this.widthInterval);
         increaseActivityWidth();
-        const dt = Date.now() - expected; // the drift (positive for overshooting)
-        itemService.incrementItem(
-          activity.producesId,
-          activity.produceAmount,
-          activity.decrementId,
-          activity.decrementAmount,
-          activity.mcProficiency
+        if (this.calculateDeltaFlag) {
+          this.delta = Date.now() - this.expected; // the drift (positive for overshooting)
+        } else {
+          this.delta = 0;
+          this.calculateDeltaFlag = true;
+        }
+        this.itemService.incrementItem(
+          this.activity.producesId,
+          this.activity.produceAmount,
+          this.activity.decrementId,
+          this.activity.decrementAmount,
+          this.activity.mcProficiency
         );
-        expected = Date.now() + this.activity.actionTime;
-        start = Date.now();
-
-        this.activityInterval = setTimeout(() => step(activity, itemService), interval - dt); // take into account drift
+        this.start = Date.now();
+        this.expected = this.start + this.activity.actionTime - this.delta;
+        this.activityInterval = setTimeout(() => step(), this.activity.actionTime - this.delta); // take into account drift
       }
     };
   }
