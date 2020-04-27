@@ -1,8 +1,14 @@
 <ng-container *ngIf="activity && activityService.activities$ | async">
-  <clr-toggle-container style="margin-top: 0;">
-    <clr-toggle-wrapper class="custom-styles">
-      <input type="checkbox" clrToggle name="options" (click)="toggleActivity(activity.id)" [(ngModel)]="activity.active" />
-      <label> </label>
-    </clr-toggle-wrapper>
-  </clr-toggle-container>
+  <div class="clr-form-control custom-toggle">
+    <div class="clr-control-container custom-container">
+      <div class="clr-toggle-wrapper custom-wrapper">
+        <input type="checkbox" id="{{activity.id}}" (click)="toggleActivity(activity.id)" [(ngModel)]="activity.active" class="clr-toggle">
+        <label class="custom-label" for="{{activity.id}}">
+          <div style="padding-right: 2.1rem">
+            <app-pulsing-text [text]="activity.name" [pulseId]="activity.pulseId+'name'"></app-pulsing-text>
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
 </ng-container>
