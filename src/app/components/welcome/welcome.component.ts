@@ -30,7 +30,7 @@ export class WelcomeComponent implements OnInit {
   }
 
   displayNext() {
-    this.oldMessages.push(this.nextMessage);
+    this.oldMessages.unshift(this.nextMessage);
     this.nextMessage = this.messages.shift();
   }
 

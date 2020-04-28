@@ -15,7 +15,7 @@ export default [
     name: 'Humans',
     icon: 'user',
     color: '#b4a802',
-    amount: 2,
+    amount: 1,
     limit: 0,
     visible: false
   },
@@ -138,7 +138,7 @@ export default [
     pulseId: 'item-8',
     name: 'Grain',
     icon: 'grain',
-    color: 'tan',
+    color: '#d2b48c',
     value: 5,
     amount: 0,
     limit: 20,

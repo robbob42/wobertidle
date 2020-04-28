@@ -1,17 +1,16 @@
-<div class="card" *ngIf="activity && activity.discovered">
-  <div class="card-header my-card-header">
-    <app-item-card-header [activityId]="activityId" [itemId]="itemId"></app-item-card-header>
-  </div>
-  <div class="card-block my-card-block">
-    <div class="progress top">
-      <app-activity-slider [activityId]="activityId"></app-activity-slider>
+<app-pulsing-text [text]="" [pulseId]="activity.pulseId+'card'" *ngIf="activity && activity.discovered">
+  <div class="card">
+    <div class="card-header my-card-header">
+      <app-item-card-header [activityId]="activityId" [itemId]="itemId"></app-item-card-header>
     </div>
-    <div class="card-text">
-      <app-item-card-text [itemId]="itemId" [activityId]="activityId"></app-item-card-text>
+    <div class="card-block my-card-block">
+      <div class="progress top">
+        <app-activity-slider [activityId]="activityId"></app-activity-slider>
+      </div>
+      <div class="card-text">
+        <app-item-card-text [itemId]="itemId" [activityId]="activityId"></app-item-card-text>
+      </div>
     </div>
   </div>
-  <!-- <div class="card-footer">
-    <app-item-card-footer [activityId]="activityId"></app-item-card-footer>
-  </div> -->
-</div>
+</app-pulsing-text>
 <app-item-card-upcoming [activityId]="activityId" [itemId]="itemId"></app-item-card-upcoming>

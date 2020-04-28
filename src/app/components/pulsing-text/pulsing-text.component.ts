@@ -12,6 +12,7 @@ export class PulsingTextComponent implements OnInit, OnChanges, OnDestroy {
   @Input() pulseId: string;
   @Input() initialPulse = false;
   @Input() redPulse = false;
+  @Input() contentStyles = {};
 
   private controlSub: Subscription;
   public pulser: {
@@ -42,10 +43,15 @@ export class PulsingTextComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (this.pulseId && !changes.text.previousValue && changes.initialPulse && changes.initialPulse.currentValue) {
+    if (this.pulseId && changes.text && !changes.text.previousValue && changes.initialPulse && changes.initialPulse.currentValue) {
       this.controlService.startPulse(this.pulseId);
     }
-    if (this.pulseId && changes.text.previousValue !== undefined && changes.text.previousValue !== changes.text.currentValue) {
+    if (
+      this.pulseId &&
+      changes.text &&
+      changes.text.previousValue !== undefined &&
+      changes.text.previousValue !== changes.text.currentValue
+    ) {
       this.controlService.startPulse(this.pulseId);
     }
   }

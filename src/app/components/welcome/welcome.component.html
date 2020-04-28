@@ -5,10 +5,10 @@
   </div>
   <div class="card-block">
       <div class="card-text">
+        <app-pulsing-text [text]="nextMessage" [initialPulse]="true" [pulseId]="'nextMessage'"></app-pulsing-text>
         <ng-container *ngFor="let message of oldMessages">
           {{message}}<br />
         </ng-container>
-        <app-pulsing-text [text]="nextMessage" [initialPulse]="true" [pulseId]="'nextMessage'"></app-pulsing-text>
       </div>
   </div>
   <div class="card-footer">

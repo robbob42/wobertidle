@@ -7,7 +7,7 @@ class Navigation {
 }
 
 const defaultNavigation = {
-  topNav: 'play',
+  topNav: 'welcome',
   contentNav: 'home'
 };
 

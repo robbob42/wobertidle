@@ -9,6 +9,7 @@ import { Item } from '../../models/item';
 import { Globals } from '../../../assets/globals';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ControlService } from 'src/app/services/control.service';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: 'app-activity-button',
@@ -31,6 +32,7 @@ export class ActivityButtonComponent implements OnInit, OnDestroy {
   private humanItem: Item;
   public item: Item;
   private activeColor: string;
+  public bgColor = 'white';
 
   @HostBinding('attr.style')
   public get valueAsStyle(): any {
@@ -41,13 +43,17 @@ export class ActivityButtonComponent implements OnInit, OnDestroy {
     public activityService: ActivityService,
     public itemService: ItemService,
     private sanitizer: DomSanitizer,
-    private controlService: ControlService
+    private controlService: ControlService,
+    private utilsService: UtilsService
   ) {
   }
 
   ngOnInit(): void {
     this.activitySub = this.activityService.activities$.subscribe((activities) => {
       this.activity = activities.find((act => act.id === this.activityId));
+      const rgb = this.utilsService.hexToRgb(this.activity.color);
+      const rgba = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.1)`;
+      this.bgColor = this.activity.active ? rgba : 'white';
       this.activeColor = this.activity.color;
     });
 
@@ -61,7 +67,7 @@ export class ActivityButtonComponent implements OnInit, OnDestroy {
     const toggleResults = this.activityService.toggleActivity(activityId, this.humanItem.amount);
     if (!toggleResults.toggled) {
       toggleResults.actives.forEach(activity => {
-        this.controlService.startRedPulse(activity.pulseId + 'name');
+        this.controlService.startRedPulse(activity.pulseId + 'card');
       });
     }
   }

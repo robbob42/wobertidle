@@ -1,13 +1,13 @@
 <ng-container *ngIf="activity && activityService.activities$ | async">
   <div class="clr-form-control custom-toggle">
-    <div class="clr-control-container custom-container">
+    <div class="clr-control-container custom-container" [ngStyle]="{'backgroundColor': bgColor}">
       <div class="clr-toggle-wrapper custom-wrapper">
         <input type="checkbox" id="{{activity.id}}" (click)="toggleActivity(activity.id)" [(ngModel)]="activity.active" class="clr-toggle">
         <label class="custom-label" for="{{activity.id}}">
           <div class="clr-row">
             <div class="clr-col-12" *ngIf="item && itemService.items$ | async">
               <clr-icon attr.shape="{{item.icon}}" shape="" size="24" [ngStyle]="{'color': item.color}"></clr-icon>
-              : <app-pulsing-text [text]="item.amount" [pulseId]="item.pulseId+'amount'"></app-pulsing-text>
+              : <app-pulsing-text [text]="item.amount" [pulseId]="item.pulseId+'amount'" [contentStyles]="{float: 'left'}"></app-pulsing-text>
               / <app-pulsing-text [text]="item.limit" [pulseId]="item.pulseId+'limit'"></app-pulsing-text>
             </div>
           </div>

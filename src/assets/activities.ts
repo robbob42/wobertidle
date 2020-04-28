@@ -77,7 +77,7 @@ export default [
     name: 'Plant Grain',
     type: 'raw',
     active: false,
-    color: 'tan',
+    color: '#d2b48c',
     produces: 'Grain',
     producesId: 8,
     produceAmount: 1,
