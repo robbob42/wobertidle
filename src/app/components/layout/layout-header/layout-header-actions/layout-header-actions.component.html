@@ -1,3 +1,3 @@
-<a [ngClass]="{'nav-link': true, 'active': contentNav === 'level'}" (click)="setContentNav('play')">
-  <app-pulsing-text [pulseId]="'levelup'" [text]="'LEVEL UP!'" [initialPulse]="true"></app-pulsing-text>
+<a *ngIf="topNav !== 'welcome'" class="nav-link" (click)="setContentNav(powersNav)">
+  <app-pulsing-text [pulseId]="'powers'" [text]="powersText" [initialPulse]="true"></app-pulsing-text>
 </a>

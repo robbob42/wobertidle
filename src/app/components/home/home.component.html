@@ -5,15 +5,16 @@
 </div>
 
 <br /><br />
-<button type="button" (click)="controlService.save()">Save</button>
-<!-- <button type="button" (click)="controlService.load()">Load</button> -->
-<button type="button" (click)="controlService.clear()">Clear</button><br><br>
+<button class="btn btn-outline" (click)="controlService.save()">Save</button>
+<button class="btn btn-warning-outline" (click)="controlService.clear()">Clear</button>
+<button class="btn btn-success-outline" disabled (click)="testAvailable = true">Test</button><br><br>
 
-<button type="button" (click)="cheat5()">5 Minutes into play</button><br>
-<button type="button" (click)="cheat20()">20 Minutes into play</button><br>
-<button type="button" (click)="setmcp(100000)">100,000 mcp</button><br>
-<button type="button" (click)="levelService.levelUp()">Level Up</button><br>
-<br>
+<ng-container *ngIf="testAvailable">
+  <button class="btn btn-warning" (click)="cheat5()">5 Minutes into play</button><br>
+  <button class="btn btn-warning" (click)="cheat20()">20 Minutes into play</button><br>
+  <button class="btn btn-warning" (click)="setmcp(100000)">100,000 mcp</button><br>
+  <button class="btn btn-warning" (click)="levelService.levelUp()">Level Up</button><br>
+</ng-container>
 
 
 <!-- <input type="text" [(ngModel)]="amounts[1]">

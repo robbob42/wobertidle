@@ -40,6 +40,11 @@ export class LayoutHeaderComponent implements OnInit, OnDestroy {
     this.navigationService.topNavigate(nav);
   }
 
+  play() {
+    this.navigationService.topNavigate('play');
+    this.navigationService.contentNavigate('home');
+  }
+
   ngOnDestroy() {
     this.levelSub.unsubscribe();
     this.navSub.unsubscribe();

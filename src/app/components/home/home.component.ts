@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
     itemId: number,
     activityId: number
   }[] = [];
+  public testAvailable = false;
 
   constructor(
     public itemService: ItemService,

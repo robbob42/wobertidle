@@ -23,6 +23,8 @@ export class LayoutHeaderActionsComponent implements OnInit, OnDestroy {
   private itemSub: Subscription;
   private mcpItem: Item;
   private levelInterval: any;
+  public powersText = 'POWERS';
+  public powersNav = 'powers';
 
   constructor(
     public levelService: LevelService,
@@ -40,15 +42,20 @@ export class LayoutHeaderActionsComponent implements OnInit, OnDestroy {
     this.navSub = this.navigationService.navigations$.subscribe((navigations) => {
       this.topNav = navigations.topNav;
       this.contentNav = navigations.contentNav;
+
+      this.powersText = navigations.contentNav === 'powers' ? 'HOME' : 'POWERS';
+      this.powersNav = navigations.contentNav === 'powers' ? 'home' : 'powers';
     });
 
     this.itemSub = this.itemService.items$.subscribe((items) => {
       this.mcpItem = items.find(itm => itm.id === Globals.itemIds.mcp);
 
       if (this.mcpItem && this.curLevel && this.mcpItem.amount >= this.utilsService.levelFib(this.curLevel.id)) {
-        this.levelInterval = setInterval(() => {
-          this.controlService.startPulse('levelup');
-        }, 2000);
+        if (!this.levelInterval) {
+          this.levelInterval = setInterval(() => {
+            this.controlService.startPulse('powers');
+          }, 2000);
+        }
       } else {
         clearInterval(this.levelInterval);
       }
