@@ -23,7 +23,7 @@ export class ItemCardFooterComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.activitySub = this.activityService.activities$.subscribe((activities) => {
       this.activity = activities.find(act => act.id === this.activityId);
-      this.actionTime = (this.activity.actionTime / 1000).toFixed(3);
+      this.actionTime = (this.activity.actionTime / 1000).toFixed(3) + 's';
     });
   }
 
