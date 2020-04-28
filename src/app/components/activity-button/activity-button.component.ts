@@ -21,13 +21,15 @@ import { ControlService } from 'src/app/services/control.service';
 })
 export class ActivityButtonComponent implements OnInit, OnDestroy {
   @Input() activityId: number;
+  @Input() itemId: number;
 
-  public activitySub: Subscription;
+  private activitySub: Subscription;
   public activity: Activity;
 
   public initialItems = initialItems;
   private itemSub: Subscription;
   private humanItem: Item;
+  public item: Item;
   private activeColor: string;
 
   @HostBinding('attr.style')
@@ -37,7 +39,7 @@ export class ActivityButtonComponent implements OnInit, OnDestroy {
 
   constructor(
     public activityService: ActivityService,
-    private itemService: ItemService,
+    public itemService: ItemService,
     private sanitizer: DomSanitizer,
     private controlService: ControlService
   ) {
@@ -50,6 +52,7 @@ export class ActivityButtonComponent implements OnInit, OnDestroy {
     });
 
     this.itemSub = this.itemService.items$.subscribe((items) => {
+      this.item = items.find(itm => itm.id === this.itemId);
       this.humanItem = items.find((itm => itm.id === Globals.itemIds.human));
     });
   }

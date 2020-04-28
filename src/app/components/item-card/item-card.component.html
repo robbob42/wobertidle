@@ -1,17 +1,17 @@
 <div class="card" *ngIf="activity && activity.discovered">
   <div class="card-header my-card-header">
-    <app-item-card-header [activityId]="activityId"></app-item-card-header>
+    <app-item-card-header [activityId]="activityId" [itemId]="itemId"></app-item-card-header>
   </div>
-  <div class="card-block">
+  <div class="card-block my-card-block">
     <div class="progress top">
       <app-activity-slider [activityId]="activityId"></app-activity-slider>
     </div>
     <div class="card-text">
-      <app-item-card-text [itemId]="itemId"></app-item-card-text>
+      <app-item-card-text [itemId]="itemId" [activityId]="activityId"></app-item-card-text>
     </div>
   </div>
-  <div class="card-footer">
+  <!-- <div class="card-footer">
     <app-item-card-footer [activityId]="activityId"></app-item-card-footer>
-  </div>
+  </div> -->
 </div>
 <app-item-card-upcoming [activityId]="activityId" [itemId]="itemId"></app-item-card-upcoming>

@@ -12,6 +12,7 @@ import { Globals } from 'src/assets/globals';
 })
 export class ItemCardTextComponent implements OnInit, OnDestroy {
   @Input() itemId: number;
+  @Input() activityId: number;
 
   private itemSub: Subscription;
   public item: Item;

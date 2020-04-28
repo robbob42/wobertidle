@@ -1,12 +1,1 @@
-<div class="clr-row">
-  <div class="clr-col-12">
-    <clr-accordion>
-      <clr-accordion-panel class="my-panel">
-        <clr-accordion-title>Shop</clr-accordion-title>
-        <clr-accordion-content *clrIfExpanded>
-          <app-improvement-card [improvee]="['item', 'activity']" [improveeId]="[itemId]" [improvementType]="['limit', 'speed']"></app-improvement-card>
-        </clr-accordion-content>
-      </clr-accordion-panel>
-    </clr-accordion>
-  </div>
-</div>
+<app-improvement-card [improvee]="['item', 'activity']" [improveeId]="[itemId]" [improvementType]="['limit', 'speed']"></app-improvement-card>

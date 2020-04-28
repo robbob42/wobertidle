@@ -11,11 +11,14 @@ import { Activity } from 'src/app/models/activity';
 })
 export class ItemCardHeaderComponent implements OnInit, OnDestroy {
   @Input() activityId: number;
+  @Input() itemId: number;
 
-  activitySub: Subscription;
-  activity: Activity;
+  private activitySub: Subscription;
+  public activity: Activity;
 
-  constructor(private activityService: ActivityService) { }
+  constructor(
+    private activityService: ActivityService
+  ) { }
 
   ngOnInit(): void {
     this.activitySub = this.activityService.activities$.subscribe((activities) => {

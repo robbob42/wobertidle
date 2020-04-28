@@ -1,4 +1,16 @@
-<ul class="nav" *ngIf="mcpItem && itemService.items$ | async as items">
+<div style="width: 100%;">
+  <div style="width: 48%; float: left; text-align: center;">
+    <clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color, 'margin-bottom': '6px'}"></clr-icon>
+    : <app-pulsing-text [text]="mcpItem.amount" [pulseId]="mcpItem.pulseId+'amount'"></app-pulsing-text>
+    </div>
+  <div style="width: 48%; float: left; text-align: center;">
+    <clr-icon attr.shape="{{humanItem.icon}}" size="18" [ngStyle]="{'color': humanItem.color, 'margin-bottom': '6px'}"></clr-icon>
+    : <app-pulsing-text [text]="humanItem.amount" [pulseId]="humanItem.pulseId+'amount'"></app-pulsing-text>
+    </div>
+</div>
+
+
+<!-- <ul class="nav" *ngIf="mcpItem && itemService.items$ | async as items">
   <li class="nav-item"><a [ngClass]="{'nav-link': true, 'active': contentNav === 'home'}" (click)="setNav('home')">Home</a></li>
 
   <li class="nav-item" *ngIf="mcpItem.amount >= Globals.visibleAmounts.shop">
@@ -48,4 +60,4 @@
     @ {{utilsService.formatNumber(Globals.visibleAmounts.refine)}}<clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color}"></clr-icon>
   </li>
 
-</ul>
+</ul> -->
