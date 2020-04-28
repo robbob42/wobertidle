@@ -32,6 +32,7 @@ import { ItemCardFooterComponent } from './components/item-card/item-card-footer
 import { ItemCardUpcomingComponent } from './components/item-card/item-card-upcoming/item-card-upcoming.component';
 import { LayoutHeaderComponent } from './components/layout/layout-header/layout-header.component';
 import { LayoutSubnavComponent } from './components/layout/layout-subnav/layout-subnav.component';
+import { LayoutHeaderActionsComponent } from './components/layout/layout-header/layout-header-actions/layout-header-actions.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { LayoutSubnavComponent } from './components/layout/layout-subnav/layout-
     ItemCardFooterComponent,
     ItemCardUpcomingComponent,
     LayoutHeaderComponent,
-    LayoutSubnavComponent
+    LayoutSubnavComponent,
+    LayoutHeaderActionsComponent
   ],
   imports: [
     BrowserModule,

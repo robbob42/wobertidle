@@ -5,9 +5,8 @@
 }
 
 .redPulse {
-  animation-iteration-count: 1;
   animation: redPulse 0.5s;
-  animation-direction: alternate;
+  animation-iteration-count: 1;
 }
 
 @keyframes pulse {

@@ -7,9 +7,12 @@
         "{{curLevel.name}}"
       </div>
     </div>
-      <div class="header-nav" [clr-nav-level]="1">
-        <a [ngClass]="{'nav-link': true, 'active': topNav === 'welcome'}" (click)="setTopNav('welcome')">Welcome</a>
-        <a [ngClass]="{'nav-link': true, 'active': topNav === 'play'}" (click)="setTopNav('play')">Play</a>
-      </div>
+    <div class="header-nav" [clr-nav-level]="1">
+      <a [ngClass]="{'nav-link': true, 'active': topNav === 'welcome'}" (click)="setTopNav('welcome')">Welcome</a>
+      <a [ngClass]="{'nav-link': true, 'active': topNav === 'play'}" (click)="setTopNav('play')">Play</a>
+    </div>
+  </div>
+  <div class="header-actions">
+    <app-layout-header-actions></app-layout-header-actions>
   </div>
 </clr-header>

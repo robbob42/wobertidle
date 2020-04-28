@@ -1,6 +1,6 @@
 <ng-container *ngIf="pulser && controlService.controls$ | async as controls">
   <span [ngClass]="pulser" (animationend)="endPulse()">{{text}}</span>
-  <div [ngClass]="pulser" (animationend)="endPulse()" [ngStyle]="contentStyles">
+  <div [ngClass]="pulser" [ngStyle]="contentStyles">
     <ng-content></ng-content>
   </div>
 </ng-container>

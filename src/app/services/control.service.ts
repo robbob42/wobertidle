@@ -67,8 +67,10 @@ export class ControlService {
   }
 
   startRedPulse(pulseId: string) {
+    console.log(pulseId);
     if (this.controls.pulser.find(pls => pls.pulseId === pulseId)) {
       this.controls.pulser.find(pls => pls.pulseId === pulseId).redPulse = true;
+      console.log(this.controls.pulser.find(pls => pls.pulseId === pulseId));
       this.sub.next(this.controls);
     }
   }

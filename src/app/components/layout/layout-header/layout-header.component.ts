@@ -17,10 +17,12 @@ export class LayoutHeaderComponent implements OnInit, OnDestroy {
   private navSub: Subscription;
   public topNav: string;
   public contentNav: string;
+  private levelInterval: any;
 
   constructor(
     public levelService: LevelService,
-    public navigationService: NavigationService
+    public navigationService: NavigationService,
+    public controlService: ControlService
   ) { }
 
   ngOnInit(): void {
@@ -41,5 +43,7 @@ export class LayoutHeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.levelSub.unsubscribe();
     this.navSub.unsubscribe();
+
+    clearInterval(this.levelInterval);
   }
 }
