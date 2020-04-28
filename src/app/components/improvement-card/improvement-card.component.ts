@@ -7,6 +7,7 @@ import { Item } from '../../models/item';
 import { ItemService } from '../../services/item.service';
 import { Globals } from '../../../assets/globals';
 import { ControlService } from '../../services/control.service';
+import { Improvement } from 'src/app/models/improvement';
 
 @Component({
   selector: 'app-improvement-card',
@@ -15,7 +16,9 @@ import { ControlService } from '../../services/control.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImprovementCardComponent implements OnInit, OnDestroy {
-  @Input() improvementType: string;
+  @Input() improvementType: string[];
+  @Input() improvee: string[];
+  @Input() improveeId: number[];
 
   public initialItems = initialItems;
   public itemsSub: Subscription;
@@ -35,8 +38,10 @@ export class ImprovementCardComponent implements OnInit, OnDestroy {
     });
   }
 
-  buyImprovement(improvementId: number) {
-    this.improvementService.buyImprovement(improvementId);
+  buyImprovement(improvement: Improvement) {
+    if (!improvement.levelMax || improvement.level < improvement.levelMax) {
+      this.improvementService.buyImprovement(improvement.id);
+    }
   }
 
   ngOnDestroy() {

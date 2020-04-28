@@ -1,13 +1,12 @@
 <div class="clr-row">
-  <div class="clr-col-9">
-    <app-improvement-card [improvementType]="'limit'"></app-improvement-card>
+  <div class="clr-col-12">
+    <clr-accordion>
+      <clr-accordion-panel class="my-panel">
+        <clr-accordion-title>Shop</clr-accordion-title>
+        <clr-accordion-content *clrIfExpanded>
+          <app-improvement-card [improvee]="['item', 'activity']" [improveeId]="[itemId]" [improvementType]="['limit', 'speed']"></app-improvement-card>
+        </clr-accordion-content>
+      </clr-accordion-panel>
+    </clr-accordion>
   </div>
-  <div class="clr-col-3"></div>
-</div>
-
-<div class="clr-row">
-  <div class="clr-col-9">
-    <app-improvement-card [improvementType]="'speed'"></app-improvement-card>
-  </div>
-  <div class="clr-col-3"></div>
 </div>

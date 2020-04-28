@@ -1,11 +1,16 @@
 <ng-container *ngIf="itemService.items$ | async as items">
-  <div class="clr-row clr-justify-content-start">
+  <div class="clr-row">
     <div class="clr-col-12" style="text-align: center;">
-        <span>
-          <clr-icon attr.shape="{{item.icon}}" shape="" size="24" [ngStyle]="{'color': item.color}"></clr-icon>
-          : <app-pulsing-text [text]="item.amount" [pulseId]="item.pulseId+'amount'"></app-pulsing-text>
-          / <app-pulsing-text [text]="item.limit" [pulseId]="item.pulseId+'limit'"></app-pulsing-text>
-        </span>
+      <span>
+        <clr-icon attr.shape="{{item.icon}}" shape="" size="24" [ngStyle]="{'color': item.color}"></clr-icon>
+        : <app-pulsing-text [text]="item.amount" [pulseId]="item.pulseId+'amount'"></app-pulsing-text>
+        / <app-pulsing-text [text]="item.limit" [pulseId]="item.pulseId+'limit'"></app-pulsing-text>
+      </span>
     </div>
-</div>
+  </div>
+  <div class="clr-row" *ngIf="mcpItem.amount >= Globals.visibleAmounts.shop">
+    <div class="clr-col-12">
+      <app-shop [itemId]="item.id"></app-shop>
+    </div>
+  </div>
 </ng-container>

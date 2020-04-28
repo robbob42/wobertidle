@@ -4,7 +4,7 @@ export default [
   {
     id: 1,
     pulseId: 'improvement-1',
-    name: 'Finding++',
+    name: 'Interval - 10%',
     type: 'speed',
     level: 1,
     levelMax: 10,
@@ -21,7 +21,7 @@ export default [
   {
     id: 12,
     pulseId: 'improvement-12',
-    name: 'Collecting++',
+    name: 'Interval - 10%',
     type: 'speed',
     level: 1,
     levelMax: 10,
@@ -46,7 +46,7 @@ export default [
   {
     id: 3,
     pulseId: 'improvement-3',
-    name: 'Fishing++',
+    name: 'Interval - 10%',
     type: 'speed',
     level: 1,
     levelMax: 10,
@@ -76,7 +76,7 @@ export default [
   {
     id: 2,
     pulseId: 'improvement-2',
-    name: 'Chopping++',
+    name: 'Interval - 10%',
     type: 'speed',
     level: 1,
     levelMax: 10,
@@ -111,7 +111,7 @@ export default [
   {
     id: 13,
     pulseId: 'improvement-13',
-    name: 'Harvesting++',
+    name: 'Interval - 10%',
     type: 'speed',
     level: 1,
     levelMax: 10,
@@ -246,7 +246,7 @@ export default [
   {
     id: 7,
     pulseId: 'improvement-7',
-    name: 'Rock Limit x 2',
+    name: 'Limit x 2',
     type: 'limit',
     level: 1,
     itemsCost: [
@@ -265,7 +265,7 @@ export default [
   {
     id: 10,
     pulseId: 'improvement-10',
-    name: 'Clay Limit x 2',
+    name: 'Limit x 2',
     type: 'limit',
     level: 1,
     itemsCost: [
@@ -284,7 +284,7 @@ export default [
   {
     id: 9,
     pulseId: 'improvement-9',
-    name: 'Fish Limit x 2',
+    name: 'Limit x 2',
     type: 'limit',
     level: 1,
     itemsCost: [
@@ -303,7 +303,7 @@ export default [
   {
     id: 8,
     pulseId: 'improvement-8',
-    name: 'Tree Limit x 2',
+    name: 'Limit x 2',
     type: 'limit',
     level: 1,
     itemsCost: [
@@ -322,7 +322,7 @@ export default [
   {
     id: 11,
     pulseId: 'improvement-11',
-    name: 'Grain Limit x 2',
+    name: 'Limit x 2',
     type: 'limit',
     level: 1,
     itemsCost: [

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, Input } from '@angular/core';
 
 @Component({
   selector: 'app-shop',
@@ -7,6 +7,8 @@ import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ShopComponent implements OnInit {
+  @Input() itemId: string;
+
   constructor( ) {
   }
 

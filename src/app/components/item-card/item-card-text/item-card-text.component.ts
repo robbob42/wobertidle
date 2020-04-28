@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnDestroy, ChangeDetectionStrategy } from '@a
 import { Subscription } from 'rxjs';
 import { Item } from 'src/app/models/item';
 import { ItemService } from 'src/app/services/item.service';
+import { Globals } from 'src/assets/globals';
 
 @Component({
   selector: 'app-item-card-text',
@@ -14,12 +15,17 @@ export class ItemCardTextComponent implements OnInit, OnDestroy {
 
   private itemSub: Subscription;
   public item: Item;
+  public mcpItem: Item;
+  public Globals = Globals;
 
-  constructor(public itemService: ItemService) { }
+  constructor(
+    public itemService: ItemService
+  ) { }
 
   ngOnInit(): void {
     this.itemSub = this.itemService.items$.subscribe((items) => {
       this.item = items.find(itm => itm.id === this.itemId);
+      this.mcpItem = items.find(itm => itm.id === Globals.itemIds.mcp);
     });
   }
 
