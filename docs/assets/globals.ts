@@ -4,7 +4,7 @@ import { Improvement } from '../app/models/improvement';
 import { Level } from '../app/models/level';
 
 export class Globals {
-  public static version = '0.0.3';
+  public static version = '0.0.4';
   public static superSecretKey = 'wobert';
   public static winAmt = 20000;
   public static itemIds = {
