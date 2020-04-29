@@ -1,11 +1,13 @@
-import { Component, OnInit, Input, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, HostBinding } from '@angular/core';
 import { Activity } from '../../models/activity';
 import { ItemService } from '../../services/item.service';
-import { Subscription, TimeoutError } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { ActivityService } from '../../services/activity.service';
 import { Item } from '../../models/item';
 import { Globals } from '../../../assets/globals';
 import { BackgroundService } from 'src/app/services/background.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ControlService } from 'src/app/services/control.service';
 
 @Component({
   selector: 'app-activity-slider',
@@ -21,10 +23,6 @@ export class ActivitySliderComponent implements OnInit, OnDestroy {
   public activity: Activity;
 
   public actionTime: string;
-  public activityWidthNum = 0;
-  public activityWidth = this.activityWidthNum.toString() + '%';
-  public activityInterval: any;
-  public widthInterval: any;
 
   private itemSub: Subscription;
   private humanItem: Item;
@@ -32,25 +30,23 @@ export class ActivitySliderComponent implements OnInit, OnDestroy {
   private leftTime = 0;
   private returnTime = 0;
 
-  private expected: number;
-  private start = Date.now();
-  private delta = 0;
-  private calculateDeltaFlag = true;
-
   constructor(
     public itemService: ItemService,
     public activityService: ActivityService,
-    private ref: ChangeDetectorRef,
-    private backgroundService: BackgroundService
+    private backgroundService: BackgroundService,
+    private controlService: ControlService
   ) {
     this.controlsSub = this.backgroundService.background$.subscribe((background) => {
       if (this.activity && this.activity.active){
         if (background) {
           this.leftTime = new Date().getTime() / 1000;
+          console.log('left at', this.leftTime);
         }
+        console.log(background, this.leftTime);
         if (!background && this.leftTime) {
           this.returnTime = new Date().getTime() / 1000;
           const secondsGone = Math.floor(this.returnTime - this.leftTime);
+          console.log('returned, gone for', secondsGone);
           let incrementingActivity = this.activity;
           let incrementer = incrementingActivity.actionTime / 1000;
           // const itemsReceived = Math.floor((this.returnTime - this.leftTime) / this.activity.actionTime * 1000);
@@ -113,28 +109,6 @@ export class ActivitySliderComponent implements OnInit, OnDestroy {
       this.activity = activities.find(act => act.id === this.activityId);
       this.actionTime = (this.activity.actionTime / 1000).toFixed(3);
 
-      this.expected = this.start + this.activity.actionTime;
-      this.calculateDeltaFlag = false;
-
-      if (
-        this.activity &&
-        this.activity.active &&
-        !this.itemService.limitReached(this.activity.producesId) &&
-        this.itemService.amountAvailable(this.activity.decrementId, this.activity.decrementAmount) &&
-        !this.activityInterval
-      ) {
-        this.setActivityInterval();
-      }
-
-      if (this.activity && !this.activity.active) {
-        clearTimeout(this.activityInterval);
-        clearInterval(this.widthInterval);
-        this.activityInterval = null;
-        this.widthInterval = null;
-        this.activityWidthNum = 0;
-        this.activityWidth = this.activityWidthNum.toString() + '%';
-      }
-
       if (
         this.activity &&
         this.activity.active &&
@@ -148,18 +122,6 @@ export class ActivitySliderComponent implements OnInit, OnDestroy {
     this.itemSub = this.itemService.items$.subscribe((items) => {
       this.humanItem = items.find((itm => itm.id === Globals.itemIds.human));
 
-      if (this.itemService.limitReached(this.activity.producesId)) {
-        clearTimeout(this.activityInterval);
-        clearInterval(this.widthInterval);
-        this.activityInterval = null;
-        this.widthInterval = null;
-        this.activityWidthNum = 0;
-        this.activityWidth = this.activityWidthNum.toString() + '%';
-      }
-      if (this.activity && this.activity.active && !this.itemService.limitReached(this.activity.producesId)) {
-        // TODO: Code in here for a change to items that allows activity to resume
-      }
-
       if (
         this.activity &&
         this.activity.active &&
@@ -171,48 +133,19 @@ export class ActivitySliderComponent implements OnInit, OnDestroy {
     });
   }
 
-  setActivityInterval() {
-    const interval = this.activity.actionTime;
-    this.start = Date.now();
-    this.expected = this.start + this.activity.actionTime;
-
-    const increaseActivityWidth = () => {
-      let curWidth = 0;
-      this.widthInterval = setInterval(() => {
-        curWidth += 1000 / this.activity.actionTime;
-        this.activityWidthNum = curWidth;
-        this.activityWidth = this.activityWidthNum.toString() + '%';
-        this.ref.detectChanges();
-      }, 10);
-    };
-
-
-    this.activityInterval = setTimeout(() => step(), this.activity.actionTime);
-    clearInterval(this.widthInterval);
-    increaseActivityWidth();
-
-    const step = () => {
-      if (this.activity && this.activity.active && !this.itemService.limitReached(this.activity.producesId)) {
-        clearInterval(this.widthInterval);
-        increaseActivityWidth();
-        if (this.calculateDeltaFlag) {
-          this.delta = Date.now() - this.expected; // the drift (positive for overshooting)
-        } else {
-          this.delta = 0;
-          this.calculateDeltaFlag = true;
-        }
-        this.itemService.incrementItem(
-          this.activity.producesId,
-          this.activity.produceAmount,
-          this.activity.decrementId,
-          this.activity.decrementAmount,
-          this.activity.mcProficiency
-        );
-        this.start = Date.now();
-        this.expected = this.start + this.activity.actionTime - this.delta;
-        this.activityInterval = setTimeout(() => step(), this.activity.actionTime - this.delta); // take into account drift
-      }
-    };
+  checkIncrement() {
+    if (this.itemService.limitReached(this.activity.producesId)) {
+      this.controlService.startRedPulse(`item-${this.activity.producesId}amount`);
+      this.controlService.startRedPulse(`item-${this.activity.producesId}limit`);
+    } else {
+      this.itemService.incrementItem(
+        this.activity.producesId,
+        this.activity.produceAmount,
+        this.activity.decrementId,
+        this.activity.decrementAmount,
+        this.activity.mcProficiency
+      );
+    }
   }
 
   toggleActivity(activityId: number) {
@@ -220,13 +153,6 @@ export class ActivitySliderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    clearTimeout(this.activityInterval);
-    clearInterval(this.widthInterval);
-    this.activityInterval = null;
-    this.widthInterval = null;
-    this.activityWidthNum = 0;
-    this.activityWidth = this.activityWidthNum.toString() + '%';
-
     this.activitySubscription.unsubscribe();
     this.itemSub.unsubscribe();
     this.controlsSub.unsubscribe();

@@ -16,9 +16,11 @@ export default [
       18,
       19,
       20,
-      21
+      21,
+      22
     ],
     levelSummary: [
+      'Your human will now move on to the next task when the curren items reach their limit!',
       'Obtaining Raw Materials will generate twice as much Mind Control Power!'
     ],
     current: false
@@ -48,11 +50,9 @@ export default [
       18,
       19,
       20,
-      21,
-      22
+      21
     ],
     levelSummary: [
-      'Humans will automatically move to another activity when current inventory is full!',
       'Double the Mind Control Power again.'
     ],
     current: false

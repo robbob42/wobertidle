@@ -1,5 +1,15 @@
 <div [ngStyle]="{'border-bottom': '1px solid ' + activity.color, 'border-top': '1px solid ' + activity.color, 'height': '100%'}">
   <div [ngStyle]="{'width': '100%', 'height': '100%', 'background-color': activity.color}">
-    <div [ngStyle]="{'background-color': 'white', 'height': '100%', 'transform': 'translateX('+activityWidth+')'}"></div>
+    <div
+    *ngIf="activity.active"
+    (animationiteration)="checkIncrement()"
+    [ngStyle]="{
+      'background-color': 'white',
+      'height': '100%',
+      'transform': 'translateX(0%)',
+      'animation-name': 'slider',
+      'animation-duration': activity.actionTime/1000 + 's',
+      'animation-iteration-count': 'infinite'}"></div>
+    <div *ngIf="!activity.active" style="background-color: white; height: 100%;"></div>
   </div>
 </div>

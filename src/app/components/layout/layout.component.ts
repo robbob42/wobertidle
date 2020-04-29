@@ -18,6 +18,7 @@ import '@clr/icons';
 import '@clr/icons/shapes/all-shapes';
 import { Level } from 'src/app/models/level';
 import { NavigationService } from 'src/app/services/navigation.service';
+import { BackgroundService } from 'src/app/services/background.service';
 
 @Component({
   selector: 'app-layout',
@@ -59,7 +60,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
     public controlService: ControlService,
     public levelService: LevelService,
     public rebirthService: RebirthService,
-    public navigationService: NavigationService
+    public navigationService: NavigationService,
+    private backgroundService: BackgroundService
   ) {
     // this.messageService.initializeMessages();
     // messageService.subscribeMessages().subscribe((subscribedMessages) => {
@@ -136,26 +138,18 @@ export class LayoutComponent implements OnInit, OnDestroy {
       visibilityChange = 'visibilitychange';
     }
 
-    function handleVisibilityChange() {
-      if (document[hidden]) {
-        this.controlService.setForeground(false);
-      } else {
-        this.controlService.setForeground(true);
-      }
-    }
-
     // Warn if the browser doesn't support addEventListener or the Page Visibility API
     if (typeof document.addEventListener === 'undefined' || hidden === undefined) {
       console.log('This demo requires a browser, such as Google Chrome or Firefox, that supports the Page Visibility API.');
     } else {
       // Handle page visibility change
-      // document.addEventListener(visibilityChange, () => {
-      //   if (document[hidden]) {
-      //     this.controlService.setForeground(false);
-      //   } else {
-      //     this.controlService.setForeground(true);
-      //   }
-      // }, false);
+      document.addEventListener(visibilityChange, () => {
+        if (document[hidden]) {
+          this.backgroundService.setBackground(true);
+        } else {
+          this.backgroundService.setBackground(false);
+        }
+      }, false);
     }
   }
 

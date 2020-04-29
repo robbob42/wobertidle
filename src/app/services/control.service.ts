@@ -6,6 +6,8 @@ import { ImprovementService } from './improvement.service';
 import { LevelService } from './level.service';
 import { RebirthService } from './rebirth.service';
 import { Globals } from 'src/assets/globals';
+import { BackgroundService } from './background.service';
+import { NavigationService } from './navigation.service';
 
 class Control {
   reset: number;
@@ -37,9 +39,11 @@ export class ControlService {
 
   constructor(
     private activityService: ActivityService,
+    private backgroundService: BackgroundService,
     private improvementService: ImprovementService,
     private itemService: ItemService,
     private levelService: LevelService,
+    private navigationService: NavigationService,
     private rebirthService: RebirthService,
     ) { }
 
@@ -76,17 +80,21 @@ export class ControlService {
   save() {
     localStorage.setItem('wobertIdleSave', Globals.version);
     localStorage.setItem('wobertActivities', this.activityService.saveEncrypt());
+    localStorage.setItem('wobertBackgrounds', this.backgroundService.saveEncrypt());
     localStorage.setItem('wobertImprovements', this.improvementService.saveEncrypt());
     localStorage.setItem('wobertItems', this.itemService.saveEncrypt());
     localStorage.setItem('wobertLevels', this.levelService.saveEncrypt());
+    localStorage.setItem('wobertNavigations', this.navigationService.saveEncrypt());
     localStorage.setItem('wobertRebirths', this.rebirthService.saveEncrypt());
   }
 
   load() {
     this.activityService.loadDecrpyt('wobertActivities');
+    this.backgroundService.loadDecrpyt('wobertBackgrounds');
     this.improvementService.loadDecrpyt('wobertImprovements');
     this.itemService.loadDecrpyt('wobertItems');
     this.levelService.loadDecrpyt('wobertLevels');
+    this.navigationService.loadDecrpyt('wobertNavigations');
     this.rebirthService.loadDecrpyt('wobertRebirths');
   }
 

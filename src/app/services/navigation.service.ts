@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import SimpleCrypto from 'simple-crypto-js';
+import { Globals } from 'src/assets/globals';
 
 class Navigation {
   topNav: string;
@@ -32,4 +34,15 @@ export class NavigationService {
     this.sub.next(this.navigation);
   }
 
+  saveEncrypt() {
+    const simpleCrypto = new SimpleCrypto(Globals.superSecretKey);
+    return simpleCrypto.encrypt(JSON.stringify(this.navigation));
+  }
+
+  loadDecrpyt(objKey: string) {
+    const simpleCrypto = new SimpleCrypto(Globals.superSecretKey);
+    const decrypted = simpleCrypto.decrypt(localStorage.getItem(objKey));
+    this.navigation = JSON.parse(JSON.parse(JSON.stringify(decrypted)));
+    this.sub.next(this.navigation);
+  }
 }

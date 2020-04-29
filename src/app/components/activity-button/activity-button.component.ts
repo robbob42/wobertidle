@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, OnDestroy, HostBinding } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { DomSanitizer } from '@angular/platform-browser';
 import { slide } from './animations';
 import { ActivityService } from '../../services/activity.service';
 import { Activity } from '../../models/activity';
@@ -7,7 +8,6 @@ import initialItems from '../../../assets/items';
 import { ItemService } from '../../services/item.service';
 import { Item } from '../../models/item';
 import { Globals } from '../../../assets/globals';
-import { DomSanitizer } from '@angular/platform-browser';
 import { ControlService } from 'src/app/services/control.service';
 import { UtilsService } from 'src/app/services/utils.service';
 
