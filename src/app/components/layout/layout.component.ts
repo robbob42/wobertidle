@@ -145,9 +145,9 @@ export class LayoutComponent implements OnInit, OnDestroy {
       // Handle page visibility change
       document.addEventListener(visibilityChange, () => {
         if (document[hidden]) {
-          this.backgroundService.setBackground(true);
+          this.backgroundService.setAway();
         } else {
-          this.backgroundService.setBackground(false);
+          this.backgroundService.setReturn();
         }
       }, false);
     }

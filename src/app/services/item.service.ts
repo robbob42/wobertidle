@@ -31,14 +31,6 @@ export class ItemService {
     this.sub.next(this.inventory);
   }
 
-  getItemInventory() {
-    this.sub.next(this.inventory);
-  }
-
-  testHumans() {
-    return this.inventory.find(finder => finder.id === 901).amount;
-  }
-
   incrementItem(itemId: number, amount: number, decrementId = 0, decrementAmt = 0, mcp = 0) {
     const incItem = this.inventory.find(item => item.id === itemId);
     incItem.amount += amount;
@@ -51,6 +43,24 @@ export class ItemService {
     if (decrementId && decrementAmt) {
       this.inventory.find(item => item.id === decrementId).amount -= decrementAmt;
     }
+    this.sub.next(this.inventory);
+  }
+
+  incrementItemWithoutEmit(itemId: number, amount: number, decrementId = 0, decrementAmt = 0, mcp = 0) {
+    const incItem = this.inventory.find(item => item.id === itemId);
+    incItem.amount += amount;
+    if (mcp) {
+      this.inventory.find(item => item.id === 900).amount += mcp;
+    }
+    if (incItem.limit && incItem.amount > incItem.limit) {
+      incItem.amount = incItem.limit;
+    }
+    if (decrementId && decrementAmt) {
+      this.inventory.find(item => item.id === decrementId).amount -= decrementAmt;
+    }
+  }
+
+  forceEmit() {
     this.sub.next(this.inventory);
   }
 

@@ -26,7 +26,7 @@ export class ActivityService {
     this.activities.forEach(activity => {
       if (activity.id === activityId && !activity.active && numOfHumans > activeHumans) {
         active = !activity.active;
-        actives.push(activity);
+        actives.push({...activity, active});
       }
       if (activity.id === activityId && activity.active) {
         active = !activity.active;
@@ -34,7 +34,7 @@ export class ActivityService {
       if (activity.id === activityId && !activity.active && numOfHumans <= activeHumans) {
         toggled = false;
       }
-      if (activity.active) {
+      if (activity.id !== activityId && activity.active) {
         actives.push(activity);
       }
     });
@@ -108,7 +108,7 @@ export class ActivityService {
     }
   }
 
-  getNextActivity(activityId: number) {
+  getNextActivity(activityId: number): Activity {
     let activitySetLoc: number;
     let activityLoc: number;
     for (let i = 0; i < Globals.activitySets.length - 1; i++) {

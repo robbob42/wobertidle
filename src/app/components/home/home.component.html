@@ -7,7 +7,7 @@
 <br /><br />
 <button class="btn btn-outline" (click)="controlService.save()">Save</button>
 <button class="btn btn-warning-outline" (click)="controlService.clear()">Clear</button>
-<button class="btn btn-success-outline" (click)="testAvailable = true">Test</button><br><br>
+<button class="btn btn-success-outline" disabled (click)="testAvailable = true">Test</button><br><br>
 
 <ng-container *ngIf="testAvailable">
   <button class="btn btn-warning" (click)="cheat5()">5 Minutes into play</button><br>

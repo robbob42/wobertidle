@@ -1,9 +1,9 @@
-<ng-container *ngIf="activity && activityService.activities$ | async">
+<ng-container>
   <div class="clr-form-control custom-toggle">
     <div class="clr-control-container custom-container" [ngStyle]="{'backgroundColor': bgColor}">
       <div class="clr-toggle-wrapper custom-wrapper">
-        <input type="checkbox" id="{{activity.id}}" (click)="toggleActivity(activity.id)" [(ngModel)]="activity.active" class="clr-toggle">
-        <label class="custom-label" for="{{activity.id}}">
+        <input type="checkbox" *ngIf="activity && activityService.activities$ | async" id="{{activity.id}}" (click)="toggleActivity(activity.id)" [(ngModel)]="activity.active" class="clr-toggle">
+        <label class="custom-label" for="{{activity.id}}" *ngIf="item && itemService.items$ | async">
           <div class="clr-row">
             <div class="clr-col-12" *ngIf="item && itemService.items$ | async">
               <clr-icon attr.shape="{{item.icon}}" shape="" size="24" [ngStyle]="{'color': item.color}"></clr-icon>

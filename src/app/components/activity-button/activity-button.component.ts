@@ -10,6 +10,7 @@ import { Item } from '../../models/item';
 import { Globals } from '../../../assets/globals';
 import { ControlService } from 'src/app/services/control.service';
 import { UtilsService } from 'src/app/services/utils.service';
+import { BackgroundService } from 'src/app/services/background.service';
 
 @Component({
   selector: 'app-activity-button',
@@ -41,9 +42,10 @@ export class ActivityButtonComponent implements OnInit, OnDestroy {
 
   constructor(
     public activityService: ActivityService,
-    public itemService: ItemService,
-    private sanitizer: DomSanitizer,
+    public backgroundService: BackgroundService,
     private controlService: ControlService,
+    private sanitizer: DomSanitizer,
+    public itemService: ItemService,
     private utilsService: UtilsService
   ) {
   }
@@ -69,6 +71,11 @@ export class ActivityButtonComponent implements OnInit, OnDestroy {
       toggleResults.actives.forEach(activity => {
         this.controlService.startRedPulse(activity.pulseId + 'card');
       });
+    } else {
+      const activeIds = toggleResults.actives
+        .filter(act => act.active)
+        .map(act => act.id);
+      this.backgroundService.setBackgroundActivities(activeIds);
     }
   }
 
