@@ -17,7 +17,7 @@ export default [
       19,
       20,
       21,
-      22
+      22, // Auto next activity
     ],
     levelSummary: [
       'Your human will now move on to the next task when the curren items reach their limit!',
@@ -34,9 +34,11 @@ export default [
       24,
       25,
       26,
-      27
+      27,
+      42 // Autobuy raw improvements
     ],
     levelSummary: [
+      'You can now command your humans to automatically buy improvements!',
       'Obtaining Raw Materials will produce twice as much material!'
     ],
     current: false

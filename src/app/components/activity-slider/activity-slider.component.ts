@@ -9,6 +9,8 @@ import { Globals } from '../../../assets/globals';
 import { BackgroundService } from 'src/app/services/background.service';
 import { ControlService } from 'src/app/services/control.service';
 import { Background } from '../../services/background.service';
+import { ImprovementService } from 'src/app/services/improvement.service';
+import { Improvement } from 'src/app/models/improvement';
 
 @Component({
   selector: 'app-activity-slider',
@@ -30,11 +32,15 @@ export class ActivitySliderComponent implements OnInit, OnDestroy {
   private backgroundActionsPerformed = false;
   private savedActionsPerformed = false;
 
+  private improvementSub: Subscription;
+  private autobuyImprovements: Improvement[] = [];
+
   constructor(
     public itemService: ItemService,
     public activityService: ActivityService,
     private backgroundService: BackgroundService,
-    private controlService: ControlService
+    private controlService: ControlService,
+    private improvementService: ImprovementService
   ) {
   }
 
@@ -99,6 +105,13 @@ export class ActivitySliderComponent implements OnInit, OnDestroy {
       ) {
         this.activityService.autoNextActivity(this.activityId);
       }
+      this.activityService.resetAutoCountdown();
+    });
+
+    this.improvementSub = this.improvementService.improvements$.subscribe((improvements) => {
+      this.autobuyImprovements = improvements.filter(
+        imp => imp.autobuy && imp.itemsCost.find(itc => itc.itemId === this.activity.producesId)
+      );
     });
   }
 
@@ -163,6 +176,18 @@ export class ActivitySliderComponent implements OnInit, OnDestroy {
         this.activity.decrementAmount,
         this.activity.mcProficiency
       );
+      setTimeout(() => {
+        this.autobuyImprovements.forEach(improvement => {
+          const insufficientIds = this.improvementService.buyImprovement(improvement.id);
+          if (
+            insufficientIds.length === 0  &&
+            !this.activity.active &&
+            improvement.itemsCost.find(itc => itc.itemId === this.activity.producesId)
+          ) {
+            this.toggleActivity(this.activityId);
+          }
+        });
+      });
     }
   }
 
@@ -173,5 +198,6 @@ export class ActivitySliderComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.itemSub.unsubscribe();
     this.activityAfterBackgroundSub.unsubscribe();
+    this.improvementSub.unsubscribe();
   }
 }

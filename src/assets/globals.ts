@@ -16,7 +16,8 @@ export class Globals {
     allowRefining: 905,
     exchangeUnlocked: 906,
     rebirthUnlocked: 907,
-    carnivalUnlocked: 908
+    carnivalUnlocked: 908,
+    autobuyRawUnlocked: 909
   };
   public static visibleAmounts = {
     raw: 0,
@@ -92,6 +93,7 @@ export class Globals {
       pulseId: '',
       itemAmount: 0
     }],
+    autobuy: false,
     level: 0,
     name: '',
     type: ''

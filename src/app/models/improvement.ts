@@ -11,6 +11,7 @@ export class Improvement {
     pulseId: string,
     itemAmount: number,
   }[];
+  autobuy: boolean;
   costMultiplyer: number;
   improvee: string;
   improves: string;
@@ -30,6 +31,7 @@ export class Improvement {
       pulseId: string,
       itemAmount: number,
     }[],
+    autobuy: boolean,
     costMultiplyer: number,
     improvee: string,
     improves: string,
@@ -44,6 +46,7 @@ export class Improvement {
     this.levelMax = options.levelMax || 0;
     this.improveeId = options.improveeId;
     this.itemsCost = options.itemsCost;
+    this.autobuy = options.autobuy;
     this.costMultiplyer = options.costMultiplyer;
     this.improvee = options.improvee;
     this.improves = options.improves;

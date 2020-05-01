@@ -1,9 +1,10 @@
-<table class="table">
+<table class="table" *ngIf="autobuyRawItem && itemService.items$ | async">
   <thead>
     <tr>
       <th>Improvement</th>
       <th>Level</th>
       <th>Cost</th>
+      <th *ngIf="autobuyRawItem.amount">Autobuy</th>
     </tr>
   </thead>
   <tbody>
@@ -22,6 +23,9 @@
             </span>
             x <app-pulsing-text [text]="utilsService.formatNumber(costItem.itemAmount)" [pulseId]="costItem.pulseId"></app-pulsing-text><br />
           </span>
+        </td>
+        <td *ngIf="autobuyRawItem.amount">
+          <input type="checkbox" clrCheckbox (click)="toggleAutobuy(improvement.id)" [ngModel]="improvement.autobuy" />
         </td>
       </tr>
     </ng-container>

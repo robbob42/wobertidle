@@ -23,6 +23,7 @@ export class ImprovementCardComponent implements OnInit, OnDestroy {
   public initialItems = initialItems;
   public itemsSub: Subscription;
   public mcpItem: Item;
+  public autobuyRawItem: Item;
   public Globals = Globals;
 
   constructor(
@@ -35,13 +36,22 @@ export class ImprovementCardComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.itemsSub = this.itemService.items$.subscribe((items) => {
       this.mcpItem = items.find(item => item.id === Globals.itemIds.mcp);
+      this.autobuyRawItem = items.find(item => item.id === Globals.itemIds.autobuyRawUnlocked);
     });
   }
 
-  buyImprovement(improvement: Improvement) {
+  buyImprovement(improvement: Improvement, errorFlash = true) {
     if (!improvement.levelMax || improvement.level < improvement.levelMax) {
-      this.improvementService.buyImprovement(improvement.id);
+      this.improvementService.buyImprovement(improvement.id).forEach(insufficientItemId => {
+        if (errorFlash) {
+          this.controlService.startRedPulse(`item-${insufficientItemId}amount`);
+        }
+      });
     }
+  }
+
+  toggleAutobuy(itemId: number) {
+    this.improvementService.toggleAutobuy(itemId);
   }
 
   ngOnDestroy() {

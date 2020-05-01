@@ -90,6 +90,16 @@ export default [
     visible: false
   },
   {
+    id: 909,
+    pulseId: 'item-909',
+    name: 'Autobuy Unlocked',
+    icon: '',
+    color: '',
+    amount: 0,
+    limit: 0,
+    visible: false
+  },
+  {
     id: 1,
     pulseId: 'item-1',
     name: 'Rocks',

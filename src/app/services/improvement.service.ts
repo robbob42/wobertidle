@@ -47,13 +47,21 @@ export class ImprovementService {
     }
   }
 
+  toggleAutobuy(improvementId: number) {
+    const improvement = this.improvements.find(imp => imp.id === improvementId);
+    improvement.autobuy = !improvement.autobuy;
+    this.sub.next(this.improvements);
+  }
+
   buyImprovement(improvementId: number, free: boolean = false) {
     const improvement = this.improvements.find(imp => imp.id === improvementId);
     let sufficientFunds = true;
+    const insufficientItemIds = [];
     if (!free) {
       improvement.itemsCost.forEach(impCostItem => {
         if (!this.itemService.sufficientFunds(impCostItem.itemId, impCostItem.itemAmount)) {
           sufficientFunds = false;
+          insufficientItemIds.push(impCostItem.itemId);
         }
       });
     }
@@ -82,6 +90,8 @@ export class ImprovementService {
           break;
       }
     }
+
+    return insufficientItemIds;
   }
 
   buyImprovementImprovement(improvement: Improvement) {
