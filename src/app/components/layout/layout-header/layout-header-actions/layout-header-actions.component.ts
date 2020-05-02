@@ -30,7 +30,7 @@ export class LayoutHeaderActionsComponent implements OnInit, OnDestroy {
     public levelService: LevelService,
     public navigationService: NavigationService,
     public controlService: ControlService,
-    private itemService: ItemService,
+    public itemService: ItemService,
     private utilsService: UtilsService
   ) { }
 
@@ -45,22 +45,33 @@ export class LayoutHeaderActionsComponent implements OnInit, OnDestroy {
 
       this.powersText = navigations.contentNav === 'powers' ? 'HOME' : 'POWERS';
       this.powersNav = navigations.contentNav === 'powers' ? 'home' : 'powers';
+
+      this.checkForLevelPulsing();
     });
 
     this.itemSub = this.itemService.items$.subscribe((items) => {
       this.mcpItem = items.find(itm => itm.id === Globals.itemIds.mcp);
-
-      if (this.mcpItem && this.curLevel && this.mcpItem.amount >= this.utilsService.levelFib(this.curLevel.id)) {
-        if (!this.levelInterval) {
-          this.levelInterval = setInterval(() => {
-            this.controlService.startPulse('powers');
-          }, 2000);
-        }
-      } else {
-        clearInterval(this.levelInterval);
-      }
+      this.checkForLevelPulsing();
     });
 
+  }
+
+  checkForLevelPulsing() {
+    if (
+      this.mcpItem &&
+      this.curLevel &&
+      this.mcpItem.amount >= this.utilsService.levelFib(this.curLevel.id + 1) &&
+      this.powersNav === 'powers'
+    ) {
+      if (!this.levelInterval) {
+        this.levelInterval = setInterval(() => {
+          this.controlService.startPulse('powers');
+        }, 2000);
+      }
+    } else {
+      clearInterval(this.levelInterval);
+      this.levelInterval = null;
+    }
   }
 
   setContentNav(nav: string) {

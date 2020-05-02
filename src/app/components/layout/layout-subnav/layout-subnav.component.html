@@ -1,4 +1,4 @@
-<div style="width: 100%;">
+<div style="width: 100%;" *ngIf="itemService.items$ | async">
   <div style="width: 48%; float: left; text-align: center;">
     <clr-icon attr.shape="{{mcpItem.icon}}" size="18" [ngStyle]="{'color': mcpItem.color, 'margin-bottom': '6px'}"></clr-icon>
     : <app-pulsing-text [text]="mcpItem.amount" [pulseId]="mcpItem.pulseId+'amount'"></app-pulsing-text>

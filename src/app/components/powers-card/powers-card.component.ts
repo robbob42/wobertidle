@@ -50,7 +50,6 @@ export class PowersCardComponent implements OnInit, OnDestroy {
 
   levelUp() {
     this.levelService.levelUp();
-    this.navigationService.contentNavigate('home');
   }
 
   ngOnDestroy() {

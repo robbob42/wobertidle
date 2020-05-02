@@ -2,7 +2,7 @@
   <div class="clr-row">
     <div class="clr-col-12">
       <clr-accordion>
-        <clr-accordion-panel class="my-panel">
+        <clr-accordion-panel class="my-panel" [clrAccordionPanelOpen]="true">
           <clr-accordion-title>{{item.name}}</clr-accordion-title>
           <clr-accordion-content *clrIfExpanded>
             <app-shop [itemId]="item.id" *ngIf="mcpItem.amount >= Globals.visibleAmounts.shop"></app-shop>

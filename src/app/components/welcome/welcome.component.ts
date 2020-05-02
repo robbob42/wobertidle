@@ -11,7 +11,7 @@ export class WelcomeComponent implements OnInit {
     'Er... human... singular.',
     'You can control the mind of just a single human.',
     'But you can make him do ANYTHING YOU WANT!',
-    'Haha!  Just kidding!  You are only a Level 0 Demigod.',
+    'Haha!  Just kidding!  You are only a Demigod Rank ZERO.',
     'Which means you can only make your human do a single thing at a time.',
     'And he won\'t be very good at it:',
     '- He\'ll keep trying to do it even after reaching the maximum limit',

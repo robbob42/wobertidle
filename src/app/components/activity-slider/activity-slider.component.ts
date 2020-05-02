@@ -122,7 +122,7 @@ export class ActivitySliderComponent implements OnInit, OnDestroy {
     let incrementingActivity = activity;
     let incrementer = incrementingActivity.actionTime / 1000;
 
-    console.log('backgroundIncrement', secondsGone, activity, incrementer);
+    // console.log('backgroundIncrement', secondsGone, activity, incrementer);
     for (let i = 0; i < secondsGone; i += incrementer) {
       if (
         incrementingActivity &&
