@@ -90,12 +90,22 @@ export default [
     visible: false
   },
   {
+    id: 909,
+    pulseId: 'item-909',
+    name: 'Autobuy Unlocked',
+    icon: '',
+    color: '',
+    amount: 0,
+    limit: 0,
+    visible: false
+  },
+  {
     id: 1,
     pulseId: 'item-1',
     name: 'Rocks',
     icon: 'rock',
     color: '#555555',
-    value: .01,
+    value: .1,
     amount: 0,
     limit: 20,
     visible: true
@@ -106,7 +116,7 @@ export default [
     name: 'Clay',
     icon: 'clay',
     color: '#ac6100',
-    value: .05,
+    value: .2,
     amount: 0,
     limit: 20,
     visible: false
@@ -117,7 +127,7 @@ export default [
     name: 'Fish',
     icon: 'fish',
     color: '#84b0f1',
-    value: .25,
+    value: .3,
     amount: 0,
     limit: 20,
     visible: false
@@ -128,7 +138,7 @@ export default [
     name: 'Trees',
     icon: 'tree',
     color: '#425f0b',
-    value: 1,
+    value: .4,
     amount: 0,
     limit: 20,
     visible: false
@@ -139,7 +149,7 @@ export default [
     name: 'Grain',
     icon: 'grain',
     color: '#d2b48c',
-    value: 5,
+    value: .5,
     amount: 0,
     limit: 20,
     visible: false

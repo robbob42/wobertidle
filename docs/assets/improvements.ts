@@ -12,6 +12,7 @@ export default [
       itemId: 1,
       itemAmount: 2,
     }],
+    autobuy: false,
     costMultiplyer: 1.5,
     improvee: 'activity',
     improveeId: 1,
@@ -37,6 +38,7 @@ export default [
         itemAmount: 2,
       }
     ],
+    autobuy: false,
     costMultiplyer: 1.5,
     improvee: 'activity',
     improveeId: 7,
@@ -67,6 +69,7 @@ export default [
         itemAmount: 2,
       }
     ],
+    autobuy: false,
     costMultiplyer: 1.5,
     improvee: 'activity',
     improveeId: 3,
@@ -102,6 +105,7 @@ export default [
         itemAmount: 2,
       }
     ],
+    autobuy: false,
     costMultiplyer: 1.5,
     improvee: 'activity',
     improveeId: 2,
@@ -142,6 +146,7 @@ export default [
         itemAmount: 2,
       }
     ],
+    autobuy: false,
     costMultiplyer: 1.5,
     improvee: 'activity',
     improveeId: 8,
@@ -161,6 +166,7 @@ export default [
         itemAmount: 5
       }
     ],
+    autobuy: false,
     costMultiplyer: 1.6,
     improvee: 'activity',
     improveeId: 1,
@@ -180,6 +186,7 @@ export default [
         itemAmount: 10
       }
     ],
+    autobuy: false,
     costMultiplyer: 1.7,
     improvee: 'activity',
     improveeId: 7,
@@ -199,6 +206,7 @@ export default [
         itemAmount: 15
       }
     ],
+    autobuy: false,
     costMultiplyer: 1.8,
     improvee: 'activity',
     improveeId: 3,
@@ -218,6 +226,7 @@ export default [
         itemAmount: 20
       }
     ],
+    autobuy: false,
     costMultiplyer: 1.9,
     improvee: 'activity',
     improveeId: 2,
@@ -237,6 +246,7 @@ export default [
         itemAmount: 25
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'activity',
     improveeId: 8,
@@ -256,6 +266,7 @@ export default [
         itemAmount: 20
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'item',
     improveeId: 1,
@@ -275,6 +286,7 @@ export default [
         itemAmount: 20
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'item',
     improveeId: 7,
@@ -294,6 +306,7 @@ export default [
         itemAmount: 20
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'item',
     improveeId: 3,
@@ -313,6 +326,7 @@ export default [
         itemAmount: 20
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'item',
     improveeId: 2,
@@ -332,6 +346,7 @@ export default [
         itemAmount: 20
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'item',
     improveeId: 8,
@@ -351,6 +366,7 @@ export default [
         itemAmount: 20000
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'item',
     improveeId: Globals.itemIds.human,
@@ -371,6 +387,7 @@ export default [
         itemAmount: 0
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'activity',
     improveeId: 1,
@@ -391,6 +408,7 @@ export default [
         itemAmount: 0
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'activity',
     improveeId: 7,
@@ -411,6 +429,7 @@ export default [
         itemAmount: 0
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'activity',
     improveeId: 3,
@@ -431,6 +450,7 @@ export default [
         itemAmount: 0
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'activity',
     improveeId: 2,
@@ -451,6 +471,7 @@ export default [
         itemAmount: 0
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'activity',
     improveeId: 8,
@@ -471,6 +492,7 @@ export default [
         itemAmount: 0
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'item',
     improveeId: 904,
@@ -491,6 +513,7 @@ export default [
         itemAmount: 5
       }
     ],
+    autobuy: false,
     costMultiplyer: 1.6,
     improvee: 'activity',
     improveeId: 1,
@@ -510,6 +533,7 @@ export default [
         itemAmount: 10
       }
     ],
+    autobuy: false,
     costMultiplyer: 1.7,
     improvee: 'activity',
     improveeId: 7,
@@ -529,6 +553,7 @@ export default [
         itemAmount: 15
       }
     ],
+    autobuy: false,
     costMultiplyer: 1.8,
     improvee: 'activity',
     improveeId: 3,
@@ -548,6 +573,7 @@ export default [
         itemAmount: 20
       }
     ],
+    autobuy: false,
     costMultiplyer: 1.9,
     improvee: 'activity',
     improveeId: 2,
@@ -567,6 +593,7 @@ export default [
         itemAmount: 25
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'activity',
     improveeId: 8,
@@ -586,6 +613,7 @@ export default [
         itemAmount: 0
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'item',
     improveeId: 905,
@@ -606,6 +634,7 @@ export default [
         itemAmount: 0
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'item',
     improveeId: 906,
@@ -626,6 +655,7 @@ export default [
         itemAmount: 0
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'item',
     improveeId: 907,
@@ -646,6 +676,7 @@ export default [
         itemAmount: 0
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'improvement',
     improveeId: 1,
@@ -666,6 +697,7 @@ export default [
         itemAmount: 0
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'improvement',
     improveeId: 12,
@@ -686,6 +718,7 @@ export default [
         itemAmount: 0
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'improvement',
     improveeId: 3,
@@ -706,6 +739,7 @@ export default [
         itemAmount: 0
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'improvement',
     improveeId: 2,
@@ -726,6 +760,7 @@ export default [
         itemAmount: 0
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'improvement',
     improveeId: 13,
@@ -746,6 +781,7 @@ export default [
         itemAmount: 0
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'item',
     improveeId: 4,
@@ -765,6 +801,7 @@ export default [
         itemAmount: 0
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'item',
     improveeId: 9,
@@ -784,6 +821,7 @@ export default [
         itemAmount: 0
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'item',
     improveeId: 6,
@@ -803,6 +841,7 @@ export default [
         itemAmount: 0
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'item',
     improveeId: 5,
@@ -822,6 +861,7 @@ export default [
         itemAmount: 0
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'item',
     improveeId: 10,
@@ -841,9 +881,31 @@ export default [
         itemAmount: 0
       }
     ],
+    autobuy: false,
     costMultiplyer: 2,
     improvee: 'item',
     improveeId: 908,
+    improves: 'amount',
+    improvesByMultiplyer: 0,
+    improvesByAdder: 1
+  },
+  {
+    id: 42,
+    pulseId: 'improvement-42',
+    name: 'Unlock Autobuy Raw Improvements!',
+    type: 'mcp',
+    level: 1,
+    itemsCost: [
+      {
+        itemId: 8,
+        pulseId: 'improvement-item-42-8',
+        itemAmount: 0
+      }
+    ],
+    autobuy: false,
+    costMultiplyer: 2,
+    improvee: 'item',
+    improveeId: 909,
     improves: 'amount',
     improvesByMultiplyer: 0,
     improvesByAdder: 1

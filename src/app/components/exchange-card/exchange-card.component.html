@@ -13,7 +13,7 @@
         <td><button class="btn btn-link" (click)="itemService.sell(item.id, 10)">10%</button></td>
         <td><button class="btn btn-link" (click)="itemService.sell(item.id, 50)">50%</button></td>
         <td><button class="btn btn-link" (click)="itemService.sell(item.id, 100)">100%</button></td>
-        <td>{{utilsService.formatCurrency(item.value.toFixed(2))}}</td>
+        <td>{{utilsService.formatCurrency(item.value)}}</td>
       </tr>
     </ng-container>
   </tbody>

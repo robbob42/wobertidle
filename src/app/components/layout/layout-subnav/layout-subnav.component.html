@@ -5,7 +5,7 @@
   </div>
   <div *ngIf="itemService.exchangeUnlocked()" style="width: 32%; float: left; text-align: center;">
     <clr-icon attr.shape="{{moneyItem.icon}}" size="18" [ngStyle]="{'color': moneyItem.color, 'margin-bottom': '6px'}"></clr-icon>
-    : <app-pulsing-text [text]="utilsService.formatCurrency(moneyItem.amount.toFixed(2))" [pulseId]="moneyItem.pulseId+'amount'"></app-pulsing-text>
+    : <app-pulsing-text [text]="utilsService.formatCurrency(moneyItem.amount)" [pulseId]="moneyItem.pulseId+'amount'"></app-pulsing-text>
   </div>
   <div style="width: 32%; float: left; text-align: center;">
     <clr-icon attr.shape="{{humanItem.icon}}" size="18" [ngStyle]="{'color': humanItem.color, 'margin-bottom': '6px'}"></clr-icon>
