@@ -22,7 +22,11 @@ export class HomeComponent implements OnInit {
     2: 0,
     8: 0,
   };
-  public itemActivityMap: {
+  public rawItemActivityMap: {
+    itemId: number,
+    activityId: number
+  }[] = [];
+  public refineItemActivityMap: {
     itemId: number,
     activityId: number
   }[] = [];
@@ -41,10 +45,18 @@ export class HomeComponent implements OnInit {
     initialItems.forEach(item => {
       initialActivities.forEach(activity => {
         if (activity.producesId === item.id) {
-          this.itemActivityMap.push({
-            itemId: item.id,
-            activityId: activity.id
-          });
+          if (activity.type === 'raw') {
+            this.rawItemActivityMap.push({
+              itemId: item.id,
+              activityId: activity.id
+            });
+          }
+          if (activity.type === 'refine') {
+            this.refineItemActivityMap.push({
+              itemId: item.id,
+              activityId: activity.id
+            });
+          }
         }
       });
     });

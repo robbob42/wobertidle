@@ -20,7 +20,7 @@ export class ImprovementCardComponent implements OnInit, OnDestroy {
   @Input() improvee: string[];
   @Input() improveeId: number[];
 
-  public initialItems = initialItems;
+  public initialItems = JSON.parse(JSON.stringify(initialItems));
   public itemsSub: Subscription;
   public mcpItem: Item;
   public autobuyRawItem: Item;
@@ -42,11 +42,19 @@ export class ImprovementCardComponent implements OnInit, OnDestroy {
 
   buyImprovement(improvement: Improvement, errorFlash = true) {
     if (!improvement.levelMax || improvement.level < improvement.levelMax) {
-      this.improvementService.buyImprovement(improvement.id).forEach(insufficientItemId => {
-        if (errorFlash) {
-          this.controlService.startRedPulse(`item-${insufficientItemId}amount`);
-        }
-      });
+      const insufficientItems = this.improvementService.buyImprovement(improvement.id);
+      if (insufficientItems.length) {
+        this.improvementService.buyImprovement(improvement.id).forEach(insufficientItemId => {
+          if (errorFlash) {
+            this.controlService.startRedPulse(`item-${insufficientItemId}amount`);
+          }
+        });
+      } else {
+        improvement.itemsCost.forEach(itemsCost => {
+          this.controlService.startPulse(itemsCost.pulseId);
+          this.controlService.startPulse(improvement.pulseId + 'level');
+        });
+      }
     }
   }
 

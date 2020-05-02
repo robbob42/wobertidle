@@ -6,3 +6,6 @@
   left: 1.4rem !important;
   top: 0 !important;
 }
+::ng-deep .table {
+  margin-top: 0;
+}

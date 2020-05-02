@@ -1,1 +1,9 @@
+<div class="improvement-label">SHOP</div>
 <app-improvement-card [improvee]="['item', 'activity']" [improveeId]="[itemId]" [improvementType]="['limit', 'speed']"></app-improvement-card>
+<br />
+<ng-container *ngIf="itemService.exchangeUnlocked()">
+  <div class="improvement-label">EXCHANGE</div>
+  <app-improvement-card [improvee]="['item', 'activity']" [improveeId]="[itemId]" [improvementType]="['production']"></app-improvement-card>
+  <app-exchange-card [itemId]="itemId"></app-exchange-card>
+  <br />
+</ng-container>

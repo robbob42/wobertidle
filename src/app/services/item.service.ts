@@ -108,7 +108,7 @@ export class ItemService {
     return this.inventory.find(invItem => invItem.id === Globals.itemIds.autoActivitySwitcher).amount;
   }
 
-  allowRefiningSet() {
+  refineUnlocked() {
     return this.inventory.find(invItem => invItem.id === Globals.itemIds.allowRefining).amount;
   }
 

@@ -1,13 +1,18 @@
 <div class="clr-row">
-  <div class="clr-col-xl-4 clr-col-lg-6 clr-col-md-6" *ngFor="let itemActivity of itemActivityMap">
+  <div class="clr-col-xl-4 clr-col-lg-6 clr-col-md-6" *ngFor="let itemActivity of rawItemActivityMap">
     <app-item-card [activityId]="itemActivity.activityId" [itemId]="itemActivity.itemId"></app-item-card>
   </div>
+  <ng-container *ngIf="itemService.refineUnlocked()">
+    <div class="clr-col-xl-4 clr-col-lg-6 clr-col-md-6" *ngFor="let itemActivity of refineItemActivityMap">
+      <app-item-card [activityId]="itemActivity.activityId" [itemId]="itemActivity.itemId"></app-item-card>
+    </div>
+  </ng-container>
 </div>
 
 <br /><br />
 <button class="btn btn-outline" (click)="controlService.save()">Save</button>
 <button class="btn btn-warning-outline" (click)="controlService.clear()">Clear</button>
-<button class="btn btn-success-outline" (click)="testAvailable = true">Test</button><br><br>
+<button class="btn btn-success-outline" disabled (click)="testAvailable = true">Test</button><br><br>
 
 <ng-container *ngIf="testAvailable">
   <button class="btn btn-warning" (click)="cheat5()">5 Minutes into play</button><br>

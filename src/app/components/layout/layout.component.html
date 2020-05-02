@@ -7,6 +7,13 @@
       </div>
     </div>
   </ng-container>
+  <ng-container *ngIf="topNav === 'carnival'">
+    <div class="content-container">
+      <div class="content-area" style="padding-bottom: 50px;">
+        <app-carnival></app-carnival>
+      </div>
+    </div>
+  </ng-container>
   <ng-container *ngIf="topNav === 'play' && navigationService.navigations$ | async">
     <nav class="subnav my-subnav">
       <app-layout-subnav></app-layout-subnav>

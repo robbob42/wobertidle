@@ -168,6 +168,8 @@ export class ActivitySliderComponent implements OnInit, OnDestroy {
     if (this.itemService.limitReached(this.activity.producesId)) {
       this.controlService.startRedPulse(`item-${this.activity.producesId}amount`);
       this.controlService.startRedPulse(`item-${this.activity.producesId}limit`);
+    } else if (this.activity.decrementId && !this.itemService.sufficientFunds(this.activity.decrementId, this.activity.decrementAmount)) {
+      this.controlService.startRedPulse(`item-${this.activity.decrementId}amount`);
     } else {
       this.itemService.incrementItem(
         this.activity.producesId,

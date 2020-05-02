@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { Level } from 'src/app/models/level';
 import { ControlService } from 'src/app/services/control.service';
 import { NavigationService } from 'src/app/services/navigation.service';
+import { ItemService } from 'src/app/services/item.service';
 
 @Component({
   selector: 'app-layout-header',
@@ -22,7 +23,8 @@ export class LayoutHeaderComponent implements OnInit, OnDestroy {
   constructor(
     public levelService: LevelService,
     public navigationService: NavigationService,
-    public controlService: ControlService
+    public controlService: ControlService,
+    public itemService: ItemService
   ) { }
 
   ngOnInit(): void {

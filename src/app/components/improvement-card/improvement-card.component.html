@@ -13,16 +13,24 @@
         <td>
           <button class="btn btn-sm btn-link" (click)="buyImprovement(improvement)">{{improvement.name}}</button>
         </td>
-        <td>{{!improvement.levelMax ? improvement.level : improvement.level < improvement.levelMax ? improvement.level : 'Max'}}</td>
         <td>
-          <span *ngFor="let costItem of improvement.itemsCost">
-            <span *ngFor="let item of initialItems">
-              <ng-container *ngIf="item.id == costItem.itemId">
+          <app-pulsing-text [text]="!improvement.levelMax ? improvement.level : improvement.level < improvement.levelMax ? improvement.level : 'Max'" [pulseId]="improvement.pulseId+'level'"></app-pulsing-text>
+        </td>
+        <td>
+          <ng-container *ngFor="let costItem of improvement.itemsCost.slice().reverse(); let isLast=last">
+            <ng-container *ngFor="let item of initialItems">
+              <span *ngIf="item.id == costItem.itemId">
+                <ng-container *ngIf="improvementType[0] === 'production'; else elseBlock">
+                  <app-pulsing-text [contentStyles]="{float:'left'}" [text]="utilsService.formatCurrency(costItem.itemAmount)" [pulseId]="costItem.pulseId"></app-pulsing-text>
+                </ng-container>
+                <ng-template #elseBlock>
+                  <app-pulsing-text [contentStyles]="{float:'left'}" [text]="utilsService.formatNumber(costItem.itemAmount)" [pulseId]="costItem.pulseId"></app-pulsing-text>
+                </ng-template>
                 <clr-icon attr.shape="{{item.icon}}" size="16" [ngStyle]="{'color': item.color}"></clr-icon>
-              </ng-container>
-            </span>
-            x <app-pulsing-text [text]="utilsService.formatNumber(costItem.itemAmount)" [pulseId]="costItem.pulseId"></app-pulsing-text><br />
-          </span>
+                {{isLast ? '' : ', '}}
+              </span>
+            </ng-container>
+          </ng-container>
         </td>
         <td *ngIf="autobuyRawItem.amount">
           <input type="checkbox" clrCheckbox (click)="toggleAutobuy(improvement.id)" [ngModel]="improvement.autobuy" />

@@ -12,7 +12,7 @@ export default [
     pulseId: 'level-1',
     name: 'Semi Demi',
     improvements: [
-      17,
+      17, // 17-20 raw materials mcp x 2
       18,
       19,
       20,
@@ -20,7 +20,7 @@ export default [
       22, // Auto next activity
     ],
     levelSummary: [
-      'Your human will now move on to the next task when the curren items reach their limit!',
+      'Your human will now move on to the next task when the current items reach their limit!',
       'Obtaining Raw Materials will generate twice as much Mind Control Power!'
     ],
     current: false
@@ -30,7 +30,7 @@ export default [
     pulseId: 'level-2',
     name: 'Junior Demi',
     improvements: [
-      23,
+      23, // 23-27 raw materials production x 2
       24,
       25,
       26,
@@ -48,14 +48,16 @@ export default [
     pulseId: 'level-3',
     name: 'Assistant Demi',
     improvements: [
-      17,
-      18,
-      19,
-      20,
-      21
+      31, // 31-35 raw materials speed level max + 5
+      32,
+      33,
+      34,
+      35,
+      29 // Unlock the exchange
     ],
     levelSummary: [
-      'Double the Mind Control Power again.'
+      'Unlock the Exchange.',
+      'Maximum levels on speed improvements will increase!'
     ],
     current: false
   },
@@ -64,23 +66,6 @@ export default [
     pulseId: 'level-4',
     name: 'Assistant to the Demi',
     improvements: [
-      29
-    ],
-    levelSummary: [
-      'You will unlock the Exchange!'
-    ],
-    current: false
-  },
-  {
-    id: 5,
-    pulseId: 'level-5',
-    name: 'Demi in Charge of Radishes',
-    improvements: [
-      31,
-      32,
-      33,
-      34,
-      35,
       28,
       41
     ],
@@ -92,19 +77,34 @@ export default [
     current: false
   },
   {
-    id: 6,
-    pulseId: 'level-6',
-    name: 'Demi Dedi Deci',
+    id: 5,
+    pulseId: 'level-5',
+    name: 'Demi in Charge of Radishes',
     improvements: [
-      17,
+      17, // 17-20 raw materials mcp x 2
       18,
       19,
       20,
       21,
-      30
     ],
     levelSummary: [
-      'You will discover an entirely new way to use those hard earned Mind Control Powers!',
+      'Your journey is pretty much over (for now), but you can go ahead and keep upping your rank if you\'d like',
+      'Obtaining Raw Materials will generate twice as much Mind Control Power!'
+    ],
+    current: false
+  },
+  {
+    id: 6,
+    pulseId: 'level-6',
+    name: 'Demi Dedi Deci',
+    improvements: [
+      17, // 17-20 raw materials mcp x 2
+      18,
+      19,
+      20,
+      21,
+    ],
+    levelSummary: [
       'Double the Mind Control Power again.'
     ],
     current: false
@@ -114,11 +114,11 @@ export default [
     pulseId: 'level-7',
     name: 'Deminator',
     improvements: [
-      17,
+      17, // 17-20 raw materials mcp x 2
       18,
       19,
       20,
-      21
+      21,
     ],
     levelSummary: [
       'Double the Mind Control Power again.'
@@ -130,11 +130,11 @@ export default [
     pulseId: 'level-8',
     name: 'Deminted',
     improvements: [
-      17,
+      17, // 17-20 raw materials mcp x 2
       18,
       19,
       20,
-      21
+      21,
     ],
     levelSummary: [
       'Double the Mind Control Power again.'
@@ -146,11 +146,11 @@ export default [
     pulseId: 'level-9',
     name: 'Demi Demo',
     improvements: [
-      17,
+      17, // 17-20 raw materials mcp x 2
       18,
       19,
       20,
-      21
+      21,
     ],
     levelSummary: [
       'Double the Mind Control Power again.'
@@ -162,7 +162,7 @@ export default [
     pulseId: 'level-10',
     name: 'Demi Bob',
     improvements: [
-      17,
+      17, // 17-20 raw materials mcp x 2
       18,
       19,
       20,
@@ -178,7 +178,7 @@ export default [
     pulseId: 'level-11',
     name: 'Demi Min',
     improvements: [
-      17,
+      17, // 17-20 raw materials mcp x 2
       18,
       19,
       20,
@@ -194,7 +194,7 @@ export default [
     pulseId: 'level-12',
     name: 'Demi Jay',
     improvements: [
-      17,
+      17, // 17-20 raw materials mcp x 2
       18,
       19,
       20,
@@ -210,7 +210,7 @@ export default [
     pulseId: 'level-13',
     name: 'Demi Kay',
     improvements: [
-      17,
+      17, // 17-20 raw materials mcp x 2
       18,
       19,
       20,
@@ -226,7 +226,7 @@ export default [
     pulseId: 'level-14',
     name: 'Demi Linc',
     improvements: [
-      17,
+      17, // 17-20 raw materials mcp x 2
       18,
       19,
       20,

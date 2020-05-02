@@ -20,6 +20,7 @@ export class LayoutSubnavComponent implements OnInit, OnDestroy {
   private itemSub: Subscription;
   public mcpItem: Item;
   public humanItem: Item;
+  public moneyItem: Item;
   private controlSub: Subscription;
   public topNav: string;
   public contentNav: string;
@@ -37,6 +38,7 @@ export class LayoutSubnavComponent implements OnInit, OnDestroy {
     this.itemSub = this.itemService.items$.subscribe((items) => {
       this.mcpItem = items.find(itm => itm.id === Globals.itemIds.mcp);
       this.humanItem = items.find(itm => itm.id === Globals.itemIds.human);
+      this.moneyItem = items.find(itm => itm.id === Globals.itemIds.money);
     });
 
     this.controlSub = this.navigationService.navigations$.subscribe((navigations) => {

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, Input } from '@angular/core';
 import { Globals } from '../../../assets/globals';
 import { ItemService } from '../../services/item.service';
 import { UtilsService } from '../../services/utils.service';
@@ -13,7 +13,10 @@ import initialItems from '../../../assets/items';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExchangeCardComponent implements OnInit, OnDestroy {
+  @Input() itemId: number;
+
   public initialItems = initialItems;
+  public item: Item;
   public itemsSub: Subscription;
   public mcpItem: Item;
   public Globals = Globals;
@@ -25,6 +28,7 @@ export class ExchangeCardComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.itemsSub = this.itemService.items$.subscribe((items) => {
+      this.item = items.find(item => item.id === this.itemId);
       this.mcpItem = items.find(item => item.id === Globals.itemIds.mcp);
     });
   }
